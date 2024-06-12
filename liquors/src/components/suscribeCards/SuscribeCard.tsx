@@ -43,7 +43,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
           },
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: token,
             },
           }
         );
@@ -64,7 +64,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
           },
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: token,
             },
           }
         );
