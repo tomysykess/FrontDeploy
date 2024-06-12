@@ -10,7 +10,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
   const [userId, setUserId] = useState<string | null>(null);
   const [role, setRole] = useState(0);
   const [userData, setUserData] = useState();
-  const [token, setToken] = useState<string | null>(null);
+  const [token, setToken] = useState<any>(null);
   /*   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null); */
@@ -19,7 +19,8 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
     const userDataLogin = localStorage.getItem("userDataLogin");
     if (userDataLogin) {
       const userData = JSON.parse(userDataLogin);
-      setToken(userData.token);
+      const token = userData.token;
+      setToken(token);
       console.log("este es el token", token);
       setUserData(userData);
       setRole(userData.role);
@@ -44,7 +45,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
           },
           {
             headers: {
-              Authorization: token,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -65,7 +66,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
           },
           {
             headers: {
-              Authorization: token,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
