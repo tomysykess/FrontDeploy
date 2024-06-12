@@ -5,10 +5,10 @@ import StarIcon from "@mui/icons-material/Star";
 import Rating from "@mui/material/Rating";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import Image from 'next/image';
 
 export const ProductDetail = ({ product }: { product: Product }) => {
-  const { abv, brand, category, country, description, id, imgUrl, name, size } = product;
+  const { abv, brand, category, country, description, id, imgUrl, name, size } =
+    product;
 
   const [favorite, setFavorite] = useState(false);
 
@@ -18,15 +18,15 @@ export const ProductDetail = ({ product }: { product: Product }) => {
   };
 
   return (
-    <div key={id} className="flex flex-row gap-10 p-4 bg-white rounded shadow-md ">
+    <div
+      key={id}
+      className="flex flex-row gap-10 p-4 bg-white rounded shadow-md "
+    >
       <div className="w-1/3 flex items-center justify-center">
-        <Image
+        <img
           src={imgUrl}
           alt={name}
           className="imageProductDetail w-full h-auto rounded"
-          width={500} // Ajusta estos valores según sea necesario
-          height={500} // Ajusta estos valores según sea necesario
-          layout="responsive"
         />
       </div>
       <div className="w-2/3 space-y-3">
