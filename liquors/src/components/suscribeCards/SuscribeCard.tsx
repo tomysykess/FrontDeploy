@@ -20,6 +20,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
     if (userDataLogin) {
       const userData = JSON.parse(userDataLogin);
       setToken(userData.token);
+      console.log("este es el token", token);
       setUserData(userData);
       setRole(userData.role);
       setUserId(userData.id);
