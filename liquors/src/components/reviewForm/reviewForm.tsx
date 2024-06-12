@@ -54,13 +54,14 @@ export const ReviewForm = ({ token }: any) => {
           formData,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              authorization: `Bearer: ${token}`,
             },
           }
         );
         dispatch(readReviews(res.data));
         clearInput();
       } catch (err) {
+        alert("Falló el envío de tu reseña");
         console.error(err);
       }
     }
