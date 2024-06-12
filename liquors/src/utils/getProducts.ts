@@ -5,16 +5,17 @@ import { clearProducts } from "@/store/reducers/productsSlice";
 import { Product } from "@/interfaces/interfaz";
 
 export const fetchProducts = async (dispatch: AppDispatch, page: any) => {
-  
-  let queryParam = ""; 
+  let queryParam = "";
   if (page) {
-    queryParam = `?page=${page}`; 
+    queryParam = `?page=${page}`;
   }
   try {
-      const res = await axios.get<Product[]>(`https://liquors-project.onrender.com/products/${queryParam}`);
-      dispatch(clearProducts());
-      dispatch(readProducts(res.data))
+    const res = await axios.get<Product[]>(
+      `https://liquors-project.onrender.com/products/${queryParam}`
+    );
+    dispatch(clearProducts());
+    dispatch(readProducts(res.data));
   } catch (err) {
-      console.error(err);
+    console.error(err);
   }
 };
