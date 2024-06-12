@@ -68,6 +68,7 @@ export const ReviewForm = ({ token }: any) => {
 
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    alert(`${token}`);
     if (userDataLogin) {
       postReviews(formData);
     } else {

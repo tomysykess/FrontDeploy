@@ -16,7 +16,8 @@ const ProductF = ({ params }: { params: { productId: string } }) => {
 
     if (userDataLogin) {
       const dataTokenParse = JSON.parse(userDataLogin);
-      setToken(dataTokenParse.token);
+      const dataToken = dataTokenParse.token;
+      setToken(dataToken);
       console.log(token);
     }
 
