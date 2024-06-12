@@ -12,8 +12,14 @@ const ProductF = ({ params }: { params: { productId: string } }) => {
 
   useEffect(() => {
     const detailProductStorage: any = localStorage.getItem("detailProduct");
-    detailProductStorage && setToken(JSON.parse(detailProductStorage.token));
-    console.log("este es el token", token);
+    const userDataLogin = localStorage.getItem("userDataLogin");
+
+    if (userDataLogin) {
+      const dataTokenParse = JSON.parse(userDataLogin);
+      setToken(dataTokenParse.token);
+      console.log(token);
+    }
+
     detailProductStorage && setDetailProduct(JSON.parse(detailProductStorage));
   }, []);
 
