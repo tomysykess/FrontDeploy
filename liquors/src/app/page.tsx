@@ -1,10 +1,11 @@
 "use client";
-import "./globals.css";
-import BannerProducts from "@/components/bannerProductHome/banner";
-import BannerProductsGin from "@/components/bannerProductHome/bannerGin";
-import Carousel from "@/components/carousel/Carousel";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import SuscribeCards from "@/components/suscribeCards/SuscribeCards";
+import "./globals.css";
+
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import BannerProductsGin from "@/components/bannerProductHome/bannerGin";
+import BannerProducts from "@/components/bannerProductHome/banner";
+import Carousel from "@/components/carousel/Carousel";
 
 export default function Landing() {
   return (
