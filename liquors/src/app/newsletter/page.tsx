@@ -1,4 +1,3 @@
-/* import EmailJSForm from "@/components/emailJSForm/EmailJSForm"; */
 import EmailJSForm from "@/components/emailJSForm/EmailJSForm";
 import NewsList from "@/components/newsList/NewsList";
 

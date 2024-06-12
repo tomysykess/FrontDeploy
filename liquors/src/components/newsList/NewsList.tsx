@@ -4,7 +4,7 @@ import React from "react";
 import { arrayNewsletter } from "@/utils/arrayNewsletter";
 import NewsItem from "../newsCard/NewsCard";
 
-const NewsList = () => {
+export const NewsList = () => {
   return (
     <div className="flex flex-col justify-center">
       {arrayNewsletter.map((newItem, index) => (
