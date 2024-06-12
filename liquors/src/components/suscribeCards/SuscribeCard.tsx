@@ -1,6 +1,7 @@
 "use client";
 import { ISuscribe } from "@/interfaces/interfaz";
 import axios from "axios";
+import { headers } from "next/headers";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -9,6 +10,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
   const [userId, setUserId] = useState<string | null>(null);
   const [role, setRole] = useState(0);
   const [userData, setUserData] = useState();
+  const [token, setToken] = useState<string | null>(null);
   /*   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null); */
@@ -17,6 +19,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
     const userDataLogin = localStorage.getItem("userDataLogin");
     if (userDataLogin) {
       const userData = JSON.parse(userDataLogin);
+      setToken(userData.token);
       setUserData(userData);
       setRole(userData.role);
       setUserId(userData.id);
@@ -37,6 +40,11 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
             type: product.type,
             amount: 200,
             amountDif: 100,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
         console.log(response);
@@ -53,6 +61,11 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
           {
             type: product.type,
             amount: product.price,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
         console.log(res);
