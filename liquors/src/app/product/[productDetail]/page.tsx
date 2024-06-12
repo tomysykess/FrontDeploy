@@ -7,11 +7,13 @@ import { useEffect, useState } from "react";
 
 const ProductF = ({ params }: { params: { productId: string } }) => {
   const [detailProduct, setDetailProduct] = useState<Partial<Product>>({});
-
+  const [token, setToken] = useState();
   console.log("detalle producto", detailProduct);
 
   useEffect(() => {
     const detailProductStorage: any = localStorage.getItem("detailProduct");
+    detailProductStorage && setToken(JSON.parse(detailProductStorage.token));
+    console.log("este es el token", token);
     detailProductStorage && setDetailProduct(JSON.parse(detailProductStorage));
   }, []);
 
@@ -28,7 +30,7 @@ const ProductF = ({ params }: { params: { productId: string } }) => {
             <ReviewContainer />
           </div>
           <div className="w-full lg:w-1/3">
-            <ReviewForm />
+            <ReviewForm token={token} />
           </div>
         </div>
       </div>
