@@ -1,4 +1,4 @@
-/* "use client";
+"use client";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchReviews } from "@/utils/getReviews";
@@ -63,9 +63,8 @@ export const Review = ({ review }: { review: IReview }) => {
           ""
         )}
       </div>
-      <p className="text-gray-600 italic">"{comment}"</p>
+      <p className="text-gray-600 italic">`{comment}`</p>
       <h3 className="text-right text-sm font-medium text-gray-500">- {name}</h3>
     </div>
   );
 };
- */
