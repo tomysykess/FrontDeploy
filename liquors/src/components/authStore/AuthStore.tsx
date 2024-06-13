@@ -57,7 +57,7 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
             console.log("Datos del usuario han cambiado");
 
             // Actualizar el token en los datos del usuario
-            newUserData.token = token!;
+            newUserData.token = token;
             localStorage.setItem("userDataLogin", JSON.stringify(newUserData));
           }
         } catch (fetchError) {
