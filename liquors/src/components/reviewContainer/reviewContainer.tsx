@@ -15,7 +15,7 @@ export const ReviewContainer: React.FC = () => {
 
   useEffect(() => {
     dispatch(clearReviews());
-  }, [dispatch, dataReviews]);
+  }, [dispatch]);
   /* ESTE USE EFFECT */
   useEffect(() => {
     fetchReviews(dispatch);

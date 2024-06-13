@@ -3,7 +3,11 @@ import { IReview } from "@/interfaces/interfaz";
 import { AppDispatch } from "@/store/store";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { createReviews, readReviews } from "@/store/reducers/reviewsSlice";
+import {
+  clearReviews,
+  createReviews,
+  readReviews,
+} from "@/store/reducers/reviewsSlice";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import axios from "axios";
