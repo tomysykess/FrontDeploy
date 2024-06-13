@@ -1,11 +1,11 @@
 "use client";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Provider } from "react-redux";
 
 interface AuthProps {
   children: React.ReactNode;
 }
-
 interface UserToken {
   email: string;
   firebaseUid: string;
@@ -18,53 +18,48 @@ interface UserToken {
 
 const AuthStore: React.FC<AuthProps> = ({ children }) => {
   const [token, setToken]: any = useState(); // Inicializa el estado con el tipo adecuado
-  const [id, setId]: any = useState();
-  const [role, setRole]: any = useState();
+
   useEffect(() => {
     const fetchUserData = async () => {
       const userDataLogin = localStorage.getItem("userDataLogin");
 
+      //USERDATA LOGIN
+      /*       const userDataLogin: any = {
+        name: formData.name,
+        email: userCredential.user.email,
+        id: response.data.id,
+        role: response.data.role,
+        token: response.data.token,
+      }; */
+
       if (userDataLogin) {
-        const userData = JSON.parse(userDataLogin);
-        setId(userData.id);
-        setToken(userData.token);
-        setRole(userData.role);
-        console.log("first TOKEN", token);
+        const userData: UserToken = JSON.parse(userDataLogin);
 
-        const loginObjet = {
-          email: userData.email,
-          firebaseUid: userData.firebaseUid,
-        };
+        const userId = userData.id;
+        const userToken = userData.token;
+        setToken(userToken!);
 
+        console.log("este es el token que tiene en el storages", token);
         try {
-          const res = await axios.post(
-            "https://liquors-project.onrender.com/users/signin",
-            loginObjet
-          );
-          const newToken = res.data;
-          setToken(newToken.token);
-          console.log("Nuevo token obtenido:", token);
-
           const response = await axios.get(
-            `https://liquors-project.onrender.com/users/${id}`
+            `https://liquors-project.onrender.com/users/${userId}`
           );
-          const newUserData: any = response.data;
+          var newUserData: UserToken = response.data;
 
-          if (newUserData.role !== role || newUserData.token !== token) {
-            console.log("Datos del usuario han cambiado");
+          if (newUserData.role !== userData.role) {
+            console.log("Token cambiado");
 
-            // Actualizar el token en los datos del usuario
-            newUserData.token = token;
+            newUserData.token = token; // Corregir si hay lógica específica aquí
             localStorage.setItem("userDataLogin", JSON.stringify(newUserData));
           }
-        } catch (fetchError) {
-          console.error("Error al obtener datos del usuario:", fetchError);
+        } catch (error) {
+          console.error("Error fetching user data:", error);
         }
       }
     };
 
     fetchUserData();
-  }, []); // Dependencias vacías para que se ejecute solo una vez al montar el componente
+  }, [Provider]);
 
   return <div>{children}</div>;
 };
