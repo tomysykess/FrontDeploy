@@ -15,31 +15,20 @@ interface UserToken {
   role: number;
   token: string;
 }
-interface UserTokenLogin {
-  email: string;
-  firebaseUid: string;
-  id: string;
-  name: string;
-  profileImage: any;
-  provider: any;
-  role: number;
-  token: any;
-}
 
 const AuthStore: React.FC<AuthProps> = ({ children }) => {
-  const [token, setToken]: any = useState();
-  const [userData, setUserData]: any = useState();
-  const [loginData, setLoginData]: any = useState();
+  const [token, setToken] = useState<string | null>(null); // Inicializa el estado con el tipo adecuado
+
   useEffect(() => {
     const fetchUserData = async () => {
       const userDataLogin = localStorage.getItem("userDataLogin");
 
       if (userDataLogin) {
         const userData: UserToken = JSON.parse(userDataLogin);
-        setUserData(userData);
-        const { id, token } = userData;
-        setToken(token);
-        console.log("first TOKEN", token);
+        const userId = userData.id;
+        const userToken = userData.token;
+        setToken(userToken);
+        console.log("first TOKEN", userToken);
 
         const loginObjet = {
           email: userData.email,
@@ -51,20 +40,24 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
             "https://liquors-project.onrender.com/users/signin",
             loginObjet
           );
-          const newDataLogin = res.data;
-          const { token } = newDataLogin;
-          setToken(token);
-          console.log("Nuevo token obtenido:", token);
+          const newToken = res.data.token;
+          setToken(newToken);
+          console.log("Nuevo token obtenido:", newToken);
+        } catch (error) {
+          console.error("Error al iniciar sesión:", error);
+        }
 
+        try {
           const response = await axios.get(
-            `https://liquors-project.onrender.com/users/${id}`
+            `https://liquors-project.onrender.com/users/${userId}`
           );
           const newUserData: any = response.data;
-          setLoginData(newUserData);
-          console.log("Datos del usuario nuevos", newUserData);
 
-          if (loginData.role !== userData.role) {
-            console.log("Datos del usuario han cambiado", newUserData);
+          if (
+            newUserData.role !== userData.role ||
+            newUserData.token !== token
+          ) {
+            console.log("Datos del usuario han cambiado");
 
             // Actualizar el token en los datos del usuario
             newUserData.token = token;
@@ -75,7 +68,7 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
         }
       }
     };
-    /* nuevo  */
+
     fetchUserData();
   }, []); // Dependencias vacías para que se ejecute solo una vez al montar el componente
 
