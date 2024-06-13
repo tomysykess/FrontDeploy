@@ -1,4 +1,4 @@
-"use client";
+/* "use client";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchReviews } from "@/utils/getReviews";
@@ -17,15 +17,15 @@ export const Review = ({ review }: { review: IReview }) => {
 
   useEffect(() => {
     const userDataLogin = localStorage.getItem("userDataLogin");
-    const userData = userDataLogin ? JSON.parse(userDataLogin) : null;
-    setData(userData);
-    fetchReviews(dispatch, userData.token);
-    console.log("dataReviews", dataReviews);
+    if (userDataLogin) {
+      const userData = JSON.parse(userDataLogin!);
+      setData(userData);
+    }
+    fetchReviews(dispatch);
   }, [dispatch, dataReviews]);
 
   const { id, rate, comment, userId } = review;
   const { name } = userId;
-
   const handleDelete = async (id: string) => {
     if (confirm("¿Estás seguro de que quieres eliminar esta review?")) {
       try {
@@ -63,8 +63,9 @@ export const Review = ({ review }: { review: IReview }) => {
           ""
         )}
       </div>
-      <p className="text-gray-600 italic">&quot;{comment}&quot;</p>
+      <p className="text-gray-600 italic">"{comment}"</p>
       <h3 className="text-right text-sm font-medium text-gray-500">- {name}</h3>
     </div>
   );
 };
+ */

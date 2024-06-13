@@ -7,20 +7,11 @@ import { useEffect, useState } from "react";
 
 const ProductF = ({ params }: { params: { productId: string } }) => {
   const [detailProduct, setDetailProduct] = useState<Partial<Product>>({});
-  const [token, setToken] = useState<any>();
+
   console.log("detalle producto", detailProduct);
 
   useEffect(() => {
     const detailProductStorage: any = localStorage.getItem("detailProduct");
-    const userDataLogin = localStorage.getItem("userDataLogin");
-
-    if (userDataLogin) {
-      const dataTokenParse = JSON.parse(userDataLogin);
-      const dataToken = dataTokenParse.token;
-      setToken(dataToken);
-      console.log(token);
-    }
-
     detailProductStorage && setDetailProduct(JSON.parse(detailProductStorage));
   }, []);
 
@@ -34,10 +25,10 @@ const ProductF = ({ params }: { params: { productId: string } }) => {
             <h1 className="text-black text-2xl font-bold mb-4">
               {`Conoce lo que nuestros usuarios piensan sobre ${detailProduct.name}`}
             </h1>
-            <ReviewContainer token={token} />
+            <ReviewContainer />
           </div>
           <div className="w-full lg:w-1/3">
-            <ReviewForm token={token} />
+            <ReviewForm />
           </div>
         </div>
       </div>
