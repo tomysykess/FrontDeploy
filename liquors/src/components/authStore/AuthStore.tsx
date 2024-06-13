@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import React, { useEffect } from "react";
+import { Provider } from "react-redux";
 
 interface AuthProps {
   children: React.ReactNode;
@@ -8,13 +9,13 @@ interface AuthProps {
 
 const AuthStore: React.FC<AuthProps> = ({ children }) => {
   useEffect(() => {
-    const userDataLogin = localStorage.getItem("userDataLogin");
+    const fetchUserData = async () => {
+      const userDataLogin = localStorage.getItem("userDataLogin");
 
-    if (userDataLogin) {
-      const userData = JSON.parse(userDataLogin);
-      const userId = userData.id;
+      if (userDataLogin) {
+        const userData = JSON.parse(userDataLogin);
+        const userId = userData.id;
 
-      const fetchUserData = async () => {
         try {
           const response = await axios.get(
             `https://liquors-project.onrender.com/users/${userId}`
@@ -27,11 +28,11 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
         } catch (error) {
           console.error("Error fetching user data:", error);
         }
-      };
+      }
+    };
 
-      fetchUserData();
-    }
-  }, []);
+    fetchUserData();
+  }, [Provider]);
 
   return <div>{children}</div>;
 };
