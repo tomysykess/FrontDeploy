@@ -40,8 +40,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
           `https://liquors-project.onrender.com/subscription/${userId}`,
           {
             type: product.type,
-            amount: 200,
-            amountDif: 100,
+            status: "active",
           },
           {
             headers: {
