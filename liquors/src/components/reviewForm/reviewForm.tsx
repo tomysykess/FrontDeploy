@@ -58,7 +58,7 @@ export const ReviewForm = () => {
           formData,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              authorization: `Bearer ${token}`,
             },
           }
         );
