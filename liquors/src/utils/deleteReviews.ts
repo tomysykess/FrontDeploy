@@ -15,7 +15,7 @@ export const deleteReview = async (reviewId: string, dispatch: AppDispatch) => {
     try {
       await axios.delete(url, {
         headers: {
-          authorization: `Bearer ${idUser.token}`,
+          authorization: `Bearer: ${token}`,
         },
       });
       dispatch(removeReview(reviewId));
