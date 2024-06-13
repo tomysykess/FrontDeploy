@@ -11,6 +11,7 @@ export const deleteReview = async (reviewId: string, dispatch: AppDispatch) => {
     const idP = idProduct.id;
     const idU = idUser.id;
     const url = `https://liquors-project.onrender.com/reviews/${reviewId}?userId=${idU}&productId=${idP}`;
+    const token = idUser.token;
 
     try {
       await axios.delete(url, {
