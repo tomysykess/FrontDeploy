@@ -13,10 +13,10 @@ export const ReviewContainer: React.FC = () => {
   );
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  /*   useEffect(() => {
     dispatch(clearReviews());
   }, [dispatch]);
-
+ */
   useEffect(() => {
     if (dataReviews.length === 0 || dataReviews.length <= 5) {
       fetchReviews(dispatch);
