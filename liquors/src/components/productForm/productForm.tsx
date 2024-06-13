@@ -102,14 +102,9 @@ export const ProductForm = () => {
         id: "",
         name: "",
         email: "",
-        role: ""
-    })
-
-    const [token, setToken] = useState({
+        role: "",
         token: ""
     })
-    
-    const userId = dataUser.id
 
     const [dataProduct, setDataProduct] = useState<IProductForm>({
         name: "",
@@ -134,11 +129,10 @@ export const ProductForm = () => {
     useEffect(() => {
         if( typeof window !== "undefined" && window.localStorage) {
         const storeData = localStorage.getItem("userDataLogin");
-        const storeToken = localStorage.getItem("loginToken");
-        setToken(JSON.parse(storeToken!));
         setDataUser(JSON.parse(storeData!));
         }
     }, [pathname])
+
 
     useEffect(() => {
         const storedData = localStorage.getItem("dataProduct");
@@ -170,8 +164,6 @@ export const ProductForm = () => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
-        //aca va la logica de la imagen..
         
         const updatedDataProduct = {
             ...dataProduct,
@@ -179,14 +171,15 @@ export const ProductForm = () => {
             size: String(dataProduct.size + "ml"),
             abv: Number(dataProduct.abv),
         };
-        
-        console.log("data que va al back", updatedDataProduct);
+
         const errorInput = validateProductForm(dataProduct);
         setErrorProduct(errorInput);
 
         if (Object.keys(errorInput).length === 0) {
             alert(`el producto ${dataProduct.name} ha sido agregado con exito`);
-            postProduct(dataUser.id, updatedDataProduct, token.token);
+            postProduct(dataUser.id, updatedDataProduct, dataUser.token);
+            console.log("info para el back", dataUser.id, updatedDataProduct, dataUser.token);
+            handleCancel();
         } else {
             alert ("hubo un error al agregar el producto");
         }
