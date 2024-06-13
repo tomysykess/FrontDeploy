@@ -1,15 +1,15 @@
 "use client";
 import { IReview } from "@/interfaces/interfaz";
 import { AppDispatch } from "@/store/store";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { readReviews } from "@/store/reducers/reviewsSlice";
+import { createReviews, readReviews } from "@/store/reducers/reviewsSlice";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-export const ReviewForm = ({ token }: any) => {
+export const ReviewForm = ({ token }: { token: string }) => {
   const router = useRouter();
   const [formData, setFormData] = useState({
     comment: "",
@@ -17,10 +17,6 @@ export const ReviewForm = ({ token }: any) => {
   });
 
   const userDataLogin = localStorage.getItem("userDataLogin");
-  useEffect(() => {
-    if (userDataLogin) {
-    }
-  }, []);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -61,7 +57,7 @@ export const ReviewForm = ({ token }: any) => {
             },
           }
         );
-        dispatch(readReviews(res.data));
+        dispatch(createReviews(res.data));
         clearInput();
       } catch (err) {
         alert("Falló el envío de tu reseña");
@@ -82,7 +78,7 @@ export const ReviewForm = ({ token }: any) => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-xl shadow-md  ">
+    <div className="max-w-md mx-auto bg-white p-8 rounded-xl shadow-md">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
         ¡Queremos conocer tu opinión sobre este producto!
       </h1>
@@ -111,7 +107,7 @@ export const ReviewForm = ({ token }: any) => {
 
         <button
           type="submit"
-          className="bg-wine text-white py-2 px-4 rounded-md  hover:bg-red-700 transition-colors"
+          className="bg-wine text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors"
         >
           Postear opinión
         </button>

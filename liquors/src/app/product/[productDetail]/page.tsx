@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 const ProductF = ({ params }: { params: { productId: string } }) => {
   const [detailProduct, setDetailProduct] = useState<Partial<Product>>({});
-  const [token, setToken] = useState();
+  const [token, setToken] = useState<any>();
   console.log("detalle producto", detailProduct);
 
   useEffect(() => {
