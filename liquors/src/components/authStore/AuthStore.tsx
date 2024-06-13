@@ -24,12 +24,12 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
           const response = await axios.get(
             `https://liquors-project.onrender.com/users/${userId}`
           );
-          const newUserData = response.data;
+          var newUserData = response.data;
 
-          if (newUserData.token !== userToken) {
+          if (newUserData.role !== userData.role) {
             console.log("Token cambiado");
-            setToken(newUserData.token);
-            newUserData.token = newUserData.token; // Corregir si hay lógica específica aquí
+
+            newUserData.token = token; // Corregir si hay lógica específica aquí
             localStorage.setItem("userDataLogin", JSON.stringify(newUserData));
           }
         } catch (error) {
