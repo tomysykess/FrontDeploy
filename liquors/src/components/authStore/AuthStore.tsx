@@ -28,13 +28,15 @@ interface UserTokenLogin {
 
 const AuthStore: React.FC<AuthProps> = ({ children }) => {
   const [token, setToken]: any = useState();
-
+  const [userData, setUserData]: any = useState();
+  const [loginData, setLoginData]: any = useState();
   useEffect(() => {
     const fetchUserData = async () => {
       const userDataLogin = localStorage.getItem("userDataLogin");
 
       if (userDataLogin) {
         const userData: UserToken = JSON.parse(userDataLogin);
+        setUserData(userData);
         const userId = userData.id;
         const userToken = userData.token;
         setToken(userToken);
@@ -51,14 +53,10 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
             loginObjet
           );
           const newDataLogin: UserTokenLogin = res.data;
-          const newToken = newDataLogin.token;
-          setToken(newToken);
-          console.log("Nuevo token obtenido:", newToken);
-        } catch (error) {
-          console.error("Error al iniciar sesión:", error);
-        }
+          const { token } = newDataLogin;
+          setToken(token);
+          console.log("Nuevo token obtenido:", token);
 
-        try {
           const response = await axios.get(
             `https://liquors-project.onrender.com/users/${userId}`
           );
@@ -68,7 +66,7 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
             console.log("Datos del usuario han cambiado");
 
             // Actualizar el token en los datos del usuario
-            newUserData.token = token!;
+            newUserData.token = token;
             localStorage.setItem("userDataLogin", JSON.stringify(newUserData));
           }
         } catch (fetchError) {
