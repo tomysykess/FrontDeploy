@@ -1,11 +1,11 @@
 "use client";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Provider } from "react-redux";
 
 interface AuthProps {
   children: React.ReactNode;
 }
+
 interface UserToken {
   email: string;
   firebaseUid: string;
@@ -17,7 +17,7 @@ interface UserToken {
 }
 
 const AuthStore: React.FC<AuthProps> = ({ children }) => {
-  const [token, setToken]: any = useState();
+  const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -25,15 +25,16 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
 
       if (userDataLogin) {
         const userData: UserToken = JSON.parse(userDataLogin);
-
         const userId = userData.id;
         const userToken = userData.token;
-        setToken(userToken!);
-        console.log("first TOKEN", token);
+        setToken(userToken);
+        console.log("first TOKEN", userToken);
+
         const loginObjet = {
           email: userData.email,
           firebaseUid: userData.firebaseUid,
         };
+
         try {
           const res = await axios.post(
             "https://liquors-project.onrender.com/users/signin",
@@ -43,10 +44,9 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
           setToken(newToken);
           console.log("Nuevo token obtenido:", newToken);
         } catch (error) {
-          console.log(error);
+          console.error("Error al iniciar sesión:", error);
         }
 
-        /* -------------------------------------------------- */
         try {
           const response = await axios.get(
             `https://liquors-project.onrender.com/users/${userId}`
@@ -57,7 +57,7 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
             console.log("Datos del usuario han cambiado");
 
             // Actualizar el token en los datos del usuario
-            newUserData.token = token;
+            newUserData.token = token!;
             localStorage.setItem("userDataLogin", JSON.stringify(newUserData));
           }
         } catch (fetchError) {
@@ -65,8 +65,9 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
         }
       }
     };
+
     fetchUserData();
-  }, [Provider]);
+  }, []); // Dependencias vacías para que se ejecute solo una vez al montar el componente
 
   return <div>{children}</div>;
 };
