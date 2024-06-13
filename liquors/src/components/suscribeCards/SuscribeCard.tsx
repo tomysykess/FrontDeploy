@@ -39,9 +39,10 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
         const response = await axios.post(
           `https://liquors-project.onrender.com/subscription/${userId}`,
           {
-            type: product.type,
+            type: "seller",
             status: "active",
             amount: 200,
+            amountDif: 100,
           },
           {
             headers: {
