@@ -77,7 +77,7 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
     };
     /* nuevo  */
     fetchUserData();
-  }, [userData]); // Dependencias vacías para que se ejecute solo una vez al montar el componente
+  }, []); // Dependencias vacías para que se ejecute solo una vez al montar el componente
 
   return <div>{children}</div>;
 };
