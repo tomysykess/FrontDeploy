@@ -17,7 +17,7 @@ interface UserToken {
 }
 
 const AuthStore: React.FC<AuthProps> = ({ children }) => {
-  const [token, setToken]: any = useState(); // Inicializa el estado con el tipo adecuado
+  const [token, setToken]: any = useState();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -25,28 +25,46 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
 
       if (userDataLogin) {
         const userData: UserToken = JSON.parse(userDataLogin);
+
         const userId = userData.id;
         const userToken = userData.token;
         setToken(userToken!);
-        console.log("este es el token que tiene en el storages", token);
+        console.log("first TOKEN", token);
+        const loginObjet = {
+          email: userData.email,
+          firebaseUid: userData.firebaseUid,
+        };
+        try {
+          const res = await axios.post(
+            "https://liquors-project.onrender.com/users/signin",
+            loginObjet
+          );
+          const newToken = res.data.token;
+          setToken(newToken);
+          console.log("Nuevo token obtenido:", newToken);
+        } catch (error) {
+          console.log(error);
+        }
+
+        /* -------------------------------------------------- */
         try {
           const response = await axios.get(
             `https://liquors-project.onrender.com/users/${userId}`
           );
-          var newUserData: UserToken = response.data;
+          const newUserData: UserToken = response.data;
 
           if (newUserData.role !== userData.role) {
-            console.log("Token cambiado");
+            console.log("Datos del usuario han cambiado");
 
-            newUserData.token = token; // Corregir si hay lógica específica aquí
+            // Actualizar el token en los datos del usuario
+            newUserData.token = token!;
             localStorage.setItem("userDataLogin", JSON.stringify(newUserData));
           }
-        } catch (error) {
-          console.error("Error fetching user data:", error);
+        } catch (fetchError) {
+          console.error("Error al obtener datos del usuario:", fetchError);
         }
       }
     };
-
     fetchUserData();
   }, [Provider]);
 
