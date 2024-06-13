@@ -12,8 +12,8 @@ import { useRouter } from "next/navigation";
 export const ReviewForm = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
-  const [token, setToken] = useState();
-  const [userData, setUserData] = useState();
+  const [token, setToken] = useState<string | null>(null);
+  const [userData, setUserData] = useState<any>(null);
   const [formData, setFormData] = useState({
     comment: "",
     rate: 0,
@@ -22,7 +22,7 @@ export const ReviewForm = () => {
   useEffect(() => {
     const userDataLogin = localStorage.getItem("userDataLogin");
     if (userDataLogin) {
-      const userDataParse = JSON.parse(userDataLogin!);
+      const userDataParse = JSON.parse(userDataLogin);
       setToken(userDataParse.token);
       setUserData(userDataParse);
     }
@@ -38,7 +38,7 @@ export const ReviewForm = () => {
   };
 
   const handleRatingChange = (
-    event: React.ChangeEvent<{}>,
+    event: React.SyntheticEvent<Element, Event>,
     value: number | null
   ) => {
     setFormData({ ...formData, rate: value ?? 0 });
@@ -46,19 +46,17 @@ export const ReviewForm = () => {
 
   const postReviews = async (formData: { comment: string; rate: number }) => {
     const detailProduct = localStorage.getItem("detailProduct");
-    const detailUser = localStorage.getItem("userDataLogin");
-    if (detailProduct && detailUser) {
+    if (detailProduct && token) {
       const idProduct = JSON.parse(detailProduct);
-      const idUser = JSON.parse(detailUser);
       const idP = idProduct.id;
-      const idU = idUser.id;
+      const idU = userData.id;
       try {
         const res = await axios.post<IReview[] | any>(
           `https://liquors-project.onrender.com/reviews/?userId=${idU}&productId=${idP}`,
           formData,
           {
             headers: {
-              authorization: `Bearer: ${token}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -81,7 +79,7 @@ export const ReviewForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-xl shadow-md  ">
+    <div className="max-w-md mx-auto bg-white p-8 rounded-xl shadow-md">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
         ¡Queremos conocer tu opinión sobre este producto!
       </h1>
@@ -110,7 +108,7 @@ export const ReviewForm = () => {
 
         <button
           type="submit"
-          className="bg-wine text-white py-2 px-4 rounded-md  hover:bg-red-700 transition-colors"
+          className="bg-wine text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors"
         >
           Postear opinión
         </button>
