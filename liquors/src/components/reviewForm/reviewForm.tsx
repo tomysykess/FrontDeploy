@@ -48,19 +48,22 @@ export const ReviewForm = () => {
     const detailProduct = localStorage.getItem("detailProduct");
     if (detailProduct && token) {
       const idProduct = JSON.parse(detailProduct);
+      const idUser = userData;
       const idP = idProduct.id;
-      const idU = userData.id;
-      alert(`idP:${idP} idU${idU}`);
+      const idU = idUser.id;
+
+      alert(`idP:${idP} idU:${idU}`);
       try {
         const res = await axios.post<IReview[] | any>(
           `https://liquors-project.onrender.com/reviews/?userId=${idU}&productId=${idP}`,
           formData,
           {
             headers: {
-              authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
+        console.log(res.data);
         /*   dispatch(readReviews(res.data));
         clearInput(); */
       } catch (err) {
