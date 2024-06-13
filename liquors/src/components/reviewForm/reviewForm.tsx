@@ -40,7 +40,10 @@ export const ReviewForm = ({ token }: any) => {
     setFormData({ ...formData, rate: value ?? 0 });
   };
 
-  const postReviews = async (formData: { comment: string; rate: number }) => {
+  const postReviews = async (
+    formData: { comment: string; rate: number },
+    token: string
+  ) => {
     const detailProduct = localStorage.getItem("detailProduct");
     const detailUser = localStorage.getItem("userDataLogin");
     if (detailProduct && detailUser) {
@@ -54,7 +57,7 @@ export const ReviewForm = ({ token }: any) => {
           formData,
           {
             headers: {
-              authorization: `Bearer: ${token}`,
+              authorization: `Bearer ${token}`,
             },
           }
         );
@@ -69,9 +72,9 @@ export const ReviewForm = ({ token }: any) => {
 
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    alert(`${token}`);
+
     if (userDataLogin) {
-      postReviews(formData);
+      postReviews(formData, token);
     } else {
       alert("Debes ingresar para realizar una reseña!");
       router.push("/login");
