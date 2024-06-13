@@ -1,7 +1,7 @@
 "use client";
 import { IReview } from "@/interfaces/interfaz";
 import { AppDispatch } from "@/store/store";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { readReviews } from "@/store/reducers/reviewsSlice";
 import Rating from "@mui/material/Rating";
@@ -11,13 +11,22 @@ import { useRouter } from "next/navigation";
 
 export const ReviewForm = () => {
   const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
+  const [token, setToken] = useState();
+  const [userData, setUserData] = useState();
   const [formData, setFormData] = useState({
     comment: "",
     rate: 0,
   });
-  const userDataLogin = localStorage.getItem("userDataLogin");
 
-  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    const userDataLogin = localStorage.getItem("userDataLogin");
+    if (userDataLogin) {
+      const userDataParse = JSON.parse(userDataLogin!);
+      setToken(userDataParse.token);
+      setUserData(userDataParse);
+    }
+  }, []);
 
   const clearInput = () => {
     setFormData({ comment: "", rate: 0 });
@@ -46,7 +55,12 @@ export const ReviewForm = () => {
       try {
         const res = await axios.post<IReview[] | any>(
           `https://liquors-project.onrender.com/reviews/?userId=${idU}&productId=${idP}`,
-          formData
+          formData,
+          {
+            headers: {
+              authorization: `Bearer: ${token}`,
+            },
+          }
         );
         dispatch(readReviews(res.data));
         clearInput();
@@ -58,7 +72,7 @@ export const ReviewForm = () => {
 
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (userDataLogin) {
+    if (userData) {
       postReviews(formData);
     } else {
       alert("Debes ingresar para realizar una reseña!");
