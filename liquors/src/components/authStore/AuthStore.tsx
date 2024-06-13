@@ -23,6 +23,7 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
           const newUserData = response.data;
 
           if (JSON.stringify(newUserData) !== JSON.stringify(userData)) {
+            console.log("datos cambiados", newUserData);
             localStorage.setItem("userDataLogin", JSON.stringify(newUserData));
           }
         } catch (error) {
