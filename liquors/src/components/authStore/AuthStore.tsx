@@ -8,7 +8,8 @@ interface AuthProps {
 }
 
 const AuthStore: React.FC<AuthProps> = ({ children }) => {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState<string | null>(null); // Inicializa el estado con el tipo adecuado
+
   useEffect(() => {
     const fetchUserData = async () => {
       const userDataLogin = localStorage.getItem("userDataLogin");
@@ -18,17 +19,17 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
         const userId = userData.id;
         const userToken = userData.token;
         setToken(userToken);
+
         try {
           const response = await axios.get(
             `https://liquors-project.onrender.com/users/${userId}`
           );
           const newUserData = response.data;
 
-          if (JSON.stringify(newUserData) !== JSON.stringify(userData)) {
-            console.log("datos cambiados", newUserData);
-            const newToken = newUserData.token;
-            setToken(newToken);
-            newUserData.token = token;
+          if (newUserData.token !== userToken) {
+            console.log("Token cambiado");
+            setToken(newUserData.token);
+            newUserData.token = newUserData.token; // Corregir si hay lógica específica aquí
             localStorage.setItem("userDataLogin", JSON.stringify(newUserData));
           }
         } catch (error) {
