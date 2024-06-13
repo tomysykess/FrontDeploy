@@ -37,10 +37,9 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
       if (userDataLogin) {
         const userData: UserToken = JSON.parse(userDataLogin);
         setUserData(userData);
-        const userId = userData.id;
-        const userToken = userData.token;
-        setToken(userToken);
-        console.log("first TOKEN", userToken);
+        const { id, token } = userData;
+        setToken(token);
+        console.log("first TOKEN", token);
 
         const loginObjet = {
           email: userData.email,
@@ -52,18 +51,20 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
             "https://liquors-project.onrender.com/users/signin",
             loginObjet
           );
-          const newDataLogin: UserTokenLogin = res.data;
+          const newDataLogin = res.data;
           const { token } = newDataLogin;
           setToken(token);
           console.log("Nuevo token obtenido:", token);
 
           const response = await axios.get(
-            `https://liquors-project.onrender.com/users/${userId}`
+            `https://liquors-project.onrender.com/users/${id}`
           );
-          const newUserData: UserToken = response.data;
+          const newUserData: any = response.data;
+          setLoginData(newUserData);
+          console.log("Datos del usuario nuevos", newUserData);
 
-          if (newUserData.role !== userData.role) {
-            console.log("Datos del usuario han cambiado");
+          if (loginData.role !== userData.role) {
+            console.log("Datos del usuario han cambiado", newUserData);
 
             // Actualizar el token en los datos del usuario
             newUserData.token = token;
@@ -76,7 +77,7 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
     };
     /* nuevo  */
     fetchUserData();
-  }, []); // Dependencias vacías para que se ejecute solo una vez al montar el componente
+  }, [userData]); // Dependencias vacías para que se ejecute solo una vez al montar el componente
 
   return <div>{children}</div>;
 };
