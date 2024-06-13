@@ -17,18 +17,19 @@ interface UserToken {
 }
 
 const AuthStore: React.FC<AuthProps> = ({ children }) => {
-  const [token, setToken] = useState<string | null>(null); // Inicializa el estado con el tipo adecuado
-
+  const [token, setToken]: any = useState(); // Inicializa el estado con el tipo adecuado
+  const [id, setId]: any = useState();
+  const [role, setRole]: any = useState();
   useEffect(() => {
     const fetchUserData = async () => {
       const userDataLogin = localStorage.getItem("userDataLogin");
 
       if (userDataLogin) {
-        const userData: UserToken = JSON.parse(userDataLogin);
-        const userId = userData.id;
-        const userToken = userData.token;
-        setToken(userToken);
-        console.log("first TOKEN", userToken);
+        const userData = JSON.parse(userDataLogin);
+        setId(userData.id);
+        setToken(userData.token);
+        setRole(userData.role);
+        console.log("first TOKEN", token);
 
         const loginObjet = {
           email: userData.email,
@@ -40,23 +41,16 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
             "https://liquors-project.onrender.com/users/signin",
             loginObjet
           );
-          const newToken = res.data.token;
-          setToken(newToken);
-          console.log("Nuevo token obtenido:", newToken);
-        } catch (error) {
-          console.error("Error al iniciar sesión:", error);
-        }
+          const newToken = res.data;
+          setToken(newToken.token);
+          console.log("Nuevo token obtenido:", token);
 
-        try {
           const response = await axios.get(
-            `https://liquors-project.onrender.com/users/${userId}`
+            `https://liquors-project.onrender.com/users/${id}`
           );
           const newUserData: any = response.data;
 
-          if (
-            newUserData.role !== userData.role ||
-            newUserData.token !== token
-          ) {
+          if (newUserData.role !== role || newUserData.token !== token) {
             console.log("Datos del usuario han cambiado");
 
             // Actualizar el token en los datos del usuario
