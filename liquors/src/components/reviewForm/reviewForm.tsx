@@ -63,7 +63,7 @@ export const ReviewForm = () => {
           }
         );
         console.log(res.data);
-        dispatch(createReviews(res.data));
+        dispatch(createReviews(res.data)); /* posible 2do error */
         clearInput();
       } catch (err) {
         console.error(err);

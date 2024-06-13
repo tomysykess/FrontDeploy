@@ -10,11 +10,11 @@ export const fetchReviews = async (dispatch: AppDispatch) => {
 
   if (detailProduct) {
     try {
-      const res = await axios.get<IReview[]>(
+      const res = await axios.get<any>(
         `https://liquors-project.onrender.com/reviews/product/${idP}`
       );
       dispatch(clearReviews());
-      dispatch(readReviews(res.data));
+      dispatch(readReviews(res.data.reviews));
     } catch (err) {
       console.error(err);
     }
