@@ -53,7 +53,7 @@ export const ReviewForm = () => {
       const idU = idUser.id;
 
       try {
-        const res = await axios.post<IReview[] | any>(
+        const res = await axios.post<any>(
           `https://liquors-project.onrender.com/reviews/?userId=${idU}&productId=${idP}`,
           formData,
           {
@@ -63,7 +63,7 @@ export const ReviewForm = () => {
           }
         );
         console.log(res.data);
-        dispatch(createReviews(res.data.reviews)); /* posible 2do error */
+        dispatch(createReviews(res.data)); /* posible 2do error */
         clearInput();
       } catch (err) {
         console.error(err);
