@@ -15,9 +15,19 @@ interface UserToken {
   role: number;
   token: string;
 }
+interface UserTokenLogin {
+  email: string;
+  firebaseUid: string;
+  id: string;
+  name: string;
+  profileImage: any;
+  provider: any;
+  role: number;
+  token: any;
+}
 
 const AuthStore: React.FC<AuthProps> = ({ children }) => {
-  const [token, setToken] = useState<string | null>(null);
+  const [token, setToken]: any = useState();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -40,7 +50,8 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
             "https://liquors-project.onrender.com/users/signin",
             loginObjet
           );
-          const newToken = res.data.token;
+          const newDataLogin: UserTokenLogin = res.data;
+          const newToken = newDataLogin.token;
           setToken(newToken);
           console.log("Nuevo token obtenido:", newToken);
         } catch (error) {
