@@ -3,7 +3,7 @@ import { IReview } from "@/interfaces/interfaz";
 import { AppDispatch } from "@/store/store";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { readReviews } from "@/store/reducers/reviewsSlice";
+import { createReviews, readReviews } from "@/store/reducers/reviewsSlice";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import axios from "axios";
@@ -52,7 +52,6 @@ export const ReviewForm = () => {
       const idP = idProduct.id;
       const idU = idUser.id;
 
-      alert(`idP:${idP} idU:${idU}`);
       try {
         const res = await axios.post<IReview[] | any>(
           `https://liquors-project.onrender.com/reviews/?userId=${idU}&productId=${idP}`,
@@ -64,8 +63,8 @@ export const ReviewForm = () => {
           }
         );
         console.log(res.data);
-        /*   dispatch(readReviews(res.data));
-        clearInput(); */
+        dispatch(createReviews(res.data));
+        clearInput();
       } catch (err) {
         console.error(err);
       }
