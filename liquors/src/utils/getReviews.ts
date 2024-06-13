@@ -7,7 +7,10 @@ import {
 } from "@/store/reducers/reviewsSlice";
 import { IReview } from "@/interfaces/interfaz";
 
-export const fetchReviews = async (dispatch: AppDispatch) => {
+export const fetchReviews = async (
+  dispatch: AppDispatch,
+  { token }: { token: string }
+) => {
   const detailProduct = localStorage.getItem("detailProduct");
   const idProduct = JSON.parse(detailProduct!);
   const idP = idProduct.id;

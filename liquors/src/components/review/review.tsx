@@ -19,7 +19,7 @@ export const Review = ({ review }: { review: IReview }) => {
     const userDataLogin = localStorage.getItem("userDataLogin");
     const userData = userDataLogin ? JSON.parse(userDataLogin) : null;
     setData(userData);
-    fetchReviews(dispatch);
+    fetchReviews(dispatch, userData.token);
     console.log("dataReviews", dataReviews);
   }, [dispatch, dataReviews]);
 

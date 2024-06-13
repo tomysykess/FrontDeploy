@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchReviews } from "@/utils/getReviews";
 import { Review } from "../review/review";
 import { IReview } from "@/interfaces/interfaz";
-import { clearReviews } from "@/store/reducers/reviewsSlice";
+/* import { clearReviews } from "@/store/reducers/reviewsSlice"; */
 import { RootState } from "@/store/store";
 
-export const ReviewContainer: React.FC = () => {
+export const ReviewContainer = ({ token }: any) => {
   const dataReviews: IReview[] = useSelector(
     (state: RootState) => state.reviews.data
   );
@@ -15,18 +15,18 @@ export const ReviewContainer: React.FC = () => {
 
   /*   useEffect(() => {
     dispatch(clearReviews());
-  }, [dispatch]);
- */
+  }, [dispatch]); */
+
   useEffect(() => {
     if (dataReviews.length === 0 || dataReviews.length <= 5) {
-      fetchReviews(dispatch);
+      fetchReviews(dispatch, token);
     }
   }, [dispatch, dataReviews.length]);
 
   console.log("dataReviews", dataReviews);
 
   return (
-    <div className="flex flex-col gap-4 bg-white p-6 rounded-xl shadow-md ">
+    <div className="flex flex-col gap-4 bg-white p-6 rounded-xl shadow-md">
       {dataReviews.length > 0 ? (
         dataReviews.map((review: IReview) => (
           <Review key={review.id} review={review} />

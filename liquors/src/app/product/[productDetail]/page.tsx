@@ -34,7 +34,7 @@ const ProductF = ({ params }: { params: { productId: string } }) => {
             <h1 className="text-black text-2xl font-bold mb-4">
               {`Conoce lo que nuestros usuarios piensan sobre ${detailProduct.name}`}
             </h1>
-            <ReviewContainer />
+            <ReviewContainer token={token} />
           </div>
           <div className="w-full lg:w-1/3">
             <ReviewForm token={token} />

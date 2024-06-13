@@ -42,12 +42,12 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
             type: product.type,
             amount: 200,
             amountDif: 100,
-          }
-          /*   {
+          },
+          {
             headers: {
-              Authorization: `Bearer: ${token}`,
+              authorization: `Bearer: ${token}`,
             },
-          } */
+          }
         );
         console.log(response);
         router.push(response.data.init_point);
@@ -63,12 +63,12 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
           {
             type: product.type,
             amount: product.price,
-          }
-          /*   {
+          },
+          {
             headers: {
-              Authorization: `Bearer: ${token}`,
+              authorization: `Bearer: ${token}`,
             },
-          } */
+          }
         );
         console.log(res);
         router.push(res.data.init_point);
