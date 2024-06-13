@@ -44,13 +44,27 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
           const response = await axios.get(
             `https://liquors-project.onrender.com/users/${userId}`
           );
-          var newUserData: UserToken = response.data;
+          var newUserData: any = response.data;
 
           if (newUserData.role !== userData.role) {
-            console.log("Token cambiado");
+            try {
+              const loginObjet = {
+                email: newUserData.email,
+                firebaseUid: newUserData.firebaseUid,
+              };
+              const response = await axios.post(
+                "https://liquors-project.onrender.com/users/signin",
+                loginObjet
+              );
+              const newData = response.data;
+              newUserData.token = newData.token;
+              localStorage.setItem(
+                "userDataLogin",
+                JSON.stringify(newUserData)
+              );
 
-            newUserData.token = token; // Corregir si hay lógica específica aquí
-            localStorage.setItem("userDataLogin", JSON.stringify(newUserData));
+              console.log("Token cambiado");
+            } catch (error) {}
           }
         } catch (error) {
           console.error("Error fetching user data:", error);
