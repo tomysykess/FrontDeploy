@@ -21,7 +21,7 @@ export const Review = ({ review }: { review: IReview }) => {
       const userData = JSON.parse(userDataLogin!);
       setData(userData);
     }
-    fetchReviews(dispatch);
+    /*     fetchReviews(dispatch); */
   }, [dispatch, dataReviews]);
 
   const { id, rate, comment, userId } = review;
