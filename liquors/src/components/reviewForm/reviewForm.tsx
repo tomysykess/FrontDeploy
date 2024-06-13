@@ -50,6 +50,7 @@ export const ReviewForm = () => {
       const idProduct = JSON.parse(detailProduct);
       const idP = idProduct.id;
       const idU = userData.id;
+      alert(`idP:${idP} idU${idU}`);
       try {
         const res = await axios.post<IReview[] | any>(
           `https://liquors-project.onrender.com/reviews/?userId=${idU}&productId=${idP}`,
@@ -60,8 +61,8 @@ export const ReviewForm = () => {
             },
           }
         );
-        dispatch(readReviews(res.data));
-        clearInput();
+        /*   dispatch(readReviews(res.data));
+        clearInput(); */
       } catch (err) {
         console.error(err);
       }
@@ -71,6 +72,7 @@ export const ReviewForm = () => {
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (userData) {
+      alert(`${userData}`);
       postReviews(formData);
     } else {
       alert("Debes ingresar para realizar una reseña!");
