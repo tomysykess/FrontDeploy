@@ -41,6 +41,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
           {
             type: product.type,
             status: "active",
+            amount: 200,
           },
           {
             headers: {
