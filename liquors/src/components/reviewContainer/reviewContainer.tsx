@@ -2,10 +2,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchReviews } from "@/utils/getReviews";
-/* import { Review } from "../review/review"; */
+
 import { IReview } from "@/interfaces/interfaz";
 import { clearReviews } from "@/store/reducers/reviewsSlice";
 import { RootState } from "@/store/store";
+import { Review } from "../review/review";
 
 export const ReviewContainer: React.FC = () => {
   const dataReviews: IReview[] = useSelector(
@@ -27,13 +28,13 @@ export const ReviewContainer: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-4 bg-white p-6 rounded-xl shadow-md ">
-      {/*  {dataReviews.length > 0 ? (
+      {dataReviews.length > 0 ? (
         dataReviews.map((review: IReview) => (
           <Review key={review.id} review={review} />
         ))
       ) : (
         <p className="text-gray-500">Sé el primero en hacer una reseña!</p>
-      )} */}
+      )}
     </div>
   );
 };
