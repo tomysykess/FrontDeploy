@@ -17,9 +17,9 @@ export const ReviewContainer: React.FC = () => {
     dispatch(readReviews(dataReviews));
   }, [dispatch]);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     fetchReviews(dispatch);
-  }, [dispatch]);
+  }, [dispatch]); */
 
   console.log("dataReviews", dataReviews);
 
