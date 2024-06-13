@@ -13,10 +13,10 @@ export const ReviewContainer: React.FC = () => {
   );
   const dispatch = useDispatch();
 
-  /*   useEffect(() => {
-    dispatch(clearReviews());
+  useEffect(() => {
+    dispatch(readReviews(dataReviews));
   }, [dispatch]);
- */
+
   useEffect(() => {
     fetchReviews(dispatch);
   }, [dispatch]);
