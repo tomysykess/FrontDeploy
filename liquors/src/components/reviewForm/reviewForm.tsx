@@ -74,7 +74,6 @@ export const ReviewForm = () => {
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (userData) {
-      alert(`${userData}`);
       postReviews(formData);
     } else {
       alert("Debes ingresar para realizar una reseña!");
