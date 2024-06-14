@@ -10,7 +10,7 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 //material ui
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import { fetchProductById } from "@/utils/getProductById";
+import { getProductById } from "@/utils/getProductById";
 import { putProduct } from "@/utils/putProduct";
 
 const categories = [
@@ -129,10 +129,21 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
         if( typeof window !== "undefined" && window.localStorage) {
         const storeData = localStorage.getItem("userDataLogin");
         setDataUser(JSON.parse(storeData!));
-        const data = fetchProductById(productId, dataUser.token)
-        console.log(data)
-        console.log(productId)
+    };
+        const fetchProduct = async () => {
+            try {
+                const response = await getProductById(productId, dataUser.token)
+                console.log(response)
+                if (response) {
+                    // setDataProduct(response)
+                } else {
+                    console.error('Product not found');
+                }
+            } catch (error) {
+                console.error('error fetch product', error)
+            }
         }
+        fetchProduct();
     }, [pathname])
 
 
