@@ -20,7 +20,7 @@ export const NavBar: React.FC = () => {
   //________________________________________________________________________
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-white pb-10">
+    <div className="fixed top-0 left-0 w-full z-50 bg-white mb-10">
       <nav className="pt-2">
         <div className="flex justify-between items-center p-3 mx-large">
           <div>
