@@ -12,9 +12,11 @@ const config: Config = {
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
+        white: "#FFFFFF",
         wine: "#c23a2e",
         wineMasOscuro: "#4c0033",
         gin: "#64bad6",
@@ -38,7 +40,7 @@ const config: Config = {
         darkgreen: "#003300",
         blueGoogle: "#0086f9",
         greenVivino: "#006b4d",
-        wineMasOscuroDos: "#68091e"
+        wineMasOscuroDos: "#68091e",
       },
       fontFamily: {
         Lato: ["Lato", "sans-serif"],
