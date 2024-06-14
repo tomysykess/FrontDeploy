@@ -12,12 +12,14 @@ export const Footer = () => {
       </div>
       <div>
         <ul className="flex space-x-6">
-          <li>
+          <li className="font-plus-jakarta-sans">
             Contact Us
             <div className="flex flex-col">
-              <li>Street Name 123, City, Country </li>
-              <li>Phone: (123) 456-7890 </li>
-              <li>info@example.com </li>
+              <li className="font-plus-jakarta-sans">
+                Street Name 123, City, Country{" "}
+              </li>
+              <li className="font-plus-jakarta-sans">Phone: (123) 456-7890 </li>
+              <li className="font-plus-jakarta-sans">info@example.com </li>
             </div>
           </li>
           <div className="flex flex-col">
