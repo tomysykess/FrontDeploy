@@ -24,7 +24,7 @@ export default function RootLayout({
         <Providers>
           <AuthStore>
             <NavBar />
-            <div className="pt-20">
+            <div className="pt-18">
               {/* fuente plus-jakarta */}
               <link rel="preconnect" href="https://fonts.googleapis.com" />
               <link rel="preconnect" href="https://fonts.gstatic.com" />
