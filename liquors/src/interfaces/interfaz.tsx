@@ -21,6 +21,8 @@ export interface Product {
   country: string;
   size: string;
   userId: string;
+  active: boolean;
+  rate: number;
 }
 
 export interface ProductsState {

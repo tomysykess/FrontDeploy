@@ -1,25 +1,77 @@
-import React from "react";
 import { Product } from "@/interfaces/interfaz";
-import CloseIcon from '@mui/icons-material/Close';
-//next/image
-import Image from 'next/image';
+import { Switch } from "@mui/material";
+import { useEffect, useState } from "react";
+import EditIcon from '@mui/icons-material/Edit';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { deleteProduct } from "@/utils/deleteProduct";
 
 export const ProductCardDashboard: React.FC<{ product: Product }> = ({product}): React.ReactNode => {
+    const pathname = usePathname();
+    const [dataUser, setDataUser] = useState({
+        id: "",
+        name: "",
+        email: "",
+        role: "",
+        token: ""
+    })
+    const [productData, setProductData] = useState({
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        imgUrl: product.imgUrl,
+        category: product.category,
+        adv: product.abv,
+        brand: product.brand,
+        country: product.country,
+        size: product.size,
+        active: product.active,
+        rate: product.rate,
+        //recordar de traer el status de la base de datos
+    });
+
+    useEffect(() => {
+        if( typeof window !== "undefined" && window.localStorage) {
+        const storeData = localStorage.getItem("userDataLogin");
+        setDataUser(JSON.parse(storeData!));
+        }
+    }, [pathname])
+
+    const handleChange = (event: any) => {
+        const {name, value} = event.target;
+
+        setProductData({
+            ...productData,
+            active: !productData.active
+            });
+            console.log(productData)
+            deleteProduct(productData.id, dataUser.token)
+    }
 
     return (
-        <div key={product.id} className="flex flex-row justify-between bg-white items-center h-32 w-full border-t-8 hover:cursor-pointer rounded-t-xl border-solid border-wine border-2 rounded-lg p-4 m-4">
-            <div className="flex flex-row justify-start gap-8 items-center">
-                <Image
-                    src={product.imgUrl}
+        <div key={product.id} className="flex flex-row justify-between bg-greyVivino items-center h-32 w-full hover:cursor-pointer rounded-t-xl rounded-lg p-4 m-4">
+            <div className="flex flex-col items-center">
+                <Switch checked={productData.active} onChange={handleChange} defaultChecked color="default" size="small"/>
+                {productData.active ? 
+                <p className="text-center w-24 text-green-950 rounded-full bg-green-200">{"Activo"}</p> 
+                : 
+                <p className="text-center w-24 text-red-950 rounded-full bg-red-200">{"Inactivo"}</p>
+                }
+            </div>
+            <div className="flex flex-row justify-start gap-4 items-center">
+                <div className="w-24 h-24">
+                    <Image 
+                    src={product.imgUrl} 
                     alt="imagen bebida"
-                    className="my-2 h-24 object-cover rounded-md"
-                    width={96} // valor en píxeles para la anchura de la imagen
-                    height={96} // valor en píxeles para la altura de la imagen
-                    layout="responsive"
-                />
+                    className="my-2 object-cover rounded-md"
+                    width={96} 
+                    height={96}
+                    layout="responsive"/>
+                </div>
                 <h2 className="text-center text-lg font-Lora mb-2">{product.name}</h2>
             </div>
-            <CloseIcon />
+            <Link className="buttonSecondary" href={`/editProduct/${product.id}`}>Editar <EditIcon /></Link>
         </div>
     )
 }
