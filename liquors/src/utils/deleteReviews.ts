@@ -14,11 +14,15 @@ export const deleteReview = async (reviewId: string, dispatch: AppDispatch) => {
     const url = `https://liquors-project.onrender.com/reviews/${reviewId}`;
 
     try {
-      const res = await axios.put(url, {
-        headers: {
-          authorization: `Bearer: ${token}`,
-        },
-      });
+      const res = await axios.put(
+        url,
+        {},
+        {
+          headers: {
+            authorization: `Bearer: ${token}`,
+          },
+        }
+      );
       console.log("respuesta de back al delete", res);
       dispatch(removeReview(reviewId));
     } catch (error) {
