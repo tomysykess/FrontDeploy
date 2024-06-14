@@ -28,7 +28,6 @@ export const ProductCardDashboard: React.FC<{ product: Product }> = ({product}):
         size: product.size,
         active: product.active,
         rate: product.rate,
-        //recordar de traer el status de la base de datos
     });
 
     useEffect(() => {

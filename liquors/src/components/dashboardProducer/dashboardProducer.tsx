@@ -1,7 +1,6 @@
 "use client";
 import { ProductForm } from "@/components/productForm/productForm";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ProductsListSeller } from "../productsListSeller/productsListSeller";
 import { UserData } from "../userData/userData";
 

@@ -2,7 +2,6 @@
 import { fetchProductsSeller } from "@/utils/getProductsSeller";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { ProductCardDashboard } from "../productCardDashboard/productCardDashboard";
 import { Product } from "@/interfaces/interfaz";
 
