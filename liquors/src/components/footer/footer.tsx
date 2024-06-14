@@ -13,33 +13,27 @@ export const Footer = () => {
       <div>
         <ul className="flex space-x-6">
           <li>
-            <Link className="buttonSecondary" href="/category">
-              Reviews
-            </Link>
+            Contact Us
             <div className="flex flex-col">
-              <Link className="buttonTiny" href="/category/rum">
-                ron
-              </Link>
-              <Link className="buttonTiny" href="/category/spirits">
-                spirit
-              </Link>
-              <Link className="buttonTiny" href="/category/whiskey">
-                whiskey
-              </Link>
-              <Link className="buttonTiny" href="/category/wine">
-                wine
-              </Link>
+              <li>Street Name 123, City, Country </li>
+              <li>Phone: (123) 456-7890 </li>
+              <li>info@example.com </li>
             </div>
           </li>
           <div className="flex flex-col">
             <li>
               <Link className="buttonSecondary" href="/recommendation">
-                Recomendacion del mes
+                Pick of the Month
               </Link>
             </li>
             <li>
               <Link className="buttonSecondary" href="/newsletter">
                 Newsletter
+              </Link>
+            </li>
+            <li>
+              <Link className="buttonSecondary" href="/aboutUs">
+                About Us
               </Link>
             </li>
           </div>
