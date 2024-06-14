@@ -32,7 +32,6 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
     const [downloadURL, setDownloadURL] = useState("");
     console.log("url de la imagen subida", downloadURL);
     
-
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0] ){
             setFile(event.target.files[0])
@@ -130,8 +129,9 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
         if( typeof window !== "undefined" && window.localStorage) {
         const storeData = localStorage.getItem("userDataLogin");
         setDataUser(JSON.parse(storeData!));
-        // fetchProductById(productId, dataUser.token)
-        // console.log(productId)
+        const data = fetchProductById(productId, dataUser.token)
+        console.log(data)
+        console.log(productId)
         }
     }, [pathname])
 
@@ -179,8 +179,7 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
 
         if (Object.keys(errorInput).length === 0) {
             alert(`el producto ${dataProduct.name} ha sido agregado con exito`);
-            putProduct(dataUser.id, updatedDataProduct, dataUser.token);
-            console.log("info para el back", dataUser.id, updatedDataProduct, dataUser.token);
+            putProduct(productId, updatedDataProduct, dataUser.token);
             handleCancel();
         } else {
             alert ("hubo un error al agregar el producto");

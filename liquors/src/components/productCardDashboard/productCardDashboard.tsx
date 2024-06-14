@@ -5,7 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { deleteProduct } from "@/utils/deleteProduct";
+import { putDeleteProduct } from "@/utils/putDeleteProduct";
 
 export const ProductCardDashboard: React.FC<{ product: Product }> = ({product}): React.ReactNode => {
     const pathname = usePathname();
@@ -44,8 +44,7 @@ export const ProductCardDashboard: React.FC<{ product: Product }> = ({product}):
             ...productData,
             active: !productData.active
             });
-            console.log(productData)
-            deleteProduct(productData.id, dataUser.token)
+            putDeleteProduct(productData.id, dataUser.token)
     }
 
     return (
@@ -60,13 +59,7 @@ export const ProductCardDashboard: React.FC<{ product: Product }> = ({product}):
             </div>
             <div className="flex flex-row justify-start gap-4 items-center">
                 <div className="w-24 h-24">
-                    <Image 
-                    src={product.imgUrl} 
-                    alt="imagen bebida"
-                    className="my-2 object-cover rounded-md"
-                    width={96} 
-                    height={96}
-                    layout="responsive"/>
+                    <img src={product.imgUrl} className="my-2 object-cover rounded-md"/>
                 </div>
                 <h2 className="text-center text-lg font-Lora mb-2">{product.name}</h2>
             </div>
