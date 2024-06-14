@@ -7,13 +7,12 @@ export const fetchProductsFiltered = async (dispatch: AppDispatch, filters: any,
   try {
       //falta corregir el back para que reciba abv
       const abv = filters.abvRange
-
+      console.log(typeof abv);
       const category = filters.categoryButton
-      
       //falta logica en el back para rate
       const rate = filters.selectedRating
       console.log("valor de abv que envio a back", abv, "valor que envio al back de category",category);
-      const res = await axios.get<Product[]>(`https://liquors-project.onrender.com/products/?category=${category}`);
+      const res = await axios.get<Product[]>(`https://liquors-project.onrender.com/products/?category=${category}&abv=${abv}&limit=100`);
       console.log("respuesta back", res);
       dispatch(clearProductsFiltered());
       dispatch(readProductsFiltered(res.data));
