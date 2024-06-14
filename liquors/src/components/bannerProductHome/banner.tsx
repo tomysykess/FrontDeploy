@@ -1,22 +1,22 @@
-"use client";
-import { useRef, useState, useEffect } from "react";
+"use client"
+import React, { useRef, useState, useEffect } from "react";
 import MapProductCard from "../mapProductCard/mapProductCard";
-
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import LastPageIcon from "@mui/icons-material/LastPage";
-import { useSelector, useDispatch } from "react-redux";
+import LastPageIcon from '@mui/icons-material/LastPage';
+//import "tailwindcss/tailwind.css";
+import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
-import { RootState } from "@/store/store";
 
 const BannerProducts: React.FC = () => {
   const scrollContainer = useRef<HTMLDivElement>(null);
   const [currentSection, setCurrentSection] = useState(0);
   const cardsPerPage = 3;
-  const data = useSelector((state: RootState) => state.products.data);
-  const maxSections = Math.ceil(data.length / cardsPerPage) - 1;
+  const dataGlobal = useSelector((state: any) => state.products.data);
+  const maxSections = Math.ceil(dataGlobal.length / cardsPerPage) - 1;
 
-  const router = useRouter();
+  const router = useRouter()
+ 
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainer.current) {
@@ -38,8 +38,10 @@ const BannerProducts: React.FC = () => {
     }
   }, [currentSection]);
 
+  
+
   return (
-    <div className="relative flex justify-center flex-col pt-7 pb-4 bg-greyMLfilter w-11/12 max-w-screen-lg mx-auto">
+    <div className="relative flex justify-center flex-col pt-7 pb-4 bg-greyVivino w-11/12 max-w-screen-lg mx-auto">
       <div className="relative flex justify-center items-center w-full">
         {/*FLECHA IZQUIERDA*/}
         <button
@@ -51,7 +53,7 @@ const BannerProducts: React.FC = () => {
             <ArrowBackIosIcon className="h-6 w-6 text-white" />
           </div>
         </button>
-
+  
         {/*FLECHA DERECHA*/}
         <button
           onClick={() => scroll("right")}
@@ -62,29 +64,27 @@ const BannerProducts: React.FC = () => {
             <ArrowForwardIosIcon className="h-6 w-6 text-white" />
           </div>
         </button>
-
+  
         {/* Contenedor de tarjetas */}
         <div ref={scrollContainer} className="flex overflow-hidden w-full">
           <div className="flex space-x-4 transition-transform duration-500">
             <MapProductCard />
           </div>
         </div>
+        
       </div>
-
       {/* Botón "Ver más" */}
       {currentSection === maxSections && (
         <div className="flex justify-end mt-4">
-          <button
-            onClick={() => router.push("/product")}
-            className="bg-wine text-white py-2 px-4 rounded-md"
-          >
-            Ver más
+          <button onClick={() => router.push("/product")} className="bg-wine text-white py-2 px-4 rounded-md">
+          Ver más
             <LastPageIcon className="mr-1 ml-3" />
+            
           </button>
         </div>
       )}
     </div>
   );
-};
+}
 
 export default BannerProducts;

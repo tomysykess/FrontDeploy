@@ -16,14 +16,13 @@ const MapProductCardFiltered = () => {
   }, []);
 
   console.log(productFiltered);
-  
 
   return (
       <>
           {dataGlobal.map((product: any) => (
             product.name.toLowerCase().includes(productFiltered.toLowerCase()) && 
                 <ProductCard key={product.id} product={product} />
-    ))}
+          ))}
       </>
   );
 };

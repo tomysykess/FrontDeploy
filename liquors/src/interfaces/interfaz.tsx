@@ -23,12 +23,30 @@ export interface Product {
   userId: string;
 }
 
+export interface FavoriteProduct {
+  id: string,
+  name: string,
+  description: string,
+  imgUrl: string,
+  rate: number,
+  category: string,
+  abv: 0,
+  brand: string
+  country: string,
+}
+
+export interface IdAndToken {
+  token: string,
+  id: string,
+}
+
 export interface ProductsState {
   data: Product[];
   ginProducts: Product[];
   wineProducts: Product[];
   dataFiltered: Product[];
   page: number[];
+  favorites: Product[];
 }
 
 export interface IUser {
@@ -43,6 +61,7 @@ export interface IReview {
   rate: number;
   comment: string;
   userId: IUser;
+  productId: Product;
 }
 
 export interface ITeamMember {
@@ -62,6 +81,14 @@ export interface IRecommendation {
   description: string;
   color: string;
   link: string;
+}
+
+export interface UserDataLogin {
+  name: string,
+  email: string,
+  id: string,
+  role: number,
+  token: string,
 }
 
 export interface ProductFiltered {

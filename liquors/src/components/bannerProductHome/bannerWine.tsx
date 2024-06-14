@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
-import MapProductCardGin from "../mapProductCard/mapProductCardGin";
+import MapProductCardWine from "../mapProductCard/mapProductCardWine";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 //import "tailwindcss/tailwind.css";
@@ -8,17 +8,14 @@ import { useSelector } from "react-redux";
 import LastPageIcon from '@mui/icons-material/LastPage';
 import { useRouter } from "next/navigation";
 
-const BannerProductsGin: React.FC = () => {
 
-
+export const BannerProductsWine: React.FC = () => {
   const scrollContainer = useRef<HTMLDivElement>(null);
   const [currentSection, setCurrentSection] = useState(0);
   const cardsPerPage = 3;
   const dataGlobal = useSelector((state: any) => state.products.data);
-
   const router = useRouter()
 
-  
   // Calcula el número máximo de secciones basado en la cantidad de tarjetas y tarjetas por página.
   const maxSections = Math.ceil(dataGlobal.length / cardsPerPage) - 1;
 
@@ -61,7 +58,7 @@ const BannerProductsGin: React.FC = () => {
         {/* Contenedor de tarjetas */}
         <div ref={scrollContainer} className="flex overflow-hidden w-full">
           <div className="flex space-x-4 transition-transform duration-500">
-            <MapProductCardGin />
+            <MapProductCardWine/>
           </div>
         </div>
 
@@ -86,8 +83,9 @@ const BannerProductsGin: React.FC = () => {
             </button>
           </div>
         )}
+      <section className="flex justify-start text-white mt-4"></section>
     </div>
   );
 };
 
-export default BannerProductsGin;
+

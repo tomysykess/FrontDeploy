@@ -3,10 +3,12 @@ import { IReview } from "@/interfaces/interfaz";
 
 export interface ReviewsState {
   data: IReview[];
+  userProductReview: IReview[],
 }
 
 const initialState: ReviewsState = {
   data: [],
+  userProductReview: [],
 };
 
 const reviewsSlice = createSlice({
@@ -21,6 +23,12 @@ const reviewsSlice = createSlice({
     },
     clearReviews: (state) => {
       state.data = [];
+    },
+    userReadReviews: (state, action: PayloadAction<IReview[]>) => {
+      state.userProductReview = state.userProductReview.concat(action.payload);
+    },
+    userClearReviews: (state) => {
+      state.userProductReview = [];
     },
     removeReview: (state, action: PayloadAction<string>) => {
       state.data = state.data.filter((review) => review.id !== action.payload);
@@ -37,6 +45,8 @@ export const {
   removeReview,
   updateReviews,
   deleteReviews,
+  userReadReviews,
+  userClearReviews
 } = reviewsSlice.actions;
 
 export default reviewsSlice.reducer;
