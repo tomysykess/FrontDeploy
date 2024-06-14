@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { MenuDashboard } from "@/components/dashboardJuan/menuDashboard/menuDashboard";
 
 const ProductFormUser = () => {
-  const [token, setToken] = useState<string | null>(null);
+  const [token, setToken] = useState<any>();
   const [role, setRole] = useState<any>({ rol: "" });
   console.log("rol de dashboardProducer", role);
 
