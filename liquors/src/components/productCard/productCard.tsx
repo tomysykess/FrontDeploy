@@ -47,11 +47,13 @@ const ProductCard: React.FC<{ product: Product }> = ({
 
   return (
     <div
-      className={`flex flex-col relative bg-white items-center h-96 border-t-8  rounded-t-xl border-solid border-t-wine border-wine border-2 rounded-lg p-4 m-4 w-48`}
+      className={`flex flex-col relative bg-white items-center h-96 border-t-8  rounded-t-xl border-solid border-t-wine shadow-md rounded-lg m-4 w-48`}
     >
-      <h2 className="text-center text-lg font-Lora mb-2">{product.name}</h2>
+      <h2 className="text-center text-lg font-Lora mb-2 pt-4">
+        {product.name}
+      </h2>
       <img
-        className="my-2 h-48 w-48 object-cover rounded-md"
+        className="my-2 h-48 w-48 object-cover rounded-md transition-transform duration-300 hover:scale-110"
         src={product.imgUrl}
         alt="imagen bebida"
       />
@@ -73,7 +75,12 @@ const ProductCard: React.FC<{ product: Product }> = ({
       <Link href={`/product/${product.name}`}>
         <button
           onClick={() => detailProduct(product)}
-          className="hover:brightness-110 absolute text-start bottom-1 p-1 cursor-pointer font-plus-jakarta-sans rounded-lg bg-wine text-white right-2"
+          className="hover:brightness-110 absolute bottom-1 p-1 rounded-b-md  cursor-pointer font-plus-jakarta-sans  bg-wine text-white w-full text-center"
+          style={{
+            left: "50%",
+            transform: "translateX(-50%)",
+            marginBottom: "-4px",
+          }}
         >
           detalle
         </button>
