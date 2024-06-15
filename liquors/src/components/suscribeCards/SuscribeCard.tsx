@@ -4,7 +4,7 @@ import axios from "axios";
 import { headers } from "next/headers";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
+import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 const SuscribeCard = ({ product }: { product: ISuscribe }) => {
   const router = useRouter();
   const [userId, setUserId] = useState<string | null>(null);
@@ -83,9 +83,12 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
   return (
     <div className="max-w-sm w-full bg-white rounded-xl shadow-2xl overflow-hidden my-4 bg-opacity-85">
       <div className="p-8">
-        <h2 className="block mt-1 text-center text-2xl leading-tight font-plus-jakarta-sans text-gray-900">
-          {product.title}
-        </h2>
+        <div className="flex justify-between text-wine">
+          <h2 className="block mt-1 text-center text-2xl leading-tight font-plus-jakarta-sans text-gray-900">
+            {product.title}
+          </h2>
+          <WorkspacePremiumIcon className=" top-0 right-0" fontSize="large" />
+        </div>
         <p className="mt-2 text-gray-600 font-semibold">
           {product.description1}
         </p>
