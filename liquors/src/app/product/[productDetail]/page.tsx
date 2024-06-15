@@ -18,12 +18,12 @@ const ProductF = ({ params }: { params: { productId: string } }) => {
         const parsedDetailProduct = JSON.parse(detailProductStorage) as Product;
         setDetailProduct(parsedDetailProduct);
 
-        if (parsedDetailProduct.id) {
+        /*   if (parsedDetailProduct.id) {
           const promedio = await averageReviews({
             idProduct: parsedDetailProduct.id,
           });
           setPro(promedio);
-        }
+        } */
       }
     };
 
