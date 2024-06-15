@@ -238,6 +238,7 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
                         className="placeholder input-text"
                         placeholder="URL de la imagen"
                         required
+                        readOnly
                     />
                     {errorProduct.imgUrl && <p>{errorProduct.imgUrl}</p>}
                 </div>
@@ -305,7 +306,7 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
                 </div>
                 <div className="flex flex-row gap-6 my-6 items-center justify-center">
                     <button type="button" className="buttonSecondary hover:cursor-pointer" onClick={handleCancel}>Cancelar</button>
-                    <button type="submit" className="buttonPrimary hover:cursor-pointer w-fit">agregar</button>
+                    <button type="submit" className="buttonPrimary hover:cursor-pointer w-fit">editar</button>
                 </div>
             </form>
         </div>

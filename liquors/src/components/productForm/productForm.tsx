@@ -2,7 +2,7 @@
 import { validateProductForm } from "@/utils/validateProduct";
 import { useEffect, useState } from "react";
 import { IProductForm, IProductFormErrorProps } from "./types";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { postProduct } from "@/utils/postProduct";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -31,6 +31,7 @@ const countries = [
 
 export const ProductForm = () => {
   const pathname = usePathname();
+  const router = useRouter();
 
   {
     /*__________________STORAGE FIREBASE ESTADOS Y HANDLERS___________________*/
@@ -182,6 +183,7 @@ export const ProductForm = () => {
         dataUser.token
       );
       handleCancel();
+      router.push("/profile/dashboardProducer/productosPublicados");
     } else {
       alert("hubo un error al agregar el producto");
     }
@@ -267,6 +269,7 @@ export const ProductForm = () => {
             className="placeholder input-text"
             placeholder="URL de la imagen"
             required
+            readOnly
           />
           {errorProduct.imgUrl && <p>{errorProduct.imgUrl}</p>}
         </div>
