@@ -12,6 +12,7 @@ import { getStorage } from "firebase/storage";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { getProductById } from "@/utils/getProductById";
 import { putProduct } from "@/utils/putProduct";
+import { useRouter } from "next/navigation";
 
 const categories = [
     "vino",
@@ -25,6 +26,7 @@ const countries = ["Argentina", "Brazil", "Canada", "France", "Germany", "Italy"
 
 export const ProductEdit = ({ productId }: { productId: string }) => {
     const pathname = usePathname();
+    const router = useRouter();
 
     {/*__________________STORAGE FIREBASE ESTADOS Y HANDLERS___________________*/}
     const [file, setFile] = useState<File | null>(null)
@@ -122,9 +124,8 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
         const fetchProduct = async () => {
             try {
                 const response = await getProductById(productId, dataUser.token)
-                console.log(response)
                 if (response) {
-                    // setDataProduct(response)
+                    setDataProduct(response)
                 } else {
                     console.error('Product not found');
                 }
@@ -187,16 +188,7 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
     }
 
     const handleCancel = () => {
-        setDataProduct({
-            name: "",
-            description: "",
-            country: "",
-            brand: "",
-            abv: "",
-            imgUrl: "",
-            size: "",
-            category: "",
-        })
+        router.push("/profile/dashboardProducer/productosPublicados")
     }
 
     return (

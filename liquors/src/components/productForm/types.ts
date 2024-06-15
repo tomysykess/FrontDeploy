@@ -3,7 +3,7 @@ export interface IProductForm {
     description: string;
     imgUrl: string;
     category: string;
-    abv: string;
+    abv: string | number;
     brand: string;
     country: string;
     size: string;
