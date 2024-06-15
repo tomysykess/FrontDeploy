@@ -11,7 +11,7 @@ import { RootState } from "@/store/store";
 import { IReview } from "@/interfaces/interfaz";
 
 import { deleteReviews } from "@/store/reducers/reviewsSlice";
-import { editReview } from "@/utils/deleteReviews";
+import { deleteReview, editReview } from "@/utils/deleteReviews";
 
 export const Review = ({ review }: { review: IReview }) => {
   const [data, setData] = useState<any>(null);
@@ -52,7 +52,7 @@ export const Review = ({ review }: { review: IReview }) => {
   const handleDelete = async (id: string) => {
     if (confirm("¿Estás seguro de que quieres eliminar esta review?")) {
       try {
-        await deleteReviews(id);
+        await deleteReview(id, dispatch);
         alert("Review eliminada con éxito.");
       } catch (error) {
         console.error("Error eliminando la review:", error);
@@ -65,7 +65,7 @@ export const Review = ({ review }: { review: IReview }) => {
     setEditOn(!editOn);
   };
 
-  const sendEdit = async () => {
+  const sendEdit = async (id: string) => {
     try {
       await editReview(id, dispatch, { ...formData });
       alert("Review editada con éxito.");
@@ -134,7 +134,9 @@ export const Review = ({ review }: { review: IReview }) => {
             className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-wine"
           />
           <button
-            onClick={sendEdit}
+            onClick={() => {
+              sendEdit(review.id);
+            }}
             type="submit"
             className="bg-wine text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors"
           >
