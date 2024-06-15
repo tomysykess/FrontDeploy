@@ -12,14 +12,18 @@ export const deleteReview = async (reviewId: string, dispatch: AppDispatch) => {
     const idP = idProduct.id;
     const idU = idUser.id;
     const token = idUser.token;
-    const url = `https://liquors-project.onrender.com/reviews/${reviewId}`;
+    const url = `https://liquors-project.onrender.com/reviews/delete/${reviewId}`;
 
     try {
-      const res = await axios.delete(url, {
-        headers: {
-          authorization: `Bearer: ${token}`,
-        },
-      });
+      const res = await axios.put(
+        url,
+        {},
+        {
+          headers: {
+            authorization: `Bearer: ${token}`,
+          },
+        }
+      );
       console.log("respuesta de back al delete", res);
       dispatch(removeReview(reviewId));
       Swal.fire({
@@ -31,6 +35,7 @@ export const deleteReview = async (reviewId: string, dispatch: AppDispatch) => {
       });
     } catch (error) {
       console.log("error al borrar review", error);
+
       throw new Error("Error eliminando la review");
     }
   }

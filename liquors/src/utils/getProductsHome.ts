@@ -5,6 +5,7 @@ import { clearProducts } from "@/store/reducers/productsSlice";
 import { Product } from "@/interfaces/interfaz";
 
 export const fetchProductsHome = async (dispatch: AppDispatch, page: any) => {
+
   
  
     try {
@@ -17,3 +18,4 @@ export const fetchProductsHome = async (dispatch: AppDispatch, page: any) => {
         console.error(err);
     }
   };
+

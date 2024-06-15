@@ -9,7 +9,7 @@ import Link from "next/link";
 export const NavBar: React.FC = () => {
   const pathname = usePathname();
   const [token, setToken] = useState(null);
- 
+
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
       const userToken = localStorage.getItem("loginToken");
@@ -17,16 +17,17 @@ export const NavBar: React.FC = () => {
     }
   }, [pathname]);
 
-  
   //________________________________________________________________________
 
   return (
-    <div>
+    <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
       <nav className="pt-2">
         <div className="flex justify-between items-center p-3 mx-large">
           <div>
             <Link href="/">
-              <p className="font-plus-jakarta-sans text-3xl font-extrabold text-wine ">Liquors</p>
+              <p className="font-plus-jakarta-sans text-3xl font-extrabold text-wine ">
+                Liquors
+              </p>
             </Link>
           </div>
           <div>

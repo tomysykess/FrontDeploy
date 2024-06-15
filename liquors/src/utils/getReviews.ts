@@ -20,3 +20,21 @@ export const fetchReviews = async (dispatch: AppDispatch) => {
     }
   }
 };
+
+export const averageReviews = async ({ idProduct }: any) => {
+  if (!idProduct) {
+    console.error("Product ID is required");
+    return null;
+  }
+
+  try {
+    const res = await axios.get(
+      `https://liquors-project.onrender.com/reviews/product/${idProduct}`
+    );
+    const average = res.data.promRate;
+    return average;
+  } catch (error) {
+    console.error("Error fetching average reviews:", error);
+    return null;
+  }
+};

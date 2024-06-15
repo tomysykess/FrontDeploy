@@ -17,7 +17,7 @@ interface UserToken {
 }
 
 const AuthStore: React.FC<AuthProps> = ({ children }) => {
-  const [token, setToken]: any = useState(); // Inicializa el estado con el tipo adecuado
+  const [token, setToken]: any = useState();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -64,10 +64,12 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
               );
 
               console.log("Token cambiado");
-            } catch (error) {}
+            } catch (error) {
+              console.error(error);
+            }
           }
         } catch (error) {
-          console.error("Error fetching user data:", error);
+          console.error(error);
         }
       }
     };

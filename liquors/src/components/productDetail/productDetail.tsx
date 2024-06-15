@@ -1,4 +1,3 @@
-"use client";
 import { Product } from "@/interfaces/interfaz";
 import { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
@@ -6,7 +5,15 @@ import Rating from "@mui/material/Rating";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
-export const ProductDetail = ({ product }: { product: Product }) => {
+interface ProductDetailProps {
+  product: Product;
+  promedio: number | null;
+}
+
+export const ProductDetail: React.FC<ProductDetailProps> = ({
+  product,
+  promedio,
+}) => {
   const { abv, brand, category, country, description, id, imgUrl, name, size } =
     product;
 
@@ -35,13 +42,18 @@ export const ProductDetail = ({ product }: { product: Product }) => {
           <div className="flex flex-row items-center">
             <Rating
               name="product-rating"
-              value={4}
+              value={promedio ?? 0}
               precision={0.5}
               readOnly
-              icon={<StarIcon fontSize="inherit" />}
+              icon={
+                <StarIcon
+                  fontSize="inherit"
+                  className="animate-fadeInOpacity"
+                />
+              }
               emptyIcon={<StarIcon fontSize="inherit" />}
             />
-            <span className="text-black ml-2"></span>
+            {/*  <span className="text-black ml-2">{promedio}</span> */}
           </div>
           <h3 className="text-black text-lg">{category}</h3>
           <p className="text-black">
@@ -65,3 +77,5 @@ export const ProductDetail = ({ product }: { product: Product }) => {
     </div>
   );
 };
+
+export default ProductDetail;
