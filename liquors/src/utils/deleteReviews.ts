@@ -1,7 +1,13 @@
 import axios from "axios";
 import { AppDispatch } from "@/store/store";
-import { removeReview } from "@/store/reducers/reviewsSlice";
+
+import { removeReview, updateReviews } from "@/store/reducers/reviewsSlice";
+import { IReview } from "@/interfaces/interfaz";
+import { Dispatch } from "@reduxjs/toolkit";
+
+
 import Swal from 'sweetalert2'
+
 
 export const deleteReview = async (reviewId: string, dispatch: AppDispatch) => {
   const detailProduct = localStorage.getItem("detailProduct");
@@ -38,5 +44,49 @@ export const deleteReview = async (reviewId: string, dispatch: AppDispatch) => {
 
       throw new Error("Error eliminando la review");
     }
+  }
+};
+
+export const editReview = async (
+  id: string,
+  dispatch: Dispatch,
+  reviewEdited: any
+) => {
+  try {
+    const detailProduct = localStorage.getItem("detailProduct");
+    const userDataLogin = localStorage.getItem("userDataLogin");
+    const { rate, comment } = reviewEdited;
+    const data = {
+      rate: Number(rate),
+      comment: comment,
+    };
+
+    if (detailProduct && userDataLogin) {
+      const idUser = JSON.parse(userDataLogin);
+      const token = idUser.token;
+      console.log("ESTE ES EL OBJETO QUE ESTOY MANDANDO POR EL PUT", data);
+      const response = await axios.put(
+        `https://liquors-project.onrender.com/reviews/${id}`,
+        data,
+        {
+          headers: {
+            authorization: `Bearer: ${token}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        dispatch(updateReviews(reviewEdited));
+      } else {
+        throw new Error("Error en la actualización de la reseña");
+      }
+    } else {
+      throw new Error(
+        "Datos de producto o usuario no encontrados en el almacenamiento local"
+      );
+    }
+  } catch (error) {
+    console.error("Error editando la reseña:", error);
+    throw new Error("Hubo un error editando la reseña.");
   }
 };

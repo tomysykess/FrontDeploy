@@ -3,7 +3,7 @@ import { IReview } from "@/interfaces/interfaz";
 
 export interface ReviewsState {
   data: IReview[];
-  userProductReview: IReview[],
+  userProductReview: IReview[];
 }
 
 const initialState: ReviewsState = {
@@ -46,7 +46,7 @@ export const {
   updateReviews,
   deleteReviews,
   userReadReviews,
-  userClearReviews
+  userClearReviews,
 } = reviewsSlice.actions;
 
 export default reviewsSlice.reducer;
