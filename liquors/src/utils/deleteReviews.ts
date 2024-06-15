@@ -1,13 +1,17 @@
 import axios from "axios";
 import { AppDispatch } from "@/store/store";
 
-import { removeReview, updateReviews } from "@/store/reducers/reviewsSlice";
+import {
+  clearReviews,
+  readReviews,
+  removeReview,
+  updateReviews,
+} from "@/store/reducers/reviewsSlice";
 import { IReview } from "@/interfaces/interfaz";
 import { Dispatch } from "@reduxjs/toolkit";
 
-
-import Swal from 'sweetalert2'
-
+import Swal from "sweetalert2";
+import { fetchReviews } from "./getReviews";
 
 export const deleteReview = async (reviewId: string, dispatch: AppDispatch) => {
   const detailProduct = localStorage.getItem("detailProduct");
@@ -37,7 +41,7 @@ export const deleteReview = async (reviewId: string, dispatch: AppDispatch) => {
         icon: "success",
         title: "Favorito eliminado con exito",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
     } catch (error) {
       console.log("error al borrar review", error);
@@ -77,6 +81,8 @@ export const editReview = async (
 
       if (response.status === 200) {
         dispatch(updateReviews(reviewEdited));
+        clearReviews();
+        fetchReviews(dispatch);
       } else {
         throw new Error("Error en la actualización de la reseña");
       }
