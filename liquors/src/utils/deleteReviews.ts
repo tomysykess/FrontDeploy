@@ -1,8 +1,13 @@
 import axios from "axios";
 import { AppDispatch } from "@/store/store";
+
 import { removeReview, updateReviews } from "@/store/reducers/reviewsSlice";
 import { IReview } from "@/interfaces/interfaz";
 import { Dispatch } from "@reduxjs/toolkit";
+
+
+import Swal from 'sweetalert2'
+
 
 export const deleteReview = async (reviewId: string, dispatch: AppDispatch) => {
   const detailProduct = localStorage.getItem("detailProduct");
@@ -27,6 +32,13 @@ export const deleteReview = async (reviewId: string, dispatch: AppDispatch) => {
       );
       console.log("respuesta de back al delete", res);
       dispatch(removeReview(reviewId));
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Favorito eliminado con exito",
+        showConfirmButton: false,
+        timer: 1500
+      });
     } catch (error) {
       console.log("error al borrar review", error);
 
