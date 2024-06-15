@@ -36,7 +36,7 @@ export const ProductsListSeller = () => {
         }
     }, [dataUser.id, dataUser.token])
 
-    return <div>
+    return <div className="bg-greyVivino flex flex-col pt-1 mb-1 mr-32 w-full">
         {dataProducts.length === 0 ? (<p>No hay productos</p>) : 
         (dataProducts.map((product: Product) => (
                 <ProductCardDashboard key={product.id} product={product} />

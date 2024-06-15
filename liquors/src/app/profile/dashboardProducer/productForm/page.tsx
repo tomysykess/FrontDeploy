@@ -3,6 +3,7 @@ import { ProductForm } from "@/components/productForm/productForm";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { MenuDashboard } from "@/components/dashboardJuan/menuDashboard/menuDashboard";
+import { ProductsListSeller } from "@/components/productsListSeller/productsListSeller";
 
 const ProductFormUser = () => {
   const [token, setToken] = useState<any>();
@@ -39,7 +40,7 @@ const ProductFormUser = () => {
         <>
           <div className="bg-greyVivino flex flex-row pt-1 mb-1">
             <MenuDashboard />
-            <ProductForm />
+            <ProductsListSeller />
           </div>
         </>
       )}

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import { putDeleteProduct } from "@/utils/putDeleteProduct";
 
 export const ProductCardDashboard: React.FC<{ product: Product }> = ({
@@ -52,15 +51,14 @@ export const ProductCardDashboard: React.FC<{ product: Product }> = ({
   return (
     <div
       key={product.id}
-      className="flex flex-row justify-between bg-greyVivino items-center h-32 w-full hover:cursor-pointer rounded-t-xl rounded-lg p-4 m-4"
+      className="bg-white p-6 my-3 rounded-lg shadow-lg border-r-8 border-wine flex flex-row justify-between items-center h-32 w-full px-16 rounded-t-xl m-4"
     >
-      <div className="flex flex-col items-center">
+      <div className="flex flex-row items-center gap-6">
         <Switch
           checked={productData.active}
           onChange={handleChange}
           defaultChecked
           color="default"
-          size="small"
         />
         {productData.active ? (
           <p className="text-center w-24 text-green-950 rounded-full bg-green-200">
@@ -72,13 +70,13 @@ export const ProductCardDashboard: React.FC<{ product: Product }> = ({
           </p>
         )}
       </div>
-      <div className="flex flex-row justify-start gap-4 items-center">
+      <div className="flex flex-row items-center justify-between w-full m-40">
         <div className="w-24 h-24">
           <img src={product.imgUrl} className="my-2 object-cover rounded-md" />
         </div>
-        <h2 className="text-center text-lg font-Lora mb-2">{product.name}</h2>
+        <h2 className="text-center text-xl font-Lora mb-2">{product.name}</h2>
       </div>
-      <Link className="buttonSecondary" href={`/editProduct/${product.id}`}>
+      <Link className="buttonSecondary flex flex-row gap-4" href={`/editProduct/${product.id}`}>
         Editar <EditIcon />
       </Link>
     </div>
