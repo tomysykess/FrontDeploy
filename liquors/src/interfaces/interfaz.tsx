@@ -23,23 +23,24 @@ export interface Product {
   userId: string;
   active: boolean;
   rate: number;
+  averageRate: number;
 }
 
 export interface FavoriteProduct {
-  id: string,
-  name: string,
-  description: string,
-  imgUrl: string,
-  rate: number,
-  category: string,
-  abv: 0,
-  brand: string
-  country: string,
+  id: string;
+  name: string;
+  description: string;
+  imgUrl: string;
+  rate: number;
+  category: string;
+  abv: 0;
+  brand: string;
+  country: string;
 }
 
 export interface IdAndToken {
-  token: string,
-  id: string,
+  token: string;
+  id: string;
 }
 
 export interface ProductsState {
@@ -86,11 +87,11 @@ export interface IRecommendation {
 }
 
 export interface UserDataLogin {
-  name: string,
-  email: string,
-  id: string,
-  role: number,
-  token: string,
+  name: string;
+  email: string;
+  id: string;
+  role: number;
+  token: string;
 }
 
 export interface ProductFiltered {

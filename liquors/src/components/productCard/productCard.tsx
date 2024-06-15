@@ -13,8 +13,7 @@ import { postFavorites } from "@/utils/postFavorites";
 import { useDispatch } from "react-redux";
 import { deleteFavorites } from "@/utils/deteleFavorites";
 import { usePathname } from "next/navigation";
-import Swal from 'sweetalert2';
-
+import Swal from "sweetalert2";
 
 const ProductCard: React.FC<{ product: Product }> = ({
   product,
@@ -22,7 +21,6 @@ const ProductCard: React.FC<{ product: Product }> = ({
   const dispatch = useDispatch();
   const [favoritColor, setFavoritColor] = useState(false);
   const [userId, setIdUser] = useState<string>();
-
 
   useEffect(() => {
     const idUser: any = localStorage.getItem("userDataLogin");
@@ -34,23 +32,21 @@ const ProductCard: React.FC<{ product: Product }> = ({
 
   //HANDLER EVENT FAVORITOS
   const favHandler = (product: Product) => {
-
-    const token = localStorage.getItem("loginToken")
+    const token = localStorage.getItem("loginToken");
     if (token) {
       setFavoritColor((prevFavoritColor) => !prevFavoritColor);
       const productId = product.id;
       if (favoritColor) {
-        deleteFavorites(userId, productId, dispatch)
+        deleteFavorites(userId, productId, dispatch);
       } else {
-
-      postFavorites(userId, productId);
+        postFavorites(userId, productId);
       }
     } else {
       Swal.fire({
-        icon: 'info',
-        title: 'Denegado',
-        text: 'Debes ser un usario registrado para agregar favoritos.',
-        confirmButtonText: 'Aceptar'
+        icon: "info",
+        title: "Denegado",
+        text: "Debes ser un usario registrado para agregar favoritos.",
+        confirmButtonText: "Aceptar",
       });
     }
   };
@@ -75,9 +71,9 @@ const ProductCard: React.FC<{ product: Product }> = ({
       />
       <br></br>
       <div className="flex flex-row absolute bottom-10   pl-1 pr-1 left-0 right-0 items-center justify-between w-full mt-2">
-        <span className="text-gray-700">4.5</span>
+        <span className="text-gray-700">{product.averageRate}</span>
         <div className="flex flex-row justify-center flex-grow mx-2">
-          <HalfRating />
+          <HalfRating props={product.averageRate} />
         </div>
         <button onClick={() => favHandler(product)}>
           {favoritColor ? (
