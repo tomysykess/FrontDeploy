@@ -12,12 +12,15 @@ import Link from "next/link";
 import { postFavorites } from "@/utils/postFavorites";
 import { useDispatch } from "react-redux";
 import { deleteFavorites } from "@/utils/deteleFavorites";
+import { usePathname } from "next/navigation";
+import Swal from 'sweetalert2';
 
 const ProductCard: React.FC<{ product: Product}> = ({product}): React.ReactNode => {
 
   const dispatch =  useDispatch()
   const [favoritColor, setFavoritColor] = useState(false)
   const [userId, setIdUser] = useState<string>()
+  
 
   useEffect(() => {
     const idUser:any = localStorage.getItem("userDataLogin")
@@ -30,12 +33,22 @@ const ProductCard: React.FC<{ product: Product}> = ({product}): React.ReactNode 
 
   //HANDLER EVENT FAVORITOS
   const favHandler = (product: Product) => {
-    setFavoritColor((prevFavoritColor) => !prevFavoritColor);
-    const productId = product.id;
-    if (favoritColor) {
-      deleteFavorites(userId, productId, dispatch)
-    } else {
+    const token = localStorage.getItem("loginToken")
+    if (token) {
+      setFavoritColor((prevFavoritColor) => !prevFavoritColor);
+      const productId = product.id;
+      if (favoritColor) {
+        deleteFavorites(userId, productId, dispatch)
+      } else {
       postFavorites(userId, productId);
+      }
+    } else {
+      Swal.fire({
+        icon: 'info',
+        title: 'Denegado',
+        text: 'Debes ser un usario registrado para agregar favoritos.',
+        confirmButtonText: 'Aceptar'
+      });
     }
   }
 
