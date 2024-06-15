@@ -45,7 +45,7 @@ export const MenuDashboard: React.FC = (): React.ReactNode => {
                                     )}
                                     {dataUser.role == "3" && (
                                         <>
-                                            <Link href="/profile/dashboardProducer/productForm" className="block py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300">Publicar un producto</Link>
+                                            <Link href="/profile/dashboardProducer/formUser" className="block py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300">Publicar un producto</Link>
                                             <Link href="/profile/dashboardProducer/productosPublicados" className="block py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300">Productos publicados</Link>
                                         </>
                                     )}

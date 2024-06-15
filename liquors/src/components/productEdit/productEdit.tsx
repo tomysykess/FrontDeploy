@@ -68,17 +68,6 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
         );
     };
 
-    /*HANDLER BOTON DOWNLOAD
-    const handeDownload = () => {
-        if (downloadURL) {
-            const link = document.createElement("a");
-            link.href = downloadURL;
-            link.download = file?.name || "";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-    };*/
 
     {/*STORAGE FIREBASE CONFIG */}
     const firebaseConfig = {
@@ -213,7 +202,7 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
     return (
         <div className="flex flex-col items-center justify-center">
             <form onSubmit={handleSubmit} className="flex flex-col justify-center w-fit p-6 bg-greyVivino">
-                <h1 className="pb-8 text-gray-600 text-xl font-normal">editar completa los siguientes campos para agregar tu producto:</h1>
+                <h1 className="pb-8 text-gray-600 text-xl font-normal">edita los campos que desees:</h1>
                 <div className="flex flex-col my-2">
                     <label className="pb-2 text-gray-600 text-l font-normal">Nombre del producto: </label> 
                     <input

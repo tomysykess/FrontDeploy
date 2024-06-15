@@ -75,18 +75,6 @@ export const ProductForm = () => {
     );
   };
 
-  /*HANDLER BOTON DOWNLOAD
-    const handeDownload = () => {
-        if (downloadURL) {
-            const link = document.createElement("a");
-            link.href = downloadURL;
-            link.download = file?.name || "";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-    };*/
-
   {
     /*STORAGE FIREBASE CONFIG */
   }
