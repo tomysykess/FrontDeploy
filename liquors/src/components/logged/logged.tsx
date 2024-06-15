@@ -10,34 +10,38 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 export const Logged: React.FC = ():React.ReactNode => {
   const router = useRouter();
   
-  const [userName, setUserName] = useState<string>('')
-  const [userRole, setUserRole] = useState<string>('')
+  const [userName, setUserName] = useState<string>('');
+  const [userRole, setUserRole] = useState<string>('');
 
   useEffect(() => {
-    const name: any = localStorage.getItem("userDataLogin")
-    const nameParsed: IUser = JSON.parse(name)
-    setUserName(nameParsed.name)
-  }, [])
+    const name: any = localStorage.getItem("userDataLogin");
+    const nameParsed: IUser = JSON.parse(name);
+    setUserName(nameParsed.name);
+  }, []);
 
+  
   const logoutHandler: React.MouseEventHandler<HTMLButtonElement> = () => {
     localStorage.removeItem("loginToken");
     router.push("/");
     window.location.reload();
-    
   };
 
   const favHandler = () => {
     router.push("/profile/dashboardUser/favoritos");
     setTimeout(() => {
       window.location.reload();
-    },500)
+    }, 1000);
   };
 
   return (
     <div>
       <ul className="flex space-x-6">
         <li>
-          <span onClick={favHandler} style={{ cursor: "pointer" }} className="buttonSecondary">
+          <span 
+            onClick={favHandler} 
+            style={{ cursor: "pointer"}} // Estilo de animación condicional
+            className="buttonSecondary"
+          >
             <FavoriteBorderIcon/>
             Favoritos
           </span>
