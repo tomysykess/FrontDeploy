@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { IReview } from "@/interfaces/interfaz";
 import { Rating } from '@mui/material';
 import StarIcon from "@mui/icons-material/Star";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { deleteReview } from "@/utils/deleteReviews";
+import { deleteReviewConAlert } from "@/utils/deleteReviewsConAlert";
 import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
 
 export const CardHistoryReview: React.FC<{ product: IReview}> = ({product}): React.ReactNode => {
 
@@ -12,13 +13,58 @@ export const CardHistoryReview: React.FC<{ product: IReview}> = ({product}): Rea
     const name = data.name;
     const dispatch = useDispatch();
 
+    const [errorDelete, setErrorDelete] = useState() 
+
     const handleDelete = async (id: string) => {
-        if (confirm("¿Estás seguro de que quieres eliminar esta review?")) {
-          deleteReview(id, dispatch);
-          alert("Review eliminada con éxito.");
-          setTimeout(() => {
-            window.location.reload()
-          }, 100)
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+          },
+          buttonsStyling: false
+        });
+      
+        try {
+          const result = await swalWithBootstrapButtons.fire({
+            title: "Estas seguro que deseas borrar la review?",
+            text: "No puedes deshacer esta accion!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Si, borrar!",
+            cancelButtonText: "No, cancelar!",
+            reverseButtons: true
+          });
+      
+          if (result.isConfirmed) {
+            const deleteSuccessful = await deleteReviewConAlert(id, dispatch);
+      
+            if (deleteSuccessful) {
+              swalWithBootstrapButtons.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
+            } else {
+              swalWithBootstrapButtons.fire({
+                title: "Error",
+                text: "Failed to delete the file.",
+                icon: "error"
+              });
+            }
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire({
+              title: "Cancelled",
+              text: "Your imaginary file is safe :)",
+              icon: "error"
+            });
+          }
+        } catch (error) {
+          console.error("Error handling delete:", error);
+          swalWithBootstrapButtons.fire({
+            title: "Error al eliminar la review",
+            text: ` ${error}`,
+            icon: "error"
+          });
         }
       };
     
