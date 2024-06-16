@@ -4,8 +4,9 @@ import MapProductCardRouteProducts from "@/components/mapProductCard/mapProductC
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { fetchProductsFiltered } from "@/utils/getProductsFiltered";
-import { fetchProducts } from "@/utils/getProducts";
+import {fetchProductsPage } from "@/utils/getProducts";
 import { useDispatch } from "react-redux";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Product: React.FC = (): React.ReactNode => {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const Product: React.FC = (): React.ReactNode => {
   };
 
   const loadMoreProducts = () => {
-    fetchProducts(dispatch, page + 1);
+    fetchProductsPage(dispatch, page + 1);
     setPage(page + 1);
   };
 
@@ -83,8 +84,8 @@ const Product: React.FC = (): React.ReactNode => {
   };
 
   return (
-    <div>
-      <section className="flex justify-center bg-greyVivino">
+    <div >
+      <section className="flex justify-center pt-5 pb-0 mb-0 bottom-0 bg-greyVivino">
         <input
           placeholder="buscar..."
           className="p-2 mb-2 pb-2  rounded-[25px] border border-gray-300 mt-2"
@@ -109,24 +110,24 @@ const Product: React.FC = (): React.ReactNode => {
           </div>
         </section>
 
-        <div className="flex  mt-0 mb-96 bg-greyVivino ml-96">
+        <div className="flex  mt-0 mb-28 bg-greyVivino ml-96">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <MapProductCardRouteProducts/>
             </div>
         </div>
-
+        
+        
+          <div className="flex text-center font-plus-jakarta-sans text-lg justify-center mt-auto mb-4">
+              <button
+                onClick={loadMoreProducts}
+                className=" text-wine hover:brightness-125 underline py-2 px-4 rounded-md"
+              >
+                Más productos
+                <ExpandMoreIcon/>
+              </button>
+          </div>
       </div>
-
-      {productCards.length >= page * 9 && (
-        <div className="flex justify-center mt-4">
-          <button
-            onClick={loadMoreProducts}
-            className="bg-wine text-white py-2 px-4 rounded-md"
-          >
-            Siguiente página
-          </button>
-        </div>
-      )}
+      
     </div>
   );
 };

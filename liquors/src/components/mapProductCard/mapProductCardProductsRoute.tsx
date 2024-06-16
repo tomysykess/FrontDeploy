@@ -21,7 +21,7 @@ export const MapProductCardRouteProducts: React.FC = (): React.ReactNode => {
   //GET PRODUCTS A LA API + CARGA DE DATOS EN LA STORE.
   useEffect(() => {
     if (dataGlobal.length === 0) {
-        fetchProducts(dispatch, page);
+        fetchProducts(dispatch);
     }
   }, [dispatch, dataGlobal.length]);
 
