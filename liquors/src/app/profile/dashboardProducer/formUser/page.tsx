@@ -29,7 +29,9 @@ const FormUser = () => {
         <>
           <div className="bg-greyVivino flex flex-row pt-1 mb-1">
             <MenuDashboard />
-            <ProductForm />
+            <div className="w-full mr-64">
+              <ProductForm />
+            </div>
           </div>
         </>
       )}

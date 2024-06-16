@@ -8,7 +8,9 @@ const EditProductData = ({ params }: { params: { productData: string } }) => {
     return (
         <div className="bg-greyVivino flex flex-row pt-1 mb-1 h-screen">
           <MenuDashboard />
+          <div className="w-full mr-64">
             <ProductEdit productId={pId} />
+          </div>
         </div>)
 }
 

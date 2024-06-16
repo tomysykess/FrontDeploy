@@ -174,15 +174,13 @@ export const ProductForm = () => {
     setErrorProduct(errorInput);
 
     if (Object.keys(errorInput).length === 0) {
+      try {
+        postProduct(dataUser.id, updatedDataProduct, dataUser.token);
+        handleCancel();
+      } catch (error) {
+        console.error("error al agregar el producto", error);
+      }
       alert(`el producto ${dataProduct.name} ha sido agregado con exito`);
-      postProduct(dataUser.id, updatedDataProduct, dataUser.token);
-      console.log(
-        "info para el back",
-        dataUser.id,
-        updatedDataProduct,
-        dataUser.token
-      );
-      handleCancel();
       router.push("/profile/dashboardProducer/productosPublicados");
     } else {
       alert("hubo un error al agregar el producto");
@@ -208,7 +206,7 @@ export const ProductForm = () => {
         onSubmit={handleSubmit}
         className="flex flex-col justify-center w-fit p-6 bg-greyVivino"
       >
-        <h1 className="pb-8 text-gray-600 text-xl font-normal">
+        <h1 className="pb-6 text-gray-600 text-xl font-normal">
           completa los siguientes campos para agregar tu producto:
         </h1>
         <div className="flex flex-col my-2">
@@ -259,19 +257,6 @@ export const ProductForm = () => {
             <progress value={uploadProgress} max="100" className="mt-2" />
           )}
           {downloadURL && <p>Imagen subida correctamente. </p>}
-        </div>
-        <div className="flex flex-col my-2">
-          <input
-            type="text"
-            name="imgUrl"
-            value={dataProduct.imgUrl}
-            onChange={handleChange}
-            className="placeholder input-text"
-            placeholder="URL de la imagen"
-            required
-            readOnly
-          />
-          {errorProduct.imgUrl && <p>{errorProduct.imgUrl}</p>}
         </div>
         <div className="flex flex-row items-center gap-2my-2">
           <label className="pb-2 text-gray-600 text-l font-normal">

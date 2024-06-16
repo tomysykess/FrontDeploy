@@ -179,11 +179,16 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
         setErrorProduct(errorInput);
 
         if (Object.keys(errorInput).length === 0) {
-            alert(`el producto ${dataProduct.name} ha sido agregado con exito`);
-            putProduct(productId, updatedDataProduct, dataUser.token);
-            handleCancel();
+            try {
+                putProduct(productId, updatedDataProduct, dataUser.token);
+                handleCancel();
+            } catch (error) {
+                console.error('Error updating product:', error);
+            }
+            alert(`el producto ${dataProduct.name} se edito con exito`);
+            router.push("/profile/dashboardProducer/productosPublicados");
         } else {
-            alert ("hubo un error al agregar el producto");
+            alert ("hubo un error al editar el producto");
         }
     }
 
@@ -194,7 +199,7 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
     return (
         <div className="flex flex-col items-center justify-center">
             <form onSubmit={handleSubmit} className="flex flex-col justify-center w-fit p-6 bg-greyVivino">
-                <h1 className="pb-8 text-gray-600 text-xl font-normal">edita los campos que desees:</h1>
+                <h1 className="pb-6 text-gray-600 text-xl font-normal">Edita los campos que desees:</h1>
                 <div className="flex flex-col my-2">
                     <label className="pb-2 text-gray-600 text-l font-normal">Nombre del producto: </label> 
                     <input
@@ -228,19 +233,6 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
                     <button type="button" onClick={handleUpload} className="flex w-24 p-1 mt-3 rounded text-white font-plus-jakarta-sans hover:brightness-125 bg-blue-500">Upload<CloudUploadIcon className="ml-2" /></button>
                     {uploadProgress > 0 && <progress value={uploadProgress} max="100" className="mt-2" />}
                     {downloadURL && <p>Imagen subida correctamente. </p>}
-                </div>
-                <div className="flex flex-col my-2">
-                    <input
-                        type="text"
-                        name="imgUrl"
-                        value={dataProduct.imgUrl}
-                        onChange={handleChange}
-                        className="placeholder input-text"
-                        placeholder="URL de la imagen"
-                        required
-                        readOnly
-                    />
-                    {errorProduct.imgUrl && <p>{errorProduct.imgUrl}</p>}
                 </div>
                 <div className="flex flex-row items-center gap-2my-2">
                     <label className="pb-2 text-gray-600 text-l font-normal">Categoría:</label>
@@ -306,7 +298,7 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
                 </div>
                 <div className="flex flex-row gap-6 my-6 items-center justify-center">
                     <button type="button" className="buttonSecondary hover:cursor-pointer" onClick={handleCancel}>Cancelar</button>
-                    <button type="submit" className="buttonPrimary hover:cursor-pointer w-fit">editar</button>
+                    <button type="submit" className="buttonPrimary hover:cursor-pointer w-fit">aplicar los cambios</button>
                 </div>
             </form>
         </div>
