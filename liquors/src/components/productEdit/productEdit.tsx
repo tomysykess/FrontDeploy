@@ -12,6 +12,7 @@ import { getStorage } from "firebase/storage";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { getProductById } from "@/utils/getProductById";
 import { putProduct } from "@/utils/putProduct";
+import { useRouter } from "next/navigation";
 
 const categories = [
     "vino",
@@ -25,6 +26,7 @@ const countries = ["Argentina", "Brazil", "Canada", "France", "Germany", "Italy"
 
 export const ProductEdit = ({ productId }: { productId: string }) => {
     const pathname = usePathname();
+    const router = useRouter();
 
     {/*__________________STORAGE FIREBASE ESTADOS Y HANDLERS___________________*/}
     const [file, setFile] = useState<File | null>(null)
@@ -68,17 +70,6 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
         );
     };
 
-    /*HANDLER BOTON DOWNLOAD
-    const handeDownload = () => {
-        if (downloadURL) {
-            const link = document.createElement("a");
-            link.href = downloadURL;
-            link.download = file?.name || "";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-    };*/
 
     {/*STORAGE FIREBASE CONFIG */}
     const firebaseConfig = {
@@ -133,9 +124,8 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
         const fetchProduct = async () => {
             try {
                 const response = await getProductById(productId, dataUser.token)
-                console.log(response)
                 if (response) {
-                    // setDataProduct(response)
+                    setDataProduct(response)
                 } else {
                     console.error('Product not found');
                 }
@@ -189,31 +179,27 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
         setErrorProduct(errorInput);
 
         if (Object.keys(errorInput).length === 0) {
-            alert(`el producto ${dataProduct.name} ha sido agregado con exito`);
-            putProduct(productId, updatedDataProduct, dataUser.token);
-            handleCancel();
+            try {
+                putProduct(productId, updatedDataProduct, dataUser.token);
+                handleCancel();
+            } catch (error) {
+                console.error('Error updating product:', error);
+            }
+            alert(`el producto ${dataProduct.name} se edito con exito`);
+            router.push("/profile/dashboardProducer/productosPublicados");
         } else {
-            alert ("hubo un error al agregar el producto");
+            alert ("hubo un error al editar el producto");
         }
     }
 
     const handleCancel = () => {
-        setDataProduct({
-            name: "",
-            description: "",
-            country: "",
-            brand: "",
-            abv: "",
-            imgUrl: "",
-            size: "",
-            category: "",
-        })
+        router.push("/profile/dashboardProducer/productosPublicados")
     }
 
     return (
         <div className="flex flex-col items-center justify-center">
             <form onSubmit={handleSubmit} className="flex flex-col justify-center w-fit p-6 bg-greyVivino">
-                <h1 className="pb-8 text-gray-600 text-xl font-normal">editar completa los siguientes campos para agregar tu producto:</h1>
+                <h1 className="pb-6 text-gray-600 text-xl font-normal">Edita los campos que desees:</h1>
                 <div className="flex flex-col my-2">
                     <label className="pb-2 text-gray-600 text-l font-normal">Nombre del producto: </label> 
                     <input
@@ -247,18 +233,6 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
                     <button type="button" onClick={handleUpload} className="flex w-24 p-1 mt-3 rounded text-white font-plus-jakarta-sans hover:brightness-125 bg-blue-500">Upload<CloudUploadIcon className="ml-2" /></button>
                     {uploadProgress > 0 && <progress value={uploadProgress} max="100" className="mt-2" />}
                     {downloadURL && <p>Imagen subida correctamente. </p>}
-                </div>
-                <div className="flex flex-col my-2">
-                    <input
-                        type="text"
-                        name="imgUrl"
-                        value={dataProduct.imgUrl}
-                        onChange={handleChange}
-                        className="placeholder input-text"
-                        placeholder="URL de la imagen"
-                        required
-                    />
-                    {errorProduct.imgUrl && <p>{errorProduct.imgUrl}</p>}
                 </div>
                 <div className="flex flex-row items-center gap-2my-2">
                     <label className="pb-2 text-gray-600 text-l font-normal">Categoría:</label>
@@ -324,7 +298,7 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
                 </div>
                 <div className="flex flex-row gap-6 my-6 items-center justify-center">
                     <button type="button" className="buttonSecondary hover:cursor-pointer" onClick={handleCancel}>Cancelar</button>
-                    <button type="submit" className="buttonPrimary hover:cursor-pointer w-fit">agregar</button>
+                    <button type="submit" className="buttonPrimary hover:cursor-pointer w-fit">aplicar los cambios</button>
                 </div>
             </form>
         </div>

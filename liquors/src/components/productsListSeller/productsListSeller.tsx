@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ProductCardDashboard } from "../productCardDashboard/productCardDashboard";
 import { Product } from "@/interfaces/interfaz";
+import { NotProduct } from "../notProduct/notProduct";
 
 export const ProductsListSeller = () => {
     const pathname = usePathname();
@@ -36,8 +37,8 @@ export const ProductsListSeller = () => {
         }
     }, [dataUser.id, dataUser.token])
 
-    return <div>
-        {dataProducts.length === 0 ? (<p>No hay productos</p>) : 
+    return <div className="bg-greyVivino flex flex-col pt-1 mb-1 mr-32 w-full">
+        {dataProducts.length === 0 ? (<NotProduct/>) : 
         (dataProducts.map((product: Product) => (
                 <ProductCardDashboard key={product.id} product={product} />
             )))
