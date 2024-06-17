@@ -4,24 +4,23 @@ import MapProductCardRouteProducts from "@/components/mapProductCard/mapProductC
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { fetchProductsFiltered } from "@/utils/getProductsFiltered";
-import {fetchProductsPage } from "@/utils/getProducts";
+import { fetchProductsPage } from "@/utils/getProducts";
 import { useDispatch } from "react-redux";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const Product: React.FC = (): React.ReactNode => {
   const dispatch = useDispatch();
 
   const [filters, setFilters] = useState<any>({});
 
-
   //TOKEN
-  const [token, setToken] = useState<string | null>(null)
+  const [token, setToken] = useState<string | null>(null);
   //ESTADO LOCAL SEARCHBAR
   const [search, setSearch] = useState({ item: "" });
   //ESTADO LOCAL ROL DE USUARIO
   const [hasRol, setHasRol] = useState<number>();
   //ESTADO LOCAL PARA LOGICA FILTRO SEGUN ROL DE USER.
-  const [isFilterVisible, setIsFilterVisible] = useState<boolean>();
+  const [isFilterVisible, setIsFilterVisible] = useState<any>();
   //ESTADO PARA PAGINADO.
   const [page, setPage] = useState(1);
   const [productCards, setProductCards] = useState<any[]>([]);
@@ -38,7 +37,7 @@ const Product: React.FC = (): React.ReactNode => {
         setHasRol(userData.role);
       }
     }
-  }, [])
+  }, []);
 
   const router = useRouter();
 
@@ -84,11 +83,11 @@ const Product: React.FC = (): React.ReactNode => {
   };
 
   return (
-    <div >
-      <section className="flex justify-center pt-5 pb-0 mb-0 bottom-0 bg-greyVivino">
+    <div>
+      <section className="flex justify-center pt-4 pb-3 bg-greyVivino">
         <input
           placeholder="buscar..."
-          className="p-2 mb-2 pb-2  rounded-[25px] border border-gray-300 mt-2"
+          className="p-2 mb-2 pb-2  rounded-[25px] border border-gray-300 mt-2 w-1/3"
           type="text"
           value={search.item}
           name="item"
@@ -97,37 +96,49 @@ const Product: React.FC = (): React.ReactNode => {
         />
       </section>
 
-      <div className="flex flex-row relative pl-5 mb-0 pt-0 bg-greyVivino">
-
-        <section className="flex pt-10 pb-10 w-10/12 bg-greyVivino items-start absolute">
-          <div className="flex flex-col">
-            <button className="mb-7 py-1 absolute w-1/6 px-4  bg-wine text-white rounded-lg" onClick={toggleFilterVisibility}>
+      <div className="flex   mb-0 pt-0 justify-center bg-greyVivino">
+        <section className="flex pt-10 pb-10  w-10/12 bg-greyVivino items-start absolute  justify-start-">
+          <div className="flex ">
+            <button
+              className="mb-7 py-1 absolute w-1/6 px-4  bg-wine text-white rounded-lg"
+              onClick={toggleFilterVisibility}
+            >
               {isFilterVisible ? "Ocultar Filtro" : "Mostrar Filtro"}
             </button>
-            <div className="flex mt-5 w-full">
-              {isFilterVisible && <ProductFilterCard  fetchFilterBack={fetchFilterBack} onFilterChange={handleFilterChange} />}
+            <div className="flex w-full h-full">
+              {isFilterVisible === false ? (
+                <ProductFilterCard
+                  fetchFilterBack={fetchFilterBack}
+                  onFilterChange={handleFilterChange}
+                />
+              ) : (
+                <div className="opacity-50">
+                  <ProductFilterCard
+                    fetchFilterBack={fetchFilterBack}
+                    onFilterChange={handleFilterChange}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </section>
 
-        <div className="flex  mt-0 mb-28 bg-greyVivino ml-96">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <MapProductCardRouteProducts/>
-            </div>
-        </div>
-        
-        
-          <div className="flex text-center font-plus-jakarta-sans text-lg justify-center mt-auto mb-4">
-              <button
-                onClick={loadMoreProducts}
-                className=" text-wine hover:brightness-125 underline py-2 px-4 rounded-md"
-              >
-                Más productos
-                <ExpandMoreIcon/>
-              </button>
+        <div className="flex  bg-greyVivino ml-96 w-1/2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+            <MapProductCardRouteProducts />
           </div>
+        </div>
+
+        <div className="flex text-center font-plus-jakarta-sans text-lg justify-center mt-auto mb-4">
+          <button
+            onClick={loadMoreProducts}
+            className=" text-wine hover:brightness-125 underline py-2 px-4 rounded-md"
+          >
+            Más productos
+            <ExpandMoreIcon />
+          </button>
+        </div>
       </div>
-      
     </div>
   );
 };

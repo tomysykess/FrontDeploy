@@ -33,20 +33,19 @@ const HistorialReviewsAdmin: React.FC = (): React.ReactNode => {
         <>
           <div className="bg-greyVivino flex flex-row pt-1 mb-1 h-screen">
             <MenuDashboard />
-            <div className="overflow-y-auto w-full">
-              <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">
+            <div className=" w-auto">
+              <h1 className="font-plus-jakarta-sans pt-5 text-3xl text-center text-wine font-semibold">
                 Historial de Todas las reviews
               </h1>
-              <br></br>
               <div className="flex flex-col items-center w-full">
-                <hr className="w-full border-gray-300" />
                 <br />
-                <div className="flex ml-36 items-center w-full">
+                <hr className="w-full border-gray-300" />
+                <div className="flex ml-36 items-center pt-5 w-full">
                   <LabelImportantIcon
                     style={{ color: "#c23a2e" }}
                     className="flex-shrink-0"
                   />
-                  <h2 className="font-plus-jakarta-sans text-2xl text-start font-semibold ml-2">
+                  <h2 className="font-plus-jakarta-sans  text-2xl text-start font-semibold ml-2">
                     Reviews:
                   </h2>
                 </div>
