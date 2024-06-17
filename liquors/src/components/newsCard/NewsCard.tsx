@@ -25,14 +25,14 @@ const NewsItem = ({ newItem }: { newItem: INews }) => {
           isImageRight ? "text-right mr-4" : "text-left ml-4"
         }`}
       >
-        <div className="z-50">
+        <div className="z-40">
           <b>
             <h2 className="z-40 text-2xl font-plus-jakarta-sans text-gray-800 mb-2">
               {newItem.title}
             </h2>
           </b>
         </div>
-        <div className="z-50">
+        <div className="z-40">
           <p className="  text-gray-700 text-base font-plus-jakarta-sans">
             {newItem.text}
           </p>
