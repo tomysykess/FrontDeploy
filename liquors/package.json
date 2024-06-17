@@ -12,6 +12,7 @@
     "@emailjs/browser": "^4.3.3",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@mercadopago/sdk-react": "^0.0.19",
     "@mui/icons-material": "^5.15.19",
     "@mui/material": "^5.15.19",
     "@reduxjs/toolkit": "^2.2.5",
