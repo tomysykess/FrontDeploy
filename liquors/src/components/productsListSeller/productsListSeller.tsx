@@ -38,6 +38,7 @@ export const ProductsListSeller = () => {
     }, [dataUser.id, dataUser.token])
 
     return <div className="bg-greyVivino flex flex-col pt-1 mb-1 mr-32 w-full">
+        <h1 className="p-6 text-gray-600 text-xl font-normal text-center">Productos publicados</h1>
         {dataProducts.length === 0 ? (<NotProduct/>) : 
         (dataProducts.map((product: Product) => (
                 <ProductCardDashboard key={product.id} product={product} />
