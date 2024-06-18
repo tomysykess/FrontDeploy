@@ -71,15 +71,21 @@ const ProductCard: React.FC<{ product: Product }> = ({
       />
       <br></br>
       <div className="flex flex-row absolute bottom-10   pl-1 pr-1 left-0 right-0 items-center justify-between w-full mt-2">
-        <span className="text-gray-700">{product.averageRate}</span>
-        <div className="flex flex-row justify-center flex-grow mx-2">
-          <HalfRating props={product.averageRate} />
-        </div>
+        {product.averageRate > 0 ? (
+          <>
+            <span className="text-gray-700">{product.averageRate}</span>
+            <HalfRating props={product.averageRate} />
+          </>
+        ) : (
+          <p className="text-plus-jakarta-sans text-gray-500 text-center bg-greyVivino rounded-lg shadow-sm p-0 w-full h-10  ">
+            "Haz la primera reseña!!!"
+          </p>
+        )}
         <button onClick={() => favHandler(product)}>
           {favoritColor ? (
-            <FavoriteIcon className="text-wineMasOscuro" />
+            <FavoriteIcon className="text-wineMasOscuro " />
           ) : (
-            <FavoriteBorderIcon className="text-wineMasOscuro" />
+            <FavoriteBorderIcon className="text-wineMasOscuro " />
           )}
         </button>
       </div>
