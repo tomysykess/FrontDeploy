@@ -103,12 +103,14 @@ const Product: React.FC = (): React.ReactNode => {
                   <ProductFilterCard
                     fetchFilterBack={fetchFilterBack}
                     onFilterChange={handleFilterChange}
+                    hasRol={hasRol}
                   />
                 </div>
               ) : (
                 <ProductFilterCard
                   fetchFilterBack={fetchFilterBack}
                   onFilterChange={handleFilterChange}
+                  hasRol={hasRol}
                 />
               )}
             </div>
