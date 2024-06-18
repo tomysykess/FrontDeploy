@@ -6,20 +6,24 @@ import StarIcon from "@mui/icons-material/Star";
 interface ProductFilterCardProps {
   onFilterChange: (filters: any) => void;
   fetchFilterBack: () => void;
+  hasRol: any;
 }
 
 const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
   onFilterChange,
   fetchFilterBack,
+  hasRol,
 }) => {
   //filtro categoria
   const [categoryButton, setSelectedButton] = useState<string | null>(null);
   //Filtro Abv
   //const [abvRange, setPriceRange] = useState<number[]>([0, 100]);
   const [abvRange, setPriceRange] = useState<number>(0);
-
-  //filtro rate
+  //filtro rat
   const [selectedRating, setSelectedRating] = useState<number | null>(null);
+
+  const isFilterDisabled = hasRol === 1 || hasRol === undefined;
+
 
   const handleButtonClick = (buttonValue: string) => {
     setSelectedButton(buttonValue);
@@ -142,6 +146,7 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
         ))}
       </div>
       <button
+        disabled={isFilterDisabled}
         onClick={fetchFilterBack}
         className="px-1 py-2  font-plus-jakarta-sans  hover:brightness-110 bg-greenVivino mt-6 rounded-3xl border border-solid text-white"
       >
