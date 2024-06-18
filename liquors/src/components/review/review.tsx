@@ -50,13 +50,13 @@ export const Review = ({ review }: { review: IReview }) => {
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm("¿Estás seguro de que quieres eliminar esta review?")) {
+    if (confirm("¿Estás seguro de que quieres eliminar esta reseña?")) {
       try {
         await deleteReview(id, dispatch);
         alert("Review eliminada con éxito.");
       } catch (error) {
-        console.error("Error eliminando la review:", error);
-        alert("Hubo un error eliminando la review.");
+        console.error("Error eliminando la reseña:", error);
+        alert("Hubo un error eliminando la reseña.");
       }
     }
   };
@@ -71,8 +71,8 @@ export const Review = ({ review }: { review: IReview }) => {
       alert("Review editada con éxito.");
       setEditOn(false);
     } catch (error) {
-      console.error("Error editando la review:", error);
-      alert("Hubo un error editando la review.");
+      console.error("Error editando la reseña:", error);
+      alert("Hubo un error editando la reseña.");
     }
   };
 
@@ -129,7 +129,7 @@ export const Review = ({ review }: { review: IReview }) => {
             type="text"
             value={formData.comment}
             name="comment"
-            placeholder="Publica aquí tu Review"
+            placeholder="Publica aquí tu reseña"
             onChange={handlerChange}
             className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-wine"
           />
@@ -140,7 +140,7 @@ export const Review = ({ review }: { review: IReview }) => {
             type="submit"
             className="bg-wine text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors"
           >
-            Editar opinión
+            Editar reseña
           </button>
         </>
       ) : (

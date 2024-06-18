@@ -57,7 +57,7 @@ export const MenuDashboard: React.FC = (): React.ReactNode => {
                   className="block py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300"
                 >
                   <SettingsIcon />
-                  Informacion de la cuenta
+                  Información de la cuenta
                 </Link>
                 {dataUser.role == "1" && (
                   <>
@@ -66,7 +66,7 @@ export const MenuDashboard: React.FC = (): React.ReactNode => {
                       className="block cursor-pointer py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300"
                     >
                       <LockIcon />
-                      Historial de reviews
+                      Historial de reseñas
                     </span>
                     <Link
                       href="/profile/dashboardUser/favoritos"
@@ -80,7 +80,7 @@ export const MenuDashboard: React.FC = (): React.ReactNode => {
                       className="block cursor-pointer py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300"
                     >
                       <LockIcon />
-                      Cajas del mes
+                      Recomendados del mes
                     </span>
                   </>
                 )}
@@ -92,21 +92,21 @@ export const MenuDashboard: React.FC = (): React.ReactNode => {
                       className="block py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300"
                     >
                       <ReviewsIcon />
-                      Historial de Todas las reviews
+                      Historial de reseñas
                     </Link>
                     <Link
                       href="/profile/dashboardUser/favoritos"
                       className="block py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300"
                     >
                       <FavoriteTwoToneIcon />
-                      Los Productos Favoritos
+                      Productos Favoritos
                     </Link>
                     <Link
                       href="/profile/dashboardUser/cajaMes"
                       className="block py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300"
                     >
                       <CardGiftcardIcon />
-                      Publicar Caja del mes
+                      Publicar Recomendado del mes
                     </Link>
 
                     <Link
@@ -149,7 +149,7 @@ export const MenuDashboard: React.FC = (): React.ReactNode => {
                       className="block py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300"
                     >
                       <ReviewsIcon />
-                      Historial de reviews
+                      Historial de reseñas
                     </Link>
                     <Link
                       href="/profile/dashboardUser/favoritos"
@@ -163,7 +163,7 @@ export const MenuDashboard: React.FC = (): React.ReactNode => {
                       className="block py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300"
                     >
                       <CardGiftcardIcon />
-                      Cajas del mes
+                      Recomendado del mes
                     </Link>
                   </>
                 )}

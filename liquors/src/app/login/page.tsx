@@ -159,7 +159,7 @@ const LoginComponent: React.FC = (): React.ReactNode => {
           </div>
           {isSuccess && (
             <p className="inline-block mt-2 rounded bg-green-500 text-white p-2">
-              ¡Login exitoso! <br /> redirigiendo a home...
+              ¡Login exitoso! <br /> Redirigiendo...
             </p>
           )}
           {errorState && (

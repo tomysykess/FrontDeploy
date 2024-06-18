@@ -217,3 +217,19 @@ body {
 .img-container:hover img {
   transform: scale(1.1); /* Escala la imagen al 110% en hover */
 }
+
+.border-effect {
+  position: relative;
+  color: rgb(0, 0, 0);
+}
+
+.border-effect::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(4px);
+  opacity: 0.6;
+  color: rgb(0, 0, 0);
+}

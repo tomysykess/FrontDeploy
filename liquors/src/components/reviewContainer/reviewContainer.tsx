@@ -30,7 +30,7 @@ export const ReviewContainer: React.FC = () => {
           <Review key={review.id} review={review} />
         ))
       ) : (
-        <p className="text-gray-500">Sé el primero en hacer una reseña!</p>
+        <p className="text-gray-500">¡Sé el primero en hacer una reseña!</p>
       )}
     </div>
   );

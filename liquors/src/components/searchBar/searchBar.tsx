@@ -6,13 +6,13 @@ export const SearchBar: React.FC = () => {
         ron
       </Link>
       <Link className="buttonPrimary" href="/category/spirits">
-        spirit
+        destilados
       </Link>
       <Link className="buttonPrimary" href="/category/whiskey">
-        whiskey
+        whisky
       </Link>
       <Link className="buttonPrimary" href="/category/wine">
-        wine
+        vinos
       </Link>
     </div>
   );

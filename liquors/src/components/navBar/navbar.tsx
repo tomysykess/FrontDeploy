@@ -34,22 +34,22 @@ export const NavBar: React.FC = () => {
             <ul className="flex space-x-6">
               <li>
                 <Link className="buttonSecondary" href="/product">
-                  Products
+                  Productos
                 </Link>
               </li>
               <li>
                 <Link className="buttonSecondary" href="/recommendation">
-                  Pick of the Month
+                  Recomendado del Mes
                 </Link>
               </li>
               <li>
                 <Link className="buttonSecondary" href="/newsletter">
-                  Newsletter
+                  Boletín
                 </Link>
               </li>
               <li>
                 <Link className="buttonSecondary" href="/aboutUs">
-                  About
+                  Información
                 </Link>
               </li>
             </ul>
