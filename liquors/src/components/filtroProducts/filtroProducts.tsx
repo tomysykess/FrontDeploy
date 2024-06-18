@@ -37,7 +37,7 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
   };
 
   return (
-    <div className="flex flex-col  bg-greyVivino border p-4 ml-0 mr-6 rounded-lg shadow-md w-3/4 h-full">
+    <div className="flex flex-col  bg-greyVivino border p-4 ml-0 mr-6 rounded-lg shadow-md w-3/4 h-">
       {/*FILTRO POR TIPO BEBIDA */}
       <h1 className="text-lg font-normal  font-plus-jakarta-sans mb-4">
         Filters

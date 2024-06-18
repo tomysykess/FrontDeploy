@@ -75,9 +75,7 @@ const Product: React.FC = (): React.ReactNode => {
   };
 
   const toggleFilterVisibility = () => {
-    if (hasRol === 4 || hasRol === 3) {
-      setIsFilterVisible(!isFilterVisible);
-    } else {
+    if (hasRol === 1 || hasRol === undefined) {
       alert("Debe suscribirse a una cuenta premium para acceder al filtro.");
     }
   };
@@ -99,25 +97,19 @@ const Product: React.FC = (): React.ReactNode => {
       <div className="flex   mb-0 pt-0 justify-center bg-greyVivino">
         <section className="flex pt-10 pb-10  w-10/12 bg-greyVivino items-start absolute  justify-start-">
           <div className="flex ">
-            <button
-              className="mb-7 py-1 absolute w-1/6 px-4  bg-wine text-white rounded-lg"
-              onClick={toggleFilterVisibility}
-            >
-              {isFilterVisible ? "Ocultar Filtro" : "Mostrar Filtro"}
-            </button>
             <div className="flex w-full h-full">
-              {isFilterVisible === false ? (
-                <ProductFilterCard
-                  fetchFilterBack={fetchFilterBack}
-                  onFilterChange={handleFilterChange}
-                />
-              ) : (
-                <div className="opacity-50">
+              {hasRol === 1 || hasRol === undefined ? (
+                <div className="opacity-50 " onClick={toggleFilterVisibility}>
                   <ProductFilterCard
                     fetchFilterBack={fetchFilterBack}
                     onFilterChange={handleFilterChange}
                   />
                 </div>
+              ) : (
+                <ProductFilterCard
+                  fetchFilterBack={fetchFilterBack}
+                  onFilterChange={handleFilterChange}
+                />
               )}
             </div>
           </div>

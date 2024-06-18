@@ -14,14 +14,13 @@ export const MapProductCardRouteProducts: React.FC = (): React.ReactNode => {
   const dispatch = useDispatch();
   const dataGlobal = useSelector((state: RootState) => state.products.data);
   console.log(dataGlobal);
-  
 
-  const [page, setPage] = useState()
+  const [page, setPage] = useState();
 
   //GET PRODUCTS A LA API + CARGA DE DATOS EN LA STORE.
   useEffect(() => {
     if (dataGlobal.length === 0) {
-        fetchProducts(dispatch);
+      fetchProducts(dispatch);
     }
   }, [dispatch, dataGlobal.length]);
 
@@ -35,11 +34,9 @@ export const MapProductCardRouteProducts: React.FC = (): React.ReactNode => {
     <>
       {/*Mapea el arreglo de productos y renderiza un Card para cada uno*/}
       {dataGlobal.map((product: Product) => (
-     
-          <p key={product.id}>
-            <ProductCard key={product.id} product={product} />
-          </p>
-       
+        <p key={product.id}>
+          <ProductCard key={product.id} product={product} />
+        </p>
       ))}
     </>
   );
