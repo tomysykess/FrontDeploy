@@ -40,7 +40,7 @@ export const MenuDashboard: React.FC = (): React.ReactNode => {
 
   return (
     <>
-      <div className="flex h-screen font-plus-jakarta-sans">
+      <div className="flex h-full font-plus-jakarta-sans">
         {/* Barra lateral */}
         <aside className="bg-wine w-64 flex-shrink-0">
           <div className="h-full flex flex-col justify-between pt-4">

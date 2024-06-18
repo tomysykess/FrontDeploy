@@ -21,7 +21,8 @@ const productsSlice = createSlice({
     readProducts(state, action: PayloadAction<Product[]>) {
       state.data = state.data.concat(action.payload);
     },
-    clearProducts(state) { // Nuevo reducer para limpiar los productos
+    clearProducts(state) {
+      // Nuevo reducer para limpiar los productos
       state.data = [];
     },
     readGinProducts(state, action: PayloadAction<Product[]>) {
@@ -30,7 +31,7 @@ const productsSlice = createSlice({
     clearGinProducts(state) {
       state.ginProducts = [];
     },
-    readProductsFiltered(state, action: PayloadAction<Product[]>) {
+    readProductsFiltered(state, action: PayloadAction<any>) {
       state.dataFiltered = state.dataFiltered.concat(action.payload);
     },
     clearProductsFiltered(state) {
@@ -54,25 +55,29 @@ const productsSlice = createSlice({
       );
     },
     updateProducts(state, action) {},
-    deleteProducts(state, action) {},
+    deleteProduct(state, action: PayloadAction<string>) {
+      state.data = state.data.filter(
+        (product) => product.id !== action.payload
+      );
+    },
   },
-  
 });
 
-export const { 
+export const {
   createProducts,
-  readProductsFiltered, 
-  clearProductsFiltered, 
-  readProducts, 
-  readWineProducts, 
-  clearWineProducts, 
+  readProductsFiltered,
+  clearProductsFiltered,
+  readProducts,
+  readWineProducts,
+  clearWineProducts,
   updateProducts,
-  clearGinProducts, 
-  readGinProducts, 
+  clearGinProducts,
+  readGinProducts,
   readFavoriteProducts,
   clearFavoriteProducts,
   deleteFavoriteProduct,
-  deleteProducts, 
-  clearProducts } = productsSlice.actions;
+  deleteProduct,
+  clearProducts,
+} = productsSlice.actions;
 
 export default productsSlice.reducer;

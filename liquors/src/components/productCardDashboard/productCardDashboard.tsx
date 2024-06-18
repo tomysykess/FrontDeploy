@@ -51,7 +51,7 @@ export const ProductCardDashboard: React.FC<{ product: Product }> = ({
   return (
     <div
       key={product.id}
-      className="bg-white p-6 my-3 rounded-lg shadow-lg border-r-8 border-wine flex flex-row justify-between items-center h-32 w-full px-16 rounded-t-xl m-4"
+      className="bg-white p-6 my-3 rounded-lg shadow-lg border-r-8 border-wine flex flex-row justify-between items-center h-32 px-16 rounded-t-xl m-4"
     >
       <div className="flex flex-row items-center gap-6">
         <Switch
@@ -70,7 +70,7 @@ export const ProductCardDashboard: React.FC<{ product: Product }> = ({
           </p>
         )}
       </div>
-      <div className="flex flex-row items-center justify-between w-full m-40">
+      <div className="flex flex-row items-center gap-8 w-full m-16 ">
         <div className="w-24 h-24">
           <img src={product.imgUrl} className="my-2 object-cover rounded-md" />
         </div>
