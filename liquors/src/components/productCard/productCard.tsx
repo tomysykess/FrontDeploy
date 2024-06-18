@@ -10,10 +10,10 @@ import { Product } from "@/interfaces/interfaz";
 //import { getColorClass } from "@/utils/cardBorderColorDinamic";
 import Link from "next/link";
 import { postFavorites } from "@/utils/postFavorites";
-import { useDispatch } from "react-redux";
 import { deleteFavorites } from "@/utils/deteleFavorites";
-import { usePathname } from "next/navigation";
 import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+import { usePathname } from "next/navigation";
 
 const ProductCard: React.FC<{ product: Product }> = ({
   product,

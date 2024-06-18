@@ -1,9 +1,13 @@
 import { Product } from "@/interfaces/interfaz";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import Rating from "@mui/material/Rating";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { postFavorites } from "@/utils/postFavorites";
+import { deleteFavorites } from "@/utils/deteleFavorites";
+import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
 
 interface ProductDetailProps {
   product: Product;
@@ -28,10 +32,36 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   } = product;
 
   const [favorite, setFavorite] = useState(false);
+  const [favoritColor, setFavoritColor] = useState(false);
+  const [userId, setIdUser] = useState<string>();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const idUser: any = localStorage.getItem("userDataLogin");
+    const idUserParsed = JSON.parse(idUser);
+    if (idUser) {
+      setIdUser(idUserParsed.id);
+    }
+  }, []);
 
-  const handlerOnClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setFavorite(!favorite);
+  //HANDLER EVENT FAVORITOS
+  const favHandler = (product: Product) => {
+    const token = localStorage.getItem("loginToken");
+    if (token) {
+      setFavoritColor((prevFavoritColor) => !prevFavoritColor);
+      const productId = product.id;
+      if (favoritColor) {
+        deleteFavorites(userId, productId, dispatch);
+      } else {
+        postFavorites(userId, productId);
+      }
+    } else {
+      Swal.fire({
+        icon: "info",
+        title: "Denegado",
+        text: "Debes ser un usario registrado para agregar favoritos.",
+        confirmButtonText: "Aceptar",
+      });
+    }
   };
 
   return (
@@ -73,12 +103,12 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
             <b>ABV:</b> {abv}% | <b>Tamaño:</b> {size}
           </p>
           <button
-            onClick={handlerOnClick}
+            onClick={() => favHandler(product)}
             className="flex items-center mt-4 text-red-600"
           >
-            {favorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            {favoritColor ? <FavoriteIcon /> : <FavoriteBorderIcon />}
             <span className="ml-2">
-              {favorite ? "Remover de Favoritos" : "Agregar a Favoritos"}
+              {favoritColor ? "Remover de Favoritos" : "Agregar a Favoritos"}
             </span>
           </button>
         </div>
