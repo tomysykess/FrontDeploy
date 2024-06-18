@@ -28,19 +28,41 @@ const ProductCard: React.FC<{ product: Product }> = ({
     if (idUser) {
       setIdUser(idUserParsed.id);
     }
-  }, []);
+
+    // Recupera el estado de favoritos del localStorage
+    const storedFavorites = localStorage.getItem("favorites");
+    if (storedFavorites) {
+      const favorites = JSON.parse(storedFavorites);
+      if (favorites.includes(product.id)) {
+        setFavoritColor(true);
+      }
+    }
+  }, [product.id]);
+
+  const updateLocalStorageFavorites = (productId: string, add: boolean) => {
+    const storedFavorites = localStorage.getItem("favorites");
+    let favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
+    if (add) {
+      favorites.push(productId);
+    } else {
+      favorites = favorites.filter((id: string) => id !== productId);
+    }
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  };
 
   //HANDLER EVENT FAVORITOS
   const favHandler = (product: Product) => {
     const token = localStorage.getItem("loginToken");
     if (token) {
-      setFavoritColor((prevFavoritColor) => !prevFavoritColor);
       const productId = product.id;
       if (favoritColor) {
         deleteFavorites(userId, productId, dispatch);
+        updateLocalStorageFavorites(productId, false);
       } else {
         postFavorites(userId, productId);
+        updateLocalStorageFavorites(productId, true);
       }
+      setFavoritColor((prevFavoritColor) => !prevFavoritColor);
     } else {
       Swal.fire({
         icon: "info",
