@@ -78,7 +78,7 @@ const ProductCard: React.FC<{ product: Product }> = ({
           </>
         ) : (
           <p className="text-plus-jakarta-sans text-gray-500 text-center bg-greyVivino rounded-lg shadow-sm p-0 w-full h-10  ">
-            `Haz la primera reseña!!!`
+            ¡Haz la primera reseña!
           </p>
         )}
         <button onClick={() => favHandler(product)}>
@@ -100,7 +100,7 @@ const ProductCard: React.FC<{ product: Product }> = ({
             marginBottom: "-4px",
           }}
         >
-          detalle
+          Detalles
         </button>
       </Link>
     </div>

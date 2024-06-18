@@ -23,7 +23,7 @@ export const DashboardSelector = () => {
 
   return (
     <div className="mx-large mt-small">
-      <h1 className="">Hola {dataUser.name}!</h1>
+      <h1 className="">¡Hola, {dataUser.name}!</h1>
       <div>
         <DashboardProducer />
         {dataUser.role === "1" && <DashboardUser />}

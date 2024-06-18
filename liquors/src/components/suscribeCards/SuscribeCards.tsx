@@ -10,7 +10,7 @@ const SuscribeCards = () => {
       {" "}
       <b>
         <h2 className="text-3xl font-plus-jakarta  text-center mb-6">
-          Plan de suscripciones
+          Planes de Suscripción
         </h2>
       </b>
       <div className="flex flex-row justify-around items-center">

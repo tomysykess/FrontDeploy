@@ -25,14 +25,24 @@ const NewsItem = ({ newItem }: { newItem: INews }) => {
           isImageRight ? "text-right mr-4" : "text-left ml-4"
         }`}
       >
-        <div className="z-40">
+        <div
+          className="z-40"
+          style={{
+            textShadow: `0 0 5px #FFFF, 0 0 10px rgba(255, 255, 255, 1)`,
+          }}
+        >
           <b>
-            <h2 className="z-40 text-2xl font-plus-jakarta-sans text-gray-800 mb-2">
+            <h2 className="z-40 text-2xl font-plus-jakarta-sans text-gray-800 mb-2 ">
               {newItem.title}
             </h2>
           </b>
         </div>
-        <div className="z-40">
+        <div
+          className="z-40"
+          style={{
+            textShadow: `0 0 5px #FFFF, 0 0 10px rgba(255, 255, 255, 1)`,
+          }}
+        >
           <p className="  text-gray-700 text-base font-plus-jakarta-sans">
             {newItem.text}
           </p>

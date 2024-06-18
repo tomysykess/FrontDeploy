@@ -84,7 +84,7 @@ const Product: React.FC = (): React.ReactNode => {
     <div>
       <section className="flex justify-center pt-4 pb-3 bg-greyVivino">
         <input
-          placeholder="buscar..."
+          placeholder="Buscar..."
           className="p-2 mb-2 pb-2  rounded-[25px] border border-gray-300 mt-2 w-1/3"
           type="text"
           value={search.item}
