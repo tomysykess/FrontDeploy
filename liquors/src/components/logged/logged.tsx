@@ -32,9 +32,6 @@ export const Logged: React.FC = (): React.ReactNode => {
 
   const favHandler = () => {
     router.push("/profile/dashboardUser/favoritos");
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
   };
 
   return (
