@@ -1,5 +1,7 @@
 import {
+  clearProducts,
   deleteProduct,
+  readProducts,
   readProductsFiltered,
 } from "@/store/reducers/productsSlice";
 import { RootState } from "@/store/store";
@@ -11,8 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 const ProductsAdmin = ({ products }: any) => {
   const dispatch = useDispatch();
   const [token, setToken]: any = useState();
-  const dataGlobal = useSelector((state: RootState) => state.products.data);
-  
+
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -24,35 +25,20 @@ const ProductsAdmin = ({ products }: any) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (dataGlobal.length === 0) {
-        fetchProducts(dispatch);
+    if (products.length === 0) {
+      fetchProducts(dispatch);
     }
-  }, [dispatch, dataGlobal.length]);
+  }, [dispatch, products.length]);
 
   const handleDelete = async (id: string) => {
-    putDeleteProduct(id, token)
-  }
-  
-  // useEffect(() => {
-  //   // Simulación de filtro y despachar la acción readProductsFiltered
-  //   const filteredProducts = products.filter(
-  //     (product: any) => product.abv > 40
-  //   ); // Ejemplo de filtro
-  //   dispatch(readProductsFiltered(filteredProducts));
-  // }, [dispatch, products]);
-
-  // const handleDelete = async (id: string) => {
-  //   if (confirm("¿Estás seguro de que quieres eliminar este producto?")) {
-  //     try {
-  //       await deleteProductAdmin(id, dispatch, token);
-  //       dispatch(deleteProduct(id));
-  //       alert("Producto eliminado con éxito.");
-  //     } catch (error) {
-  //       console.error("Error eliminando el producto:", error);
-  //       alert("Hubo un error eliminando el producto.");
-  //     }
-  //   }
-  // };
+    try {
+      await putDeleteProduct(id, token);
+      clearProducts();
+      fetchProducts(dispatch);
+    } catch (error) {
+      console.error("Falló dar de baja un producto", error);
+    }
+  };
 
   return (
     <div className="flex h-auto font-plus-jakarta-sans p-6">
@@ -72,7 +58,7 @@ const ProductsAdmin = ({ products }: any) => {
           </tr>
         </thead>
         <tbody>
-          {dataGlobal.map((product: any) => (
+          {products.map((product: any) => (
             <tr key={product.id} className="hover:bg-gray-50 border-b">
               <td className="border px-4 py-2">
                 <img
@@ -97,11 +83,12 @@ const ProductsAdmin = ({ products }: any) => {
                   >
                     Dar de baja
                   </button>
-                ) : (<button
-                  onClick={() => handleDelete(product.id)}
-                  className="bg-green-200 text-green-950 px-3 py-1 rounded hover:bg-green-600 focus:outline-none"
-                >
-                  Activar
+                ) : (
+                  <button
+                    onClick={() => handleDelete(product.id)}
+                    className="bg-green-200 text-green-950 px-3 py-1 rounded hover:bg-green-600 focus:outline-none"
+                  >
+                    Activar
                   </button>
                 )}
               </td>
