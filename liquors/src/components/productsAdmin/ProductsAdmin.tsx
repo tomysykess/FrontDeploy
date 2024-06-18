@@ -2,40 +2,57 @@ import {
   deleteProduct,
   readProductsFiltered,
 } from "@/store/reducers/productsSlice";
-import { deleteProductAdmin } from "@/utils/getProducts";
+import { RootState } from "@/store/store";
+import { deleteProductAdmin, fetchProducts } from "@/utils/getProducts";
+import { putDeleteProduct } from "@/utils/putDeleteProduct";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductsAdmin = ({ products }: any) => {
+  const dispatch = useDispatch();
   const [token, setToken]: any = useState();
+  const dataGlobal = useSelector((state: RootState) => state.products.data);
+  
+  const [page, setPage] = useState(1);
 
-  /*   useEffect(() => {
+  useEffect(() => {
     const userDataLogin = localStorage.getItem("userDataLogin");
     if (userDataLogin) {
       const userData = JSON.parse(userDataLogin);
       setToken(userData.token);
     }
-  }, [dispatch]); */
-  /*   useEffect(() => {
-    // Simulación de filtro y despachar la acción readProductsFiltered
-    const filteredProducts = products.filter(
-      (product: any) => product.abv > 40
-    ); // Ejemplo de filtro
-    dispatch(readProductsFiltered(filteredProducts));
-  }, [dispatch, products]);
- */
-  /*   const handleDelete = async (id: string) => {
-    if (confirm("¿Estás seguro de que quieres eliminar este producto?")) {
-      try {
-        await deleteProductAdmin(id, dispatch, token);
-        dispatch(deleteProduct(id));
-        alert("Producto eliminado con éxito.");
-      } catch (error) {
-        console.error("Error eliminando el producto:", error);
-        alert("Hubo un error eliminando el producto.");
-      }
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (dataGlobal.length === 0) {
+        fetchProducts(dispatch);
     }
-  }; */
+  }, [dispatch, dataGlobal.length]);
+
+  const handleDelete = async (id: string) => {
+    putDeleteProduct(id, token)
+  }
+  
+  // useEffect(() => {
+  //   // Simulación de filtro y despachar la acción readProductsFiltered
+  //   const filteredProducts = products.filter(
+  //     (product: any) => product.abv > 40
+  //   ); // Ejemplo de filtro
+  //   dispatch(readProductsFiltered(filteredProducts));
+  // }, [dispatch, products]);
+
+  // const handleDelete = async (id: string) => {
+  //   if (confirm("¿Estás seguro de que quieres eliminar este producto?")) {
+  //     try {
+  //       await deleteProductAdmin(id, dispatch, token);
+  //       dispatch(deleteProduct(id));
+  //       alert("Producto eliminado con éxito.");
+  //     } catch (error) {
+  //       console.error("Error eliminando el producto:", error);
+  //       alert("Hubo un error eliminando el producto.");
+  //     }
+  //   }
+  // };
 
   return (
     <div className="flex h-auto font-plus-jakarta-sans p-6">
@@ -55,7 +72,7 @@ const ProductsAdmin = ({ products }: any) => {
           </tr>
         </thead>
         <tbody>
-          {products.map((product: any) => (
+          {dataGlobal.map((product: any) => (
             <tr key={product.id} className="hover:bg-gray-50 border-b">
               <td className="border px-4 py-2">
                 <img
@@ -73,12 +90,20 @@ const ProductsAdmin = ({ products }: any) => {
               <td className="border px-4 py-2">{product.size}</td>
               <td className="border px-4 py-2">{product.averageRate}</td>
               <td className="border px-4 py-2 text-center">
-                <button
-                  /*   onClick={() => handleDelete(product.id)} */
-                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700 focus:outline-none"
+                {product.active ? (
+                  <button
+                    onClick={() => handleDelete(product.id)}
+                    className="bg-red-200 text-red-950 px-3 py-1 rounded hover:bg-red-600 focus:outline-none"
+                  >
+                    Dar de baja
+                  </button>
+                ) : (<button
+                  onClick={() => handleDelete(product.id)}
+                  className="bg-green-200 text-green-950 px-3 py-1 rounded hover:bg-green-600 focus:outline-none"
                 >
-                  Dar de baja
-                </button>
+                  Activar
+                  </button>
+                )}
               </td>
             </tr>
           ))}
