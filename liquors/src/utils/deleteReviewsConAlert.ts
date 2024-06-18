@@ -1,7 +1,6 @@
 import axios from "axios";
 import { AppDispatch } from "@/store/store";
 import { removeReview } from "@/store/reducers/reviewsSlice";
-import Swal from 'sweetalert2';
 
 export const deleteReviewConAlert = async (reviewId: string, dispatch: AppDispatch) => {
   const detailProduct = localStorage.getItem("detailProduct");
@@ -11,16 +10,19 @@ export const deleteReviewConAlert = async (reviewId: string, dispatch: AppDispat
     const idProduct = JSON.parse(detailProduct);
     const idUser = JSON.parse(userDataLogin);
     const token = idUser.token;
-    const url = `https://liquors-project.onrender.com/reviews/${reviewId}`;
+    const url = `https://liquors-project.onrender.com/reviews/delete/${reviewId}`;
 
     try {
-      const res = await axios.delete(url, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      console.log("respuesta de back al delete", res);
+    
+      const res = await axios.put(
+        url,
+        {},
+        {
+          headers: {
+            authorization: `Bearer: ${token}`,
+          },
+        }
+      );
 
       // Si la eliminación fue exitosa, actualiza el estado local y muestra la alerta
       dispatch(removeReview(reviewId));
