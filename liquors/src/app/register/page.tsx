@@ -150,7 +150,7 @@ const RegisterComponent: React.FC = (): React.ReactNode => {
           </div>
 
           <div className="inline-block pb-5 pt-5">
-            ¿Ya estas registrado? <br />
+            ¿Ya estás registrado? <br />
             <br />
             <Link href="/login">
               <span className="text-wine hover:text-red-900 transition-colors duration-100">

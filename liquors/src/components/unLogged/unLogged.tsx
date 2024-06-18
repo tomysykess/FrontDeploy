@@ -7,12 +7,12 @@ export const UnLogged: React.FC = () => {
       <ul className="flex space-x-6">
         <li>
           <Link className="buttonSecondary" href="/login">
-            Login
+            Iniciar Sesión
           </Link>
         </li>
         <li>
           <Link className="buttonPrimary" href="/register">
-            Register
+            Registrarse
           </Link>
         </li>
       </ul>

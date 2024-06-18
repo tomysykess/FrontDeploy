@@ -95,7 +95,7 @@ export const ReviewForm = () => {
           type="text"
           value={formData.comment}
           name="comment"
-          placeholder="Publica aquí tu Review"
+          placeholder="Publica aquí tu reseña"
           onChange={handlerChange}
           className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-wine"
         />
@@ -117,7 +117,7 @@ export const ReviewForm = () => {
           type="submit"
           className="bg-wine text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors"
         >
-          Postear opinión
+          Postear reseña
         </button>
       </form>
     </div>

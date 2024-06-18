@@ -46,7 +46,7 @@ const HistorialReviewsAdmin: React.FC = (): React.ReactNode => {
                     className="flex-shrink-0"
                   />
                   <h2 className="font-plus-jakarta-sans  text-2xl text-start font-semibold ml-2">
-                    Reviews:
+                    Reseñas:
                   </h2>
                 </div>
                 <br />

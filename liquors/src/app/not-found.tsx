@@ -6,8 +6,12 @@ const ErrorPage = () => {
     <div className="flex flex-col justify-center items-center gap-4 my-10">
       <img src="/404.png" alt="404" width={500} height={300} />
       <h1 className="header1">PAGE NOT FOUND</h1>
-      <p className="body1">Disculpa! No encontramos la pagina que estabas buscando</p>
-      <Link href="/" className="buttonPrimary">ir al Home</Link>
+      <p className="body1">
+        ¡Disculpa! No encontramos la pagina que estabas buscando
+      </p>
+      <Link href="/" className="buttonPrimary">
+        Ir al Home
+      </Link>
     </div>
   );
 };

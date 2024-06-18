@@ -12,31 +12,35 @@ export const Footer = () => {
       </div>
       <div>
         <ul className="flex space-x-6">
-          <li className="font-plus-jakarta-sans">
-            Contact Us
+          <li className="font-plus-jakarta-sans font-semibold">
+            Contáctanos
             <ul className="flex flex-col">
-              <li className="font-plus-jakarta-sans">
-                Street Name 123, City, Country
+              <li className="font-plus-jakarta-sans font-normal">
+                Street Name 123, Buenos Aires, Argentina
               </li>
-              <li className="font-plus-jakarta-sans">Phone: (123) 456-7890</li>
-              <li className="font-plus-jakarta-sans">info@example.com</li>
+              <li className="font-plus-jakarta-sans font-normal">
+                Teléfono: (123) 456-7890
+              </li>
+              <li className="font-plus-jakarta-sans font-normal">
+                info@example.com
+              </li>
             </ul>
           </li>
           <li className="flex flex-col">
             <ul className="flex flex-col">
               <li>
                 <Link className="buttonSecondary" href="/recommendation">
-                  Pick of the Month
+                  Recomendado del Mes
                 </Link>
               </li>
               <li>
                 <Link className="buttonSecondary" href="/newsletter">
-                  Newsletter
+                  Boletín
                 </Link>
               </li>
               <li>
                 <Link className="buttonSecondary" href="/aboutUs">
-                  About Us
+                  Información
                 </Link>
               </li>
             </ul>

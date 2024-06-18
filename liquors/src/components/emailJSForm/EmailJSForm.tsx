@@ -34,7 +34,7 @@ const EmailJSForm = () => {
         },
         (error) => {
           console.log("FAILED...", error.text);
-          alert("Debes ingresar para obtener la Newsletter");
+          alert("Debes iniciar sesión para ingresar a nuestro boletín");
           router.push("/login");
         }
       );
@@ -47,14 +47,14 @@ const EmailJSForm = () => {
         className="bg-white p-6 rounded shadow-md w-full max-w-md"
       >
         <h2 className="text-2xl text-center rounded font-plus-jakarta-sans mb-4">
-          Obtener nuestra Muestra de Newsletter!
+          ¡Ingresa a nuestro Boletín!
         </h2>
 
         <button
           type="submit"
           className="w-full bg-wine text-white py-2 px-4 rounded hover:bg-red-800 transition duration-200"
         >
-          Recibir Mail de Newsletter
+          Obtener boletín
         </button>
       </form>
     </div>
