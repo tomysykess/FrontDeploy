@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import { NavBar } from "@/components/navBar/navbar";
 import Providers from "@/store/providers";
 import AuthStore from "@/components/authStore/AuthStore";
+import Landbot from "@/components/landbot/Landbot";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
               {/* ----------- */}
               {children}
             </div>
+            <Landbot></Landbot>
             <Footer />
           </AuthStore>
         </Providers>
