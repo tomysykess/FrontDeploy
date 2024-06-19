@@ -58,7 +58,7 @@ const CajaMes: React.FC = (): React.ReactNode => {
                   <h1 className="text-xl font-bold">
                     En esta caja encontrarás la bebida con mejor promedio de review!
                   </h1>
-                  <h2 className="text-lg">Conseguila por 25$ por mes con envío incluido</h2>
+                  <h2 className="text-lg">Consegui la tuya subscribiendote a premiun y recibi una caja por mes!</h2>
                   <div className="flex space-x-4 mt-4">
                     <div className="flex flex-col items-center">
                       <LabelImportantIcon fontSize="large" />

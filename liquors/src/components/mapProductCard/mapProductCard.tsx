@@ -14,6 +14,9 @@ export const MapProductCard: React.FC = (): React.ReactNode => {
   const dispatch = useDispatch();
   const dataGlobal = useSelector((state: RootState) => state.products.data);
   console.log(dataGlobal);
+  const cajaMes:any  = dataGlobal
+  const cajaMes2:any  = JSON.stringify(dataGlobal)
+  localStorage.setItem("cajaDelMes", cajaMes2)
 
   const [page, setPage] = useState();
 
