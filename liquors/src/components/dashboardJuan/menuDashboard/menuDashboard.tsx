@@ -116,13 +116,13 @@ export const MenuDashboard: React.FC = (): React.ReactNode => {
                       <Inventory2Icon></Inventory2Icon>
                       Productos publicados
                     </Link>
-                    <Link
+                    {/*     <Link
                       href="/profile/dashboardAdmin/seleccionarTemaAdmin"
                       className="block py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300"
                     >
                       <ColorLensIcon></ColorLensIcon>
                       Seleccionar Tema
-                    </Link>
+                    </Link> */}
                   </>
                 )}{" "}
                 {/* ---------------------------------------------------------------------------------------------------------------------------------------- */}
