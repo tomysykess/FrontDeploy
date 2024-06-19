@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const loginUserFireBase = async (formData: any, auth:any, signInWithEmailAndPassword: any ,setIsSuccess: any, setError: any, router: any, setIsLoading: any) => {
+const loginUserFireBase = async (formData: any, auth:any, signInWithEmailAndPassword: any ,setIsSuccess: any, setError: any, router: any, setIsLoading: any, setErrorFirebase: any) => {
 
   try {
         //___________________________________________POST LOGIN A FIREBASE_________________________________________
@@ -11,7 +11,6 @@ const loginUserFireBase = async (formData: any, auth:any, signInWithEmailAndPass
         //UID LOGIN FIREBASE, CARGO AL LOCALSTORAGE /--> este tomi lo envia al back para recibir otro
         const userUid = userCredential.user.uid
         JSON.stringify(userUid)
-        localStorage.setItem("uidLoginFirebase", userUid)
         //__________________________________________POST LOGIN A BACK END_________________________________________
         const loginObjet = {
           email: userCredential.user.email,
@@ -36,7 +35,10 @@ const loginUserFireBase = async (formData: any, auth:any, signInWithEmailAndPass
   } catch (error: any) {
         const errorMessage = error.message;
         console.error('Error en el inicio de sesión:', error);
-        setError(errorMessage);
+        if (error.response && error.response.data && error.response.data.message) {
+          setError(error.response.data.message);
+        }
+        setErrorFirebase(errorMessage)
         setIsSuccess(false);
   } finally {
        setIsLoading(false);

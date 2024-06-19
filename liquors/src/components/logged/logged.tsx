@@ -16,7 +16,9 @@ export const Logged: React.FC = (): React.ReactNode => {
   useEffect(() => {
     const name: any = localStorage.getItem("userDataLogin");
     const nameParsed: IUser = JSON.parse(name);
-    setUserName(nameParsed.name);
+    if (nameParsed) {
+      setUserName(nameParsed.name);
+    }
   }, []);
 
   const logoutHandler: React.MouseEventHandler<HTMLButtonElement> = () => {
@@ -29,9 +31,6 @@ export const Logged: React.FC = (): React.ReactNode => {
 
   const favHandler = () => {
     router.push("/profile/dashboardUser/favoritos");
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
   };
 
   return (

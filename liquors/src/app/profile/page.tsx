@@ -1,5 +1,4 @@
 "use client";
-import { DashboardSelector } from "@/components/dashboardSelector/dashboardSelector";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { MenuDashboard } from "@/components/dashboardJuan/menuDashboard/menuDashboard";
@@ -7,7 +6,18 @@ import { AccountInfoCard } from "@/components/dashboardJuan/dashboardUser/dashbo
 import LabelImportantIcon from "@mui/icons-material/LabelImportant";
 
 const Profile: React.FC = (): React.ReactNode => {
+  
+  /*const getToken = () => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      return localStorage.getItem("loginToken") || null;
+    }
+    return null;
+  };*/
+  
+  //const [token] = useState(getToken)
+
   const [token, setToken] = useState<string | null>(null);
+
   // Estado del usuario
   const [dataUser, setDataUser] = useState({
     id: "",
@@ -24,6 +34,12 @@ const Profile: React.FC = (): React.ReactNode => {
     setToken(loginToken);
   }, [token]);
 
+  /*useEffect(() => {
+    if (!token) {
+        router.push("/");
+    }
+  },[]);*/
+
   useEffect(() => {
     const userDataFromStorage: any = localStorage.getItem("userDataLogin");
     const dataParsed = JSON.parse(userDataFromStorage);
@@ -36,9 +52,11 @@ const Profile: React.FC = (): React.ReactNode => {
     <>
       {token && (
         <>
-          <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1 h-full">
+
+          <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1 h-screen">
+
             <MenuDashboard />
-            <div className="overflow-y-auto w-full">
+            <div className="w-full">
               <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">
                 ¡Bienvenido, {dataUser.name}!
               </h1>
@@ -54,5 +72,6 @@ const Profile: React.FC = (): React.ReactNode => {
     </>
   );
 };
+
 
 export default Profile;

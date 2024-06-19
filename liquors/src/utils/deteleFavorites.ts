@@ -8,7 +8,6 @@ export const deleteFavorites = async (idUser: string | undefined, idProduct: str
         const productIds = [idProduct]
         const response = await axios.delete(`https://liquors-project.onrender.com/users/${idUser}/favorites`,{ data: {productIds} } )
         dispatch(deleteFavoriteProduct(idProduct))
-        console.log("respuesta back a delete favs", response);
         if (window.location.href !== 'https://liquors-project.onrender.com/') {
             Swal.fire({
                 position: "top-end",

@@ -28,19 +28,41 @@ const ProductCard: React.FC<{ product: Product }> = ({
     if (idUser) {
       setIdUser(idUserParsed.id);
     }
-  }, []);
+
+    // Recupera el estado de favoritos del localStorage
+    const storedFavorites = localStorage.getItem("favorites");
+    if (storedFavorites) {
+      const favorites = JSON.parse(storedFavorites);
+      if (favorites.includes(product.id)) {
+        setFavoritColor(true);
+      }
+    }
+  }, [product.id]);
+
+  const updateLocalStorageFavorites = (productId: string, add: boolean) => {
+    const storedFavorites = localStorage.getItem("favorites");
+    let favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
+    if (add) {
+      favorites.push(productId);
+    } else {
+      favorites = favorites.filter((id: string) => id !== productId);
+    }
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  };
 
   //HANDLER EVENT FAVORITOS
   const favHandler = (product: Product) => {
     const token = localStorage.getItem("loginToken");
     if (token) {
-      setFavoritColor((prevFavoritColor) => !prevFavoritColor);
       const productId = product.id;
       if (favoritColor) {
         deleteFavorites(userId, productId, dispatch);
+        updateLocalStorageFavorites(productId, false);
       } else {
         postFavorites(userId, productId);
+        updateLocalStorageFavorites(productId, true);
       }
+      setFavoritColor((prevFavoritColor) => !prevFavoritColor);
     } else {
       Swal.fire({
         icon: "info",
@@ -70,17 +92,25 @@ const ProductCard: React.FC<{ product: Product }> = ({
         alt="imagen bebida"
       />
       <br></br>
+
+      {/*<div className="flex flex-row absolute bottom-10   pl-1 pr-1 left-0 right-0 items-center justify-between w-full mt-2">
+        <span className="text-gray-700">{product.rate}</span>
+        <div className="flex flex-row justify-center flex-grow mx-2">
+          <HalfRating props={product.rate} />
+        </div>*/}
+
       <div className="flex flex-row absolute bottom-10    pl-1 pr-1 left-0 right-0 items-center justify-between w-full mt-2">
-        {product.averageRate > 0 ? (
+        {product.rate > 0 ? (
           <>
-            <span className="text-gray-700">{product.averageRate}</span>
-            <HalfRating props={product.averageRate} />
+            <span className="text-gray-700">{product.rate}</span>
+            <HalfRating props={product.rate} />
           </>
         ) : (
           <p className="text-plus-jakarta-sans text-gray-500  dark:text-darkMode-white text-center bg-greyVivino dark:bg-darkMode-grey2 rounded-lg shadow-sm p-0 w-full h-12  ">
             ¡Haz la primera reseña!
           </p>
         )}
+
         <button onClick={() => favHandler(product)}>
           {favoritColor ? (
             <FavoriteIcon className="text-wineMasOscuro " />

@@ -21,6 +21,7 @@ export const FavoriteProductsCard = ({
     if (idUser) {
       setIdUser(idUserParsed.id);
     }
+
   }, []);
 
   //handler borrado favs
@@ -28,6 +29,7 @@ export const FavoriteProductsCard = ({
     const productId = product.id;
     deleteFavorites(userId, productId, dispatch);
   };
+
 
   return (
     <div className="flex items-start max-w-2xl pr-72 border-r-8 font-plus-jakarta-sans border-r-wine shadow-lg bg-white dark:bg-darkMode-greyVivino rounded-lg p-4 m-4 relative">

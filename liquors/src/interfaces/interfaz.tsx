@@ -50,6 +50,7 @@ export interface ProductsState {
   dataFiltered: Product[];
   page: number[];
   favorites: Product[];
+  cajaMensual: Product[];
 }
 
 export interface IUser {
@@ -58,6 +59,12 @@ export interface IUser {
   email: string;
   role: number;
   firebaseUid: string;
+}
+
+
+export interface IUserState {
+  data: IUser[];
+  userBox: Product[];
 }
 export interface IReview {
   id: string;

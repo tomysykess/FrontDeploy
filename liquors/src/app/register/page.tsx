@@ -52,6 +52,7 @@ const RegisterComponent: React.FC = (): React.ReactNode => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [errorStateBack, setErrorBack] = useState(null);
   const [registerToken, setToken] = useState("");
 
   //EVENT HANDLER LLENADO DE INPUTS
@@ -77,7 +78,8 @@ const RegisterComponent: React.FC = (): React.ReactNode => {
       router,
       errors,
       setIsLoading,
-      setToken
+      setToken,
+      setErrorBack
     );
   };
 
@@ -185,9 +187,9 @@ const RegisterComponent: React.FC = (): React.ReactNode => {
               ¡Registro exitoso!
             </span>
           )}
-          {!isSuccess && errors.submit && (
+          {!isSuccess && (errors.submit || errorStateBack) && (
             <span className="inline-block   w-1/2 rounded bg-red-500 text-white p-2 mt-2">
-              {errors.submit}
+              {errors.submit || errorStateBack}
             </span>
           )}
 

@@ -8,6 +8,7 @@ const initialState: ProductsState = {
   dataFiltered: [],
   page: [],
   favorites: [],
+  cajaMensual: []
 };
 
 /* este es el crud redux de products */

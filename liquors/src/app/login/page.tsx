@@ -45,6 +45,7 @@ const LoginComponent: React.FC = (): React.ReactNode => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorState, setError] = useState(null);
+  const [errorStateFirebase, setErrorFirebase] = useState(null);
 
   //estados locales de login con google (aun sin uso)
   const [errorStateGoogle, setErrorGoogle] = useState(null);
@@ -68,7 +69,8 @@ const LoginComponent: React.FC = (): React.ReactNode => {
       setIsSuccess,
       setError,
       router,
-      setIsLoading
+      setIsLoading,
+      setErrorFirebase
     );
   };
 
@@ -163,9 +165,9 @@ const LoginComponent: React.FC = (): React.ReactNode => {
               ¡Login exitoso! <br /> Redirigiendo...
             </p>
           )}
-          {errorState && (
-            <p className="inline-block cursor-pointer w-1/5 rounded bg-red-500 text-white p-2 mt-2">
-              {errorState}
+          {(errorState || errorStateFirebase) && (
+            <p className="inline-block cursor-pointer w-1/2 rounded bg-red-500 text-white p-2 mt-2">
+              {errorState || errorStateFirebase}
             </p>
           )}
         </form>

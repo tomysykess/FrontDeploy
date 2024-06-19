@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import productsReducer from "./reducers/productsSlice";
 import reviewsReducer from "./reducers/reviewsSlice";
+import usersReducer from "./reducers/usersSlice"; // Import the usersReducer
 
 const store = configureStore({
   reducer: {
     products: productsReducer,
     reviews: reviewsReducer,
+    users: usersReducer,
   },
 });
 

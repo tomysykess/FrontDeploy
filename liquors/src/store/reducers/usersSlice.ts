@@ -1,12 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-interface IUser {
-  name: string;
-  email: string;
-}
+import { IUserState, IUser, Product } from "@/interfaces/interfaz";
 
-const initialState: IUser = {
-  name: "",
-  email: "",
+const initialState: IUserState = {
+  data: [],
+  userBox: []
 };
 
 const usersSlice = createSlice({
@@ -14,15 +11,30 @@ const usersSlice = createSlice({
   initialState,
   reducers: {
     createUsers(state, action) {},
-    readUsers(state, action: PayloadAction<IUser>) {
+    readUsers(state, action: PayloadAction<IUserState>) {
       state = action.payload;
     },
     updateUsers(state, action) {},
     deleteUsers(state, action) {},
+    //reducers para caja del mes
+    readUserBox(state, action: PayloadAction<Product[]>) {
+      state.userBox = state.userBox.concat(action.payload);
+    },
+    clearUserBox(state) {
+      state.userBox = [];
+    },
+    deleteUserBox(state, action: PayloadAction<string>) {
+      state.userBox = state.userBox.filter(
+        product => product.id !== action.payload
+      );
+    },
+    //--------------------------
   },
 });
 
-export const { createUsers, readUsers, updateUsers, deleteUsers } =
+export const { createUsers, readUsers, updateUsers, deleteUsers, readUserBox,
+  clearUserBox,
+  deleteUserBox } =
   usersSlice.actions;
 
-export default usersSlice;
+export default usersSlice.reducer;
