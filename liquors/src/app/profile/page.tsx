@@ -47,11 +47,13 @@ const Profile: React.FC = (): React.ReactNode => {
     <>
       {token && (
         <>
-          <div className="bg-greyVivino flex flex-row pt-1 mb-1 h-screen">
+
+          <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1 h-screen">
+
             <MenuDashboard />
             <div className="w-full">
               <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">
-                ¡Bienvenido {dataUser.name}!
+                ¡Bienvenido, {dataUser.name}!
               </h1>
               <br></br>
               <div className="flex flex-col items-center w-auto">

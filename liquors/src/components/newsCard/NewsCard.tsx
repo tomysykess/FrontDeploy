@@ -13,12 +13,12 @@ const NewsItem = ({ newItem }: { newItem: INews }) => {
       <img
         src={newItem.imageB}
         alt={newItem.title}
-        className="z-20 absolute  w-auto h-1/2 object-contain flex-shrink-0"
+        className="z-20 absolute  w-auto h-1/2 object-contain flex-shrink-0 dark:opacity-70"
       />
       <img
         src={newItem.imageF}
         alt={newItem.title}
-        className="z-30  w-1/4 h-1/5 object-contain flex-shrink-0 opacity-85"
+        className="z-30  w-1/4 h-1/5 object-contain flex-shrink-0 opacity-85 dark:opacity-70"
       ></img>
       <div
         className={`flex flex-col justify-center ${
@@ -27,13 +27,13 @@ const NewsItem = ({ newItem }: { newItem: INews }) => {
       >
         <div className="z-40">
           <b>
-            <h2 className="z-40 text-2xl font-plus-jakarta-sans text-gray-800 mb-2">
+            <h2 className="z-40 text-2xl font-plus-jakarta-sans text-gray-800 mb-2 dark:text-wine  ">
               {newItem.title}
             </h2>
           </b>
         </div>
         <div className="z-40">
-          <p className="  text-gray-700 text-base font-plus-jakarta-sans">
+          <p className="  text-gray-700 text-base font-plus-jakarta-sans  dark:text-darkMode-white">
             {newItem.text}
           </p>
         </div>

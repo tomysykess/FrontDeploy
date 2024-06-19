@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from 'next/image';
+import Image from "next/image";
 
 const SquareSpiritsLanding = () => {
   return (
@@ -15,7 +15,7 @@ const SquareSpiritsLanding = () => {
           />
         </div>
         <div className="absolute inset-0 flex items-center justify-center transition-all duration-700 bg-amber-200 opacity-0 hover:opacity-80">
-          <h2 className="text-center">Spirits</h2>
+          <h2 className="text-center">Destilados</h2>
         </div>
       </Link>
     </div>

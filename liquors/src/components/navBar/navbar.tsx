@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Logged } from "../logged/logged";
 import { UnLogged } from "../unLogged/unLogged";
 import Link from "next/link";
+import ThemeToggleButton from "../providerDark/buttonDark";
 
 export const NavBar: React.FC = () => {
   const pathname = usePathname();
@@ -20,7 +21,7 @@ export const NavBar: React.FC = () => {
   //________________________________________________________________________
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
+    <div className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-darkMode-greyVivino shadow-md">
       <nav className="pt-2">
         <div className="flex justify-between items-center p-3 mx-large">
           <div>
@@ -33,28 +34,41 @@ export const NavBar: React.FC = () => {
           <div>
             <ul className="flex space-x-6">
               <li>
-                <Link className="buttonSecondary" href="/product">
-                  Products
+                <Link
+                  className="buttonSecondary  dark:text-grey1"
+                  href="/product"
+                >
+                  Productos
                 </Link>
               </li>
               <li>
-                <Link className="buttonSecondary" href="/recommendation">
-                  Pick of the Month
+                <Link
+                  className="buttonSecondary  dark:text-grey1"
+                  href="/recommendation"
+                >
+                  Recomendado del Mes
                 </Link>
               </li>
               <li>
-                <Link className="buttonSecondary" href="/newsletter">
-                  Newsletter
+                <Link
+                  className="buttonSecondary  dark:text-grey1"
+                  href="/newsletter"
+                >
+                  Boletín
                 </Link>
               </li>
               <li>
-                <Link className="buttonSecondary" href="/aboutUs">
-                  About
+                <Link
+                  className="buttonSecondary  dark:text-grey1"
+                  href="/aboutUs"
+                >
+                  Información
                 </Link>
               </li>
             </ul>
           </div>
           <div>{token ? <Logged /> : <UnLogged />}</div>
+          <ThemeToggleButton></ThemeToggleButton>
         </div>
       </nav>
     </div>
