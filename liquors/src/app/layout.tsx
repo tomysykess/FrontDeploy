@@ -22,12 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <ThemeProvider>
-      <html lang="en">
-        <body className={inter.className}>
+      <html lang="en" className="bg-greyVivino dark:bg-darkMode-greyVivino">
+        <body className="bg-greyVivino dark:bg-darkMode-greyVivino">
           <Providers>
             <AuthStore>
               <NavBar />
-              <div className="pt-16 ">
+              <div className="pt-16 bg-greyVivino dark:bg-darkMode-greyVivino">
                 {/* fuente plus-jakarta */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
