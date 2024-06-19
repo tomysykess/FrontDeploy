@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Slider from "@mui/material/Slider";
 import Checkbox from "@mui/material/Checkbox";
 import StarIcon from "@mui/icons-material/Star";
+import Swal from "sweetalert2";
 
 interface ProductFilterCardProps {
   onFilterChange: (filters: any) => void;
@@ -39,6 +40,19 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
     setSelectedRating(rating);
     onFilterChange({ categoryButton, abvRange, selectedRating: rating });
   };
+
+  const handleFetchFilterClick = () => {
+    if (isFilterDisabled) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Acceso denegado',
+        text: 'Suscribete a la membresia premium para utilizar el filtro.',
+      });
+    } else {
+      fetchFilterBack();
+    }
+  };
+
 
   return (
     <div className="flex flex-col  bg-greyVivino border p-4 ml-0 mr-6 rounded-lg shadow-md w-3/4 h-">
@@ -146,8 +160,7 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
         ))}
       </div>
       <button
-        disabled={isFilterDisabled}
-        onClick={fetchFilterBack}
+        onClick={handleFetchFilterClick }
         className="px-1 py-2  font-plus-jakarta-sans  hover:brightness-110 bg-greenVivino mt-6 rounded-3xl border border-solid text-white"
       >
         buscar
