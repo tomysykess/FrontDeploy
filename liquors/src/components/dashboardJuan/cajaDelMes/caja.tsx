@@ -8,9 +8,8 @@ import { useDispatch } from "react-redux";
 const SubscriptionBox: React.FC = (): React.ReactNode => {
   const dispatch = useDispatch();
 
-  const dataCajaMes: any = localStorage.getItem("cajaDelMes");
-  const dataCajaMesParsed = JSON.parse(dataCajaMes);
-  const selectedProductWine = dataCajaMesParsed.length > 3 ? dataCajaMesParsed[3] : null;
+  const [dataCajaMesParsed, setDataCajaMesParsed] = useState<any>(null);
+  const [selectedProductWine, setSelectedProductWine] = useState<any>(null);
 
   const [boxActive, setBoxActive] = useState<boolean>(false);
 
@@ -25,9 +24,12 @@ const SubscriptionBox: React.FC = (): React.ReactNode => {
       const idParsed = JSON.parse(userData);
       setUserId(idParsed.id || '');
     }
-    if (dataCajaMes) {
-      setImgUrlWine(selectedProductWine.imgUrl);
-      setProductIdWine(selectedProductWine.id);
+
+    const cajaMesStorage = localStorage.getItem("cajaDelMes");
+    if (cajaMesStorage) {
+      const cajaMesParsed = JSON.parse(cajaMesStorage);
+      setDataCajaMesParsed(cajaMesParsed);
+      setSelectedProductWine(cajaMesParsed.length > 3 ? cajaMesParsed[3] : null);
     }
   }, []);
 
@@ -51,6 +53,10 @@ const SubscriptionBox: React.FC = (): React.ReactNode => {
       });
     }
   };
+
+  if (!dataCajaMesParsed || !selectedProductWine) {
+    return null; // O manejar el caso cuando los datos de localStorage no están disponibles
+  }
 
   return (
     <div className="flex justify-center space-x-10">

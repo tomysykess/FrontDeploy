@@ -14,10 +14,7 @@ export const MapProductCard: React.FC = (): React.ReactNode => {
   const dispatch = useDispatch();
   const dataGlobal = useSelector((state: RootState) => state.products.data);
   console.log(dataGlobal);
-  const cajaMes:any  = dataGlobal
-  const cajaMes2:any  = JSON.stringify(dataGlobal)
-  localStorage.setItem("cajaDelMes", cajaMes2)
-
+ 
   const [page, setPage] = useState();
 
   //GET PRODUCTS A LA API + CARGA DE DATOS EN LA STORE.
@@ -26,6 +23,13 @@ export const MapProductCard: React.FC = (): React.ReactNode => {
       fetchProductsHome(dispatch, page);
     }
   }, [dispatch, dataGlobal.length]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') { // Verifica que estamos en el navegador
+      const cajaMes2 = JSON.stringify(dataGlobal);
+      localStorage.setItem("cajaDelMes", cajaMes2);
+    }
+  }, [dataGlobal]);
 
   const detailProduct = (product: Product) => {
     const data = JSON.stringify(product);
