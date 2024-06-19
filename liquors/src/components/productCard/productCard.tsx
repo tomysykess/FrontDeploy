@@ -93,9 +93,9 @@ const ProductCard: React.FC<{ product: Product }> = ({
       />
       <br></br>
       <div className="flex flex-row absolute bottom-10   pl-1 pr-1 left-0 right-0 items-center justify-between w-full mt-2">
-        <span className="text-gray-700">{product.averageRate}</span>
+        <span className="text-gray-700">{product.rate}</span>
         <div className="flex flex-row justify-center flex-grow mx-2">
-          <HalfRating props={product.averageRate} />
+          <HalfRating props={product.rate} />
         </div>
         <button onClick={() => favHandler(product)}>
           {favoritColor ? (
