@@ -38,14 +38,22 @@ export const Logged: React.FC = (): React.ReactNode => {
     <div>
       <ul className="flex space-x-6">
         <li>
-          <span
+          {/* <span
             onClick={favHandler}
             style={{ cursor: "pointer" }}
             className="buttonSecondary  dark:text-grey1"
           >
             <FavoriteBorderIcon />
             Favoritos
-          </span>
+          </span> */}
+          
+          <Link
+            className="buttonSecondary  dark:text-grey1"
+            href={"/profile/dashboardUser/favoritos"}
+          >
+            <FavoriteBorderIcon />
+            Favoritos
+          </Link>
           <Link
             className="buttonSecondary ml-5  dark:text-grey1"
             href="/profile"
