@@ -12,6 +12,7 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 //material ui
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import Swal from "sweetalert2";
 
 const categories = ["Ron", "Gin", "Whisky", "Vodka", "Vino"];
 
@@ -180,10 +181,22 @@ export const ProductForm = () => {
       } catch (error) {
         console.error("error al agregar el producto", error);
       }
-      alert(`El producto ${dataProduct.name} ha sido agregado con exito`);
+      if (window.location.href !== 'https://liquors-project.onrender.com/') {
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `El producto ${dataProduct.name} ha sido agregado con exito`,
+            showConfirmButton: false,
+            timer: 2000
+          });
+      }
       router.push("/profile/dashboardProducer/productosPublicados");
     } else {
-      alert("Hubo un error al agregar el producto");
+      Swal.fire({
+        title: "Oops...",
+        text: "Hubo un error al agregar el producto",
+        icon: "error"
+      });
     }
   };
 

@@ -12,6 +12,7 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { getProductById } from "@/utils/getProductById";
 import { putProduct } from "@/utils/putProduct";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 const categories = ["Ron", "Gin", "Whisky", "Vodka", "Vino"];
 
@@ -186,18 +187,20 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
 
     const errorInput = validateProductForm(dataProduct);
     setErrorProduct(errorInput);
-
     if (Object.keys(errorInput).length === 0) {
       try {
         putProduct(productId, updatedDataProduct, dataUser.token);
-        handleCancel();
+        router.push("/profile/dashboardProducer/productosPublicados");
       } catch (error) {
         console.error("Error updating product:", error);
+        return;
       }
-      alert(`el producto ${dataProduct.name} se edito con exito`);
-      router.push("/profile/dashboardProducer/productosPublicados");
     } else {
-      alert("Hubo un error al editar el producto");
+      Swal.fire({
+        title: "Oops...",
+        text: "Hubo un error al agregar el producto",
+        icon: "error"
+      });
     }
   };
 
