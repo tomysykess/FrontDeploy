@@ -1,4 +1,4 @@
-import { useTheme } from "./ProviderDark";
+/* import { useTheme } from "./ProviderDark";
 
 const ButtonDark = () => {
   const { theme, toggleTheme }: any = useTheme();
@@ -15,3 +15,4 @@ const ButtonDark = () => {
 };
 
 export default ButtonDark;
+ */

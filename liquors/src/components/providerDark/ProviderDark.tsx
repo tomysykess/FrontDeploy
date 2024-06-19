@@ -1,4 +1,4 @@
-"use client";
+/* "use client";
 import { useContext, useEffect, useState, createContext } from "react";
 
 const ThemeContext: any = createContext();
@@ -35,3 +35,4 @@ export const ThemeProvider = ({ children }: Props) => {
 };
 
 export const useTheme = () => useContext(ThemeContext);
+ */
