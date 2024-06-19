@@ -77,7 +77,7 @@ const ProductCard: React.FC<{ product: Product }> = ({
             <HalfRating props={product.averageRate} />
           </>
         ) : (
-          <p className="text-plus-jakarta-sans text-gray-500  dark:text-darkMode-grey text-center bg-greyVivino dark:bg-darkMode-tequila rounded-lg shadow-sm p-0 w-full h-12  ">
+          <p className="text-plus-jakarta-sans text-gray-500  dark:text-darkMode-white text-center bg-greyVivino dark:bg-darkMode-grey2 rounded-lg shadow-sm p-0 w-full h-12  ">
             ¡Haz la primera reseña!
           </p>
         )}
