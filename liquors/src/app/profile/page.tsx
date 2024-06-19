@@ -1,5 +1,4 @@
 "use client";
-import { DashboardSelector } from "@/components/dashboardSelector/dashboardSelector";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { MenuDashboard } from "@/components/dashboardJuan/menuDashboard/menuDashboard";
@@ -17,7 +16,6 @@ const Profile: React.FC = (): React.ReactNode => {
   
   //const [token] = useState(getToken)
 
-  
   const [token, setToken] = useState<string | null>(null);
 
   // Estado del usuario
