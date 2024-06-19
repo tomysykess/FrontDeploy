@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Logged } from "../logged/logged";
 import { UnLogged } from "../unLogged/unLogged";
 import Link from "next/link";
+import ButtonDark from "../providerDark/buttonDark";
 
 export const NavBar: React.FC = () => {
   const pathname = usePathname();
@@ -55,6 +56,9 @@ export const NavBar: React.FC = () => {
             </ul>
           </div>
           <div>{token ? <Logged /> : <UnLogged />}</div>
+          <div>
+            <ButtonDark></ButtonDark>
+          </div>
         </div>
       </nav>
     </div>

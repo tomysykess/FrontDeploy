@@ -13,9 +13,9 @@ export default function Landing() {
     <div>
       <Carousel />
 
-      <div className="flex flex-col bg-greyVivino scroll-smooth overflow-auto pt-10 items-center">
+      <div className="flex flex-col bg-greyVivino dark:bg-darkMode-greyVivino scroll-smooth overflow-auto pt-10 items-center">
         {/*SECCION UNO DE TARJETAS (todas las categorias) */}
-        <h1 className="text-center text-2xl text-black font-plus-jakarta-sans font-normal mb-4">
+        <h1 className="text-center text-2xl text-black dark:text-darkMode-white font-plus-jakarta-sans font-normal mb-4">
           Explora <b className="text-wine">todas</b> las categorías
         </h1>
         <ExpandMoreIcon className="flex items-center" />
