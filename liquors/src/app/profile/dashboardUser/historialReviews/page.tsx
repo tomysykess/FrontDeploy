@@ -6,16 +6,38 @@ import { useRouter } from "next/navigation";
 import LabelImportantIcon from "@mui/icons-material/LabelImportant";
 
 const HistorialReviews: React.FC = (): React.ReactNode => {
-  const [token, setToken] = useState<string | null>(null);
-  const [role, setRole] = useState<any>({ rol: "" });
-  console.log("rol de dashboardUser", role);
+
+  const getToken = () => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      return localStorage.getItem("loginToken") || null;
+    }
+    return null;
+  };
+
+  const getRole = () => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      return localStorage.getItem("userDataLogin") || null;
+    }
+    return null;
+  }
+
+  const [token] = useState(getToken )
+  const [role] = useState<any>(getRole);
 
   const router = useRouter();
 
   useEffect(() => {
-    const loginToken = localStorage.getItem("loginToken");
-    setToken(loginToken);
-  }, [token]);
+    if (!token) {
+        router.push("/");
+    }
+    if (token) {
+      const rol = JSON.parse(role)
+      if (rol.role =! 4 || rol.role != "4") {
+        router.push("/profile")
+      }
+    }
+  },[]);
+
 
   /*useEffect(() => {
         if (!token) {

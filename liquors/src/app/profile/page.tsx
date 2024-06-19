@@ -7,7 +7,15 @@ import { AccountInfoCard } from "@/components/dashboardJuan/dashboardUser/dashbo
 import LabelImportantIcon from "@mui/icons-material/LabelImportant";
 
 const Profile: React.FC = (): React.ReactNode => {
-  const [token, setToken] = useState<string | null>(null);
+  
+  const getToken = () => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      return localStorage.getItem("loginToken") || null;
+    }
+    return null;
+  };
+  
+  const [token] = useState(getToken)
   // Estado del usuario
   const [dataUser, setDataUser] = useState({
     id: "",
@@ -20,9 +28,10 @@ const Profile: React.FC = (): React.ReactNode => {
   const router = useRouter();
 
   useEffect(() => {
-    const loginToken = localStorage.getItem("loginToken");
-    setToken(loginToken);
-  }, [token]);
+    if (!token) {
+        router.push("/");
+    }
+  },[]);
 
   useEffect(() => {
     const userDataFromStorage: any = localStorage.getItem("userDataLogin");
@@ -38,7 +47,7 @@ const Profile: React.FC = (): React.ReactNode => {
         <>
           <div className="bg-greyVivino flex flex-row pt-1 mb-1 h-screen">
             <MenuDashboard />
-            <div className="overflow-y-auto w-full">
+            <div className="w-full">
               <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">
                 ¡Bienvenido {dataUser.name}!
               </h1>

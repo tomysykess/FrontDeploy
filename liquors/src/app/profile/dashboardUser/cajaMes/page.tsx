@@ -1,57 +1,85 @@
 'use client'
 import { MenuDashboard } from "@/components/dashboardJuan/menuDashboard/menuDashboard";
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import LabelImportantIcon from '@mui/icons-material/LabelImportant';
-import SubscriptionBox from "@/components/cajaDelMes/caja";
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import SubscriptionBox from "@/components/dashboardJuan/cajaDelMes/caja";
 
 const CajaMes: React.FC = (): React.ReactNode => {
 
-    const [token, setToken] = useState<string | null>(null);
-    const [role, setRole] = useState<any>({rol: ""})
+  const getToken = () => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      return localStorage.getItem("loginToken") || null;
+    }
+    return null;
+  };
+
+  const getRole = () => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      return localStorage.getItem("userDataLogin") || null;
+    }
+    return null;
+  }
   
-    const router = useRouter()
+  const [token] = useState(getToken)
+  const [role] = useState<any>(getRole);
 
-    useEffect(() => {
-        const loginToken = localStorage.getItem("loginToken")
-        setToken(loginToken)
-      }, [token])
+  const router = useRouter()
 
-    /*useEffect(() => {
-        if (!token) {
-          router.push("/");
-        } else {
-          const dataLogin: any = localStorage.getItem("userDataLogin");
-          const dataLoginParsed = JSON.parse(dataLogin);
-          setRole(dataLoginParsed.role);
-        } 
-    }, [token])*/
+  useEffect(() => {
+    if (!token) {
+        router.push("/");
+    }
+    if (token) {
+      const rol = JSON.parse(role)
+      if (rol.role =! 4 || rol.role != "4") {
+        router.push("/profile")
+      }
+    }
+  },[]);
 
 
   return (
-        <>
-            {token && (
-                 <>
-                 <div className="bg-greyVivino flex flex-row pt-1 mb-1 h-screen">
-                     <MenuDashboard />
-                     <div className="overflow-y-auto w-full">
-                         <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">Caja del mes</h1><br></br>
-                         <div className="flex flex-col items-center w-full">
-                             <hr className="w-full border-gray-300" />
-                             <br />
-                             <div className="flex ml-36  items-center w-full">
-                                 <LabelImportantIcon style={{ color: '#c23a2e' }} className="flex-shrink-0" />
-                                 <h2 className="font-plus-jakarta-sans text-2xl text-start font-semibold ml-2">Mis Cajas</h2>
-                             </div>
-                             <br />
-                             <SubscriptionBox />
-                         </div>
-                     </div>
-                 </div>
-             </>
-            )}
-        </>
-  )
+    <>
+      {token && (
+        <div className="bg-greyVivino flex pb-9 flex-row pt-1 mb-1 h-screen">
+          <MenuDashboard />
+          <div className="overflow-y-auto flex flex-col justify-center items-center w-full">
+            <h1 className="font-plus-jakarta-sans pt-40 text-3xl text-center font-normal">
+              Suscribite a nuestra <span className="text-wine">caja del mes</span>
+            </h1>
+            <hr></hr>
+            <br />
+            <div className="flex flex-col items-center justify-center min-h-screen py-10">
+              <div className="flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-10 items-center mb-10">
+                {/* Elemento hermano */}
+                <div className="flex flex-col items-center text-center">
+                  <h1 className="text-xl font-bold">
+                    En esta caja encontrarás la bebida con mejor promedio de review!
+                  </h1>
+                  <h2 className="text-lg">Conseguila por 25$ por mes con envío incluido</h2>
+                  <div className="flex space-x-4 mt-4">
+                    <div className="flex flex-col items-center">
+                      <LabelImportantIcon fontSize="large" />
+                      <span>Producto Premium</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <LocalShippingIcon fontSize="large" />
+                      <span>Envío Rápido</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br />
+              {/* Este es el componente de la caja */}
+              <SubscriptionBox />
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default CajaMes;

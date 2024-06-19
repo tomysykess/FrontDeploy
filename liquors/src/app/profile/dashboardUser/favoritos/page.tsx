@@ -7,30 +7,27 @@ import LabelImportantIcon from '@mui/icons-material/LabelImportant';
 
 const FavoriteProduct: React.FC = (): React.ReactNode => {
 
-    const [token, setToken] = useState<string | null>(null);
-    const [role, setRole] = useState<any>({rol: ""})
-  
+    const getToken = () => {
+        if (typeof window !== "undefined" && window.localStorage) {
+          return localStorage.getItem("loginToken") || null;
+        }
+        return null;
+      };
+
+    const [token] = useState(getToken)
+
     const router = useRouter()
 
     useEffect(() => {
-        const loginToken = localStorage.getItem("loginToken")
-        setToken(loginToken)
-      }, [token])
-
-    /*useEffect(() => {
-        if (!token) {
+      if (!token) {
           router.push("/");
-        } else {
-          const dataLogin: any = localStorage.getItem("userDataLogin");
-          const dataLoginParsed = JSON.parse(dataLogin);
-          setRole(dataLoginParsed.role);
-        } 
-    }, [token])*/
+      }
+    },[]);
 
 
   return (
         <>
-            {token && (
+            {token &&(
                  <>
                  <div className="bg-greyVivino flex flex-row pt-1 mb-1 h-screen">
                      <MenuDashboard />
