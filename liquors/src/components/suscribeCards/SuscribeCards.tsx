@@ -6,11 +6,11 @@ import { ISuscribe } from "@/interfaces/interfaz";
 
 const SuscribeCards = () => {
   return (
-    <div className="p-6 bg-greyVivino">
+    <div className="p-6 bg-greyVivino  dark:bg-darkMode-greyVivino  ">
       {" "}
       <b>
-        <h2 className="text-3xl font-plus-jakarta  text-center mb-6">
-          Plan de suscripciones
+        <h2 className="text-3xl font-plus-jakarta  text-center mb-6 dark:text-grey1">
+          Planes de Suscripción
         </h2>
       </b>
       <div className="flex flex-row justify-around items-center">

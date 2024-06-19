@@ -55,68 +55,68 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
 
 
   return (
-    <div className="flex flex-col  bg-greyVivino border p-4 ml-0 mr-6 rounded-lg shadow-md w-3/4 h-">
+    <div className="flex flex-col  bg-greyVivino dark:bg-darkMode-grey1 border p-4 ml-0 mr-6 rounded-lg shadow-md w-3/4 h-">
       {/*FILTRO POR TIPO BEBIDA */}
       <h1 className="text-lg font-normal  font-plus-jakarta-sans mb-4">
-        Filters
+        Filtros
       </h1>
-      <div className="mb-4 flex p-1 flex-wrap justify-center">
+      <div className="mb-4 flex p-1 flex-wrap justify-center gap-2">
         <button
-          className={`px-4 py-2 font-plus-jakarta-sans bg-white rounded-3xl border border-solid border-wine ${
-            categoryButton === "Whisky"
-              ? "bg-wine text-white"
-              : "bg-gray-200 text-wine"
+          className={`px-4 py-2 font-plus-jakarta-sans bg-white dark:bg-darkMode-grey1  rounded-3xl border border-solid dark:border-white border-wine ${
+            categoryButton === "Ron"
+              ? "bg-wine text-white dark:bg-wine"
+              : "bg-gray-200 text-wine dark:text-white "
           }`}
-          onClick={() => handleButtonClick("Whisky")}
+          onClick={() => handleButtonClick("Ron")}
         >
-          Whisky
+          Ron
         </button>
         <button
-          className={`px-4 py-2 mx-2 font-plus-jakarta-sans bg-white rounded-3xl border border-solid border-wine ${
+          className={`px-4 py-2 mx-2 font-plus-jakarta-sans bg-white dark:bg-darkMode-grey1  rounded-3xl border border-solid dark:border-white border-wine ${
             categoryButton === "Gin"
-              ? "bg-wine text-white"
-              : "bg-gray-200 text-wine"
+              ? "bg-wine text-white dark:bg-wine"
+              : "bg-gray-200 text-wine dark:text-white"
           }`}
           onClick={() => handleButtonClick("Gin")}
         >
           Gin
         </button>
         <button
-          className={`px-4 py-2  font-plus-jakarta-sans bg-white rounded-3xl border border-solid border-wine ${
+          className={`px-4 py-2  font-plus-jakarta-sans bg-white dark:bg-darkMode-grey1  rounded-3xl border border-solid dark:border-white border-wine ${
+            categoryButton === "Whisky"
+              ? "bg-wine text-white dark:bg-wine"
+              : "bg-gray-200 text-wine dark:text-white"
+          }`}
+          onClick={() => handleButtonClick("Whisky")}
+        >
+          Whisky
+        </button>
+        <button
+          className={`px-4 py-2  font-plus-jakarta-sans bg-white dark:bg-darkMode-grey1  rounded-3xl border border-solid dark:border-white border-wine ${
             categoryButton === "Vodka"
-              ? "bg-wine text-white"
-              : "bg-gray-200 text-wine"
+              ? "bg-wine text-white dark:bg-wine"
+              : "bg-gray-200 text-wine dark:text-white"
           }`}
           onClick={() => handleButtonClick("Vodka")}
         >
           Vodka
         </button>
         <button
-          className={`px-4 py-2  font-plus-jakarta-sans bg-white rounded-3xl border border-solid border-wine ${
-            categoryButton === "Tequila"
-              ? "bg-wine text-white"
-              : "bg-gray-200 text-wine"
+          className={`px-4 py-2  font-plus-jakarta-sans bg-white dark:bg-darkMode-grey1 rounded-3xl border border-solid dark:border-white border-wine ${
+            categoryButton === "Vino"
+              ? "bg-wine text-white dark:bg-wine"
+              : "bg-gray-200 text-wine dark:text-white"
           }`}
-          onClick={() => handleButtonClick("Tequila")}
+          onClick={() => handleButtonClick("Vino")}
         >
-          Tequila
-        </button>
-        <button
-          className={`px-4 py-2  font-plus-jakarta-sans bg-white rounded-3xl border border-solid border-wine ${
-            categoryButton === "Ron"
-              ? "bg-wine text-white"
-              : "bg-gray-200 text-wine"
-          }`}
-          onClick={() => handleButtonClick("Ron")}
-        >
-          Ron
+          Vinos
         </button>
       </div>
       <hr></hr>
 
       {/*FILTRO POR RANGO PRECIO U OTRA VARIABLE. */}
       <h1 className="text-lg font-normal pt-3  font-plus-jakarta-sans mb-4">
-        Abv Range
+        Rango de Abv
       </h1>
       <Slider
         value={abvRange}
@@ -141,7 +141,7 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
       <hr></hr>
       {/*FILTRO POR VALORACION DEL VINO. */}
       <h1 className="text-lg font-normal pt-3  font-plus-jakarta-sans mb-4">
-        Wine ratings
+        Puntuaciones
       </h1>
       <div className="flex flex-col space-y-2">
         {[3, 4, 5].map((rating) => (
@@ -163,7 +163,7 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
         onClick={handleFetchFilterClick }
         className="px-1 py-2  font-plus-jakarta-sans  hover:brightness-110 bg-greenVivino mt-6 rounded-3xl border border-solid text-white"
       >
-        buscar
+        Buscar
       </button>
     </div>
   );

@@ -86,7 +86,7 @@ export const ReviewForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-xl shadow-md">
+    <div className="max-w-md mx-auto bg-white dark:bg-darkMode-grey1 p-8 rounded-xl shadow-md">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
         ¡Queremos conocer tu opinión sobre este producto!
       </h1>
@@ -95,9 +95,9 @@ export const ReviewForm = () => {
           type="text"
           value={formData.comment}
           name="comment"
-          placeholder="Publica aquí tu Review"
+          placeholder="Publica aquí tu reseña"
           onChange={handlerChange}
-          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-wine"
+          className="p-2 border border-gray-300 dark:bg-darkMode-grey1 rounded-md focus:outline-none focus:ring-2 focus:ring-wine"
         />
         <Stack spacing={1}>
           <Rating
@@ -117,7 +117,7 @@ export const ReviewForm = () => {
           type="submit"
           className="bg-wine text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors"
         >
-          Postear opinión
+          Postear reseña
         </button>
       </form>
     </div>

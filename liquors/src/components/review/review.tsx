@@ -50,13 +50,13 @@ export const Review = ({ review }: { review: IReview }) => {
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm("¿Estás seguro de que quieres eliminar esta review?")) {
+    if (confirm("¿Estás seguro de que quieres eliminar esta reseña?")) {
       try {
         await deleteReview(id, dispatch);
         alert("Review eliminada con éxito.");
       } catch (error) {
-        console.error("Error eliminando la review:", error);
-        alert("Hubo un error eliminando la review.");
+        console.error("Error eliminando la reseña:", error);
+        alert("Hubo un error eliminando la reseña.");
       }
     }
   };
@@ -71,13 +71,13 @@ export const Review = ({ review }: { review: IReview }) => {
       alert("Review editada con éxito.");
       setEditOn(false);
     } catch (error) {
-      console.error("Error editando la review:", error);
-      alert("Hubo un error editando la review.");
+      console.error("Error editando la reseña:", error);
+      alert("Hubo un error editando la reseña.");
     }
   };
 
   return (
-    <div className="flex flex-col gap-4 p-6 bg-white rounded-xl shadow-md mx-4 my-2">
+    <div className="flex flex-col gap-4 p-6 bg-white  dark:bg-darkMode-greyVivino rounded-xl shadow-md mx-4 my-2">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           {editOn ? (
@@ -96,7 +96,9 @@ export const Review = ({ review }: { review: IReview }) => {
             </Stack>
           ) : (
             <div className="flex">
-              <span className="text-xl font-bold text-gray-800">{rate}</span>
+              <span className="text-xl font-bold text-gray-800 dark:text-darkMode-white">
+                {rate}
+              </span>
               {[...Array(5)].map((_, i) => (
                 <StarIcon
                   key={i}
@@ -110,7 +112,7 @@ export const Review = ({ review }: { review: IReview }) => {
           <div>
             <button
               onClick={handleEditToggle}
-              className="text-black-500 hover:text-black transition-colors"
+              className="text-black-500  hover:text-black transition-colors"
             >
               <EditIcon />
             </button>
@@ -129,9 +131,9 @@ export const Review = ({ review }: { review: IReview }) => {
             type="text"
             value={formData.comment}
             name="comment"
-            placeholder="Publica aquí tu Review"
+            placeholder="Publica aquí tu reseña"
             onChange={handlerChange}
-            className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-wine"
+            className="p-2 border border-gray-300 dark:bg-darkMode-grey1  rounded-md focus:outline-none focus:ring-2 focus:ring-wine"
           />
           <button
             onClick={() => {
@@ -140,13 +142,17 @@ export const Review = ({ review }: { review: IReview }) => {
             type="submit"
             className="bg-wine text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors"
           >
-            Editar opinión
+            Editar reseña
           </button>
         </>
       ) : (
-        <p className="text-gray-600 italic">{comment}</p>
+        <p className="text-gray-600 italic dark:text-darkMode-white">
+          {comment}
+        </p>
       )}
-      <h3 className="text-right text-sm font-medium text-gray-500">- {name}</h3>
+      <h3 className="text-right text-sm font-medium text-gray-500 dark:text-darkMode-white">
+        - {name}
+      </h3>
     </div>
   );
 };

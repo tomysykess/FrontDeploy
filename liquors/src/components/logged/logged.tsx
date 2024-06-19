@@ -10,10 +10,8 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 export const Logged: React.FC = (): React.ReactNode => {
   const router = useRouter();
 
-  
-  const [userName, setUserName] = useState<string>('');
-  const [userRole, setUserRole] = useState<string>('');
-
+  const [userName, setUserName] = useState<string>("");
+  const [userRole, setUserRole] = useState<string>("");
 
   useEffect(() => {
     const name: any = localStorage.getItem("userDataLogin");
@@ -23,7 +21,6 @@ export const Logged: React.FC = (): React.ReactNode => {
     }
   }, []);
 
-  
   const logoutHandler: React.MouseEventHandler<HTMLButtonElement> = () => {
     localStorage.removeItem("loginToken");
     localStorage.removeItem("userDataLogin");
@@ -40,17 +37,18 @@ export const Logged: React.FC = (): React.ReactNode => {
     <div>
       <ul className="flex space-x-6">
         <li>
-
           <span
             onClick={favHandler}
             style={{ cursor: "pointer" }}
-            className="buttonSecondary"
+            className="buttonSecondary  dark:text-grey1"
           >
             <FavoriteBorderIcon />
-
             Favoritos
           </span>
-          <Link className="buttonSecondary ml-5" href="/profile">
+          <Link
+            className="buttonSecondary ml-5  dark:text-grey1"
+            href="/profile"
+          >
             <AccountCircleIcon />
             {userName}
           </Link>
@@ -58,11 +56,11 @@ export const Logged: React.FC = (): React.ReactNode => {
         <li>
           <span
             onClick={logoutHandler}
-            className="buttonSecondary"
+            className="buttonSecondary  dark:text-grey1"
             style={{ cursor: "pointer" }}
           >
             <LogoutIcon></LogoutIcon>
-            Log Out
+            Cerrar Sesión
           </span>
         </li>
       </ul>

@@ -1,6 +1,7 @@
 "use client";
 import { IRecommendation } from "@/interfaces/interfaz";
 import React, { useState, useEffect, useRef } from "react";
+import "../../../app/globals.css";
 
 const HalfRecommendation = ({
   recommendation,
@@ -56,13 +57,13 @@ const HalfRecommendation = ({
       <img
         src={imageB}
         alt=""
-        className="absolute object-contain w-full h-[105%] z-0 opacity-95"
+        className="absolute object-contain w-full h-[105%] z-0 opacity-95 dark:opacity-80"
         style={{ transform: `translateY(-${scrollY * 0.1}px)` }}
       />
       <img
         src={imageP}
         alt=""
-        className="absolute object-contain w-full h-[105%] z-0 opacity-95"
+        className="absolute object-contain w-full h-[105%] z-0 opacity-95 dark:opacity-80"
         style={{
           transform: `translateY(-${scrollY * 0.3}px)`,
           transition: "transform 3s ease",
@@ -71,7 +72,7 @@ const HalfRecommendation = ({
       <img
         src={imageF}
         alt=""
-        className="absolute object-contain w-full h-[105%] z-0 opacity-95"
+        className="absolute object-contain w-full h-[105%] z-0 opacity-95 dark:opacity-80"
         style={{
           transform: `translateY(-${scrollY * 0.5}px)`,
           transition: "transform 1s ease",
@@ -79,16 +80,25 @@ const HalfRecommendation = ({
       />
       <div className="relative z-10 text-base">
         <h1
-          className="text-4xl mb-96 font-plus-jakarta-sanss text-center"
+          className="text-4xl mb-96 font-plus-jakarta-sanss text-center font-bold dark:opacity-80 "
           style={{ color: color }}
         >
           {title}
         </h1>
-        <b>
-          <p className="mt-10 text-lg  text-center" style={{ color: color }}>
-            {description}
-          </p>
-        </b>
+        <br />
+        <div className="border-effect">
+          <b>
+            <p
+              className="mt-10 text-lg text-center dark:opacity-80  "
+              style={{
+                color: color,
+                textShadow: `0 0 5px #FFFF, 0 0 10px rgba(255, 255, 255, 1)`,
+              }}
+            >
+              {description}
+            </p>
+          </b>
+        </div>
       </div>
     </div>
   );

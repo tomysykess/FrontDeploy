@@ -13,20 +13,20 @@ import { getStorage } from "firebase/storage";
 //material ui
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
-const categories = ["vino", "ron", "whisky", "spirit", "Gin"];
+const categories = ["Ron", "Gin", "Whisky", "Vodka", "Vino"];
 
 const countries = [
   "Argentina",
-  "Brazil",
-  "Canada",
-  "France",
-  "Germany",
-  "Italy",
-  "Japan",
-  "Mexico",
-  "Spain",
-  "United Kingdom",
-  "United States",
+  "Brasil",
+  "Canadá",
+  "Francia",
+  "Alemania",
+  "Italia",
+  "Japón",
+  "México",
+  "España",
+  "Inglaterra",
+  "Estados Unidos",
 ];
 
 export const ProductForm = () => {
@@ -180,10 +180,10 @@ export const ProductForm = () => {
       } catch (error) {
         console.error("error al agregar el producto", error);
       }
-      alert(`el producto ${dataProduct.name} ha sido agregado con exito`);
+      alert(`El producto ${dataProduct.name} ha sido agregado con exito`);
       router.push("/profile/dashboardProducer/productosPublicados");
     } else {
-      alert("hubo un error al agregar el producto");
+      alert("Hubo un error al agregar el producto");
     }
   };
 
@@ -207,7 +207,7 @@ export const ProductForm = () => {
         className="flex flex-col justify-center w-fit p-6 bg-greyVivino"
       >
         <h1 className="pb-6 text-gray-600 text-xl font-normal">
-          completa los siguientes campos para agregar tu producto:
+          Completa los siguientes campos para agregar tu producto:
         </h1>
         <div className="flex flex-col my-2">
           <label className="pb-2 text-gray-600 text-l font-normal">

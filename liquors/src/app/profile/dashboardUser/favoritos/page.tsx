@@ -29,9 +29,10 @@ const FavoriteProduct: React.FC = (): React.ReactNode => {
 
   return (
         <>
+
             
                  <>
-                 <div className="bg-greyVivino flex flex-row pt-1 mb-1 h-screen">
+                 <div className="bg-greyVivino  dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1 h-screen">
                      <MenuDashboard />
                      <div className="overflow-y-auto w-full">
                          <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">Favoritos</h1><br></br>
@@ -49,6 +50,7 @@ const FavoriteProduct: React.FC = (): React.ReactNode => {
                  </div>
              </>
           
+
         </>
   )
 };
