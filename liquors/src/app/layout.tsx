@@ -6,7 +6,7 @@ import { NavBar } from "@/components/navBar/navbar";
 import Providers from "@/store/providers";
 import AuthStore from "@/components/authStore/AuthStore";
 import Landbot from "@/components/landbot/Landbot";
-/* import { ThemeProvider } from "@/components/providerDark/ProviderDark"; */
+import { ThemeProvider } from "@/components/providerDark/ProviderDark";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,29 +21,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Providers>
-          {/*     <ThemeProvider> */}
-          <AuthStore>
-            <NavBar />
-            <div className="pt-16 ">
-              {/* fuente plus-jakarta */}
-              <link rel="preconnect" href="https://fonts.googleapis.com" />
-              <link rel="preconnect" href="https://fonts.gstatic.com" />
-              <link
-                href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
-                rel="stylesheet"
-              />
-              {/* ----------- */}
-              {children}
-            </div>
-            <Landbot></Landbot>
-            <Footer />
-          </AuthStore>
-          {/*      </ThemeProvider> */}
-        </Providers>
-      </body>
-    </html>
+    <ThemeProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <Providers>
+            <AuthStore>
+              <NavBar />
+              <div className="pt-16 ">
+                {/* fuente plus-jakarta */}
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" />
+                <link
+                  href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+                  rel="stylesheet"
+                />
+                {/* ----------- */}
+                {children}
+              </div>
+              <Landbot></Landbot>
+              <Footer />
+            </AuthStore>
+          </Providers>
+        </body>
+      </html>
+    </ThemeProvider>
   );
 }

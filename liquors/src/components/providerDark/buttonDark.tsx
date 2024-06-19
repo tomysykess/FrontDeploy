@@ -1,18 +1,19 @@
-/* import { useTheme } from "./ProviderDark";
+import React from "react";
+import { useTheme } from "./ProviderDark";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
-const ButtonDark = () => {
-  const { theme, toggleTheme }: any = useTheme();
+const ThemeToggleButton: React.FC = () => {
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <button
-      onClick={toggleTheme}
-      className="p-2 rounded-md bg-wine text-greyVivino
-"
-    >
-      {theme === "dark" ? "Modo Claro" : "Modo Oscuro"}
+    <button onClick={toggleTheme}>
+      {theme === "dark" ? (
+        <DarkModeIcon className="text-white"></DarkModeIcon>
+      ) : (
+        <DarkModeIcon className="text-wine"></DarkModeIcon>
+      )}
     </button>
   );
 };
 
-export default ButtonDark;
- */
+export default ThemeToggleButton;
