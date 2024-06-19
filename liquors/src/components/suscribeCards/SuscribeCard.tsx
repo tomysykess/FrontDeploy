@@ -147,15 +147,15 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
     <div className="max-w-sm w-full bg-white dark:bg-darkMode-grey1 rounded-xl shadow-2xl overflow-hidden my-4 bg-opacity-85">
       <div className="p-8">
         <div className="flex justify-between text-wine">
-          <h2 className="block mt-1 text-center text-2xl leading-tight font-plus-jakarta-sans text-gray-900 ">
+          <h2 className="block mt-1 text-center text-2xl leading-tight font-plus-jakarta-sans text-gray-900 dark:text-darkMode-white ">
             {product.title}
           </h2>
           <WorkspacePremiumIcon className=" top-0 right-0" fontSize="large" />
         </div>
-        <p className="mt-2 text-gray-600 font-semibold dark:text-darkMode-greyVivino">
+        <p className="mt-2 text-gray-600 font-semibold dark:text-darkMode-white">
           {product.description1}
         </p>
-        <ul className="mt-4 text-gray-600 list-disc list-inside dark:text-darkMode-grey4">
+        <ul className="mt-4 text-gray-600 list-disc list-inside dark:text-darkMode-white">
           <li>{product.description2}</li>
           <li>{product.description3}</li>
           <li>{product.description4}</li>
