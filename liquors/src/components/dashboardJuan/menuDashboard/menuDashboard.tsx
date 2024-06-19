@@ -165,6 +165,13 @@ export const MenuDashboard: React.FC = (): React.ReactNode => {
                       <CardGiftcardIcon />
                       Cajas del mes
                     </Link>
+                    <Link
+                      href="/profile/dashboardUser/misCajas"
+                      className="block py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300"
+                    >
+                      <CardGiftcardIcon />
+                      Mis cajas
+                    </Link>
                   </>
                 )}
               </ul>
