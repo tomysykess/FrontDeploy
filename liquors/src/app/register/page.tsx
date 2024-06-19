@@ -96,20 +96,22 @@ const RegisterComponent: React.FC = (): React.ReactNode => {
   };
 
   return (
-    <div className="flex justify-center items-center text-center pt-32 pb-32 bg-greyVivino">
+    <div className="flex justify-center items-center text-center pt-32 pb-32 bg-greyVivino dark:bg-darkMode-greyVivino">
       <div className="justify-start justmt-0 mr-32">
-        <h1 className="pb-8 text-gray-600 text-6xl font-normal">Unite a </h1>
+        <h1 className="pb-8 text-gray-600 text-6xl font-normal dark:text-darkMode-white ">
+          Unite a{" "}
+        </h1>
         <p className="text-wine pb-8 font-Lato text-6xl">Liquors</p>
       </div>
 
       <div className="rounded border border-wine">
         <form
-          className="justify-end w-96 bg-white text-sm p-12"
+          className="justify-end w-96 bg-white dark:bg-darkMode-grey1 text-sm p-12"
           onSubmit={handleSubmit}
         >
           <div className="pb-2">
             <input
-              className="w-full p-3 rounded border border-gray-400 outline-none hover:border-wine hover:ring-1 hover:ring-wine focus:border-wine  focus:ring-wine transition duration-200"
+              className="w-full p-3 rounded border border-gray-400  dark:bg-darkMode-grey1 outline-none hover:border-wine hover:ring-1 hover:ring-wine focus:border-wine  focus:ring-wine transition duration-200"
               type="text"
               value={formData.name}
               name="name"
@@ -121,7 +123,7 @@ const RegisterComponent: React.FC = (): React.ReactNode => {
 
           <div className="pb-2">
             <input
-              className={`p-3 rounded border  w-full ${
+              className={`p-3 dark:bg-darkMode-grey1 rounded border  w-full ${
                 errors.email ? "border-red-700" : "border-gray-400"
               } outline-none hover:border-wine hover:ring-1 hover:ring-wine focus:border-wine  focus:ring-wine transition duration-200`}
               type="text"
@@ -137,7 +139,7 @@ const RegisterComponent: React.FC = (): React.ReactNode => {
 
           <div className="pb-2  max-w-xs">
             <input
-              className=" p-3 rounded border border-gray-400 w-full outline-none hover:border-wine hover:ring-1 hover:ring-wine focus:border-wine  focus:ring-wine transition duration-200"
+              className=" p-3 dark:bg-darkMode-grey1 rounded border border-gray-400  w-full outline-none hover:border-wine hover:ring-1 hover:ring-wine focus:border-wine  focus:ring-wine transition duration-200"
               type="password"
               value={formData.password}
               name="password"
@@ -189,7 +191,7 @@ const RegisterComponent: React.FC = (): React.ReactNode => {
             </span>
           )}
 
-          <div className="flex mt-10 bg-white mb-10 px-1 flex-row items-center">
+          <div className="flex mt-10 bg-white dark:bg-darkMode-grey1 mb-10 px-1 flex-row items-center">
             <hr className="w-9/12 border-gray-400"></hr>
             <p className="mx-4">o</p>
             <hr className="w-9/12 border-gray-400"></hr>
@@ -197,7 +199,7 @@ const RegisterComponent: React.FC = (): React.ReactNode => {
 
           <button
             onClick={handleGoogleSignIn}
-            className="rounded-3xl  mb-11 px-0 w-full border-2 border-grey3 hover:border-blueGoogle font-plus-jakarta-sans"
+            className="rounded-3xl  mb-11 px-0 w-full border-2 border-grey3  hover:border-blueGoogle font-plus-jakarta-sans"
           >
             <div className="flex flex-row p-2">
               <img

@@ -82,10 +82,10 @@ const Product: React.FC = (): React.ReactNode => {
 
   return (
     <div>
-      <section className="flex justify-center pt-4 pb-3 bg-greyVivino">
+      <section className="flex justify-center pt-4 pb-3 bg-greyVivino dark:bg-darkMode-greyVivino">
         <input
           placeholder="Buscar..."
-          className="p-2 mb-2 pb-2  rounded-[25px] border border-gray-300 mt-2 w-1/3"
+          className="p-2 mb-2 pb-2  rounded-[25px] border border-gray-300 dark:border-grey2 dark:bg-darkMode-grey2 mt-2 w-1/3"
           type="text"
           value={search.item}
           name="item"
@@ -94,8 +94,8 @@ const Product: React.FC = (): React.ReactNode => {
         />
       </section>
 
-      <div className="flex   mb-0 pt-0 justify-center bg-greyVivino">
-        <section className="flex pt-10 pb-10  w-10/12 bg-greyVivino items-start absolute  justify-start-">
+      <div className="flex   mb-0 pt-0 justify-center bg-greyVivino dark:bg-darkMode-greyVivino">
+        <section className="flex pt-10 pb-10  w-10/12 bg-greyVivino dark:bg-darkMode-greyVivino items-start absolute  justify-start-">
           <div className="flex ">
             <div className="flex w-full h-full">
               {hasRol === 1 || hasRol === undefined ? (
@@ -115,7 +115,7 @@ const Product: React.FC = (): React.ReactNode => {
           </div>
         </section>
 
-        <div className="flex  bg-greyVivino ml-96 w-1/2">
+        <div className="flex  bg-greyVivino dark:bg-darkMode-greyVivino ml-96 w-1/2">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
             <MapProductCardRouteProducts />
           </div>

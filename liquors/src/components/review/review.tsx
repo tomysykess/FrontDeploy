@@ -77,7 +77,7 @@ export const Review = ({ review }: { review: IReview }) => {
   };
 
   return (
-    <div className="flex flex-col gap-4 p-6 bg-white rounded-xl shadow-md mx-4 my-2">
+    <div className="flex flex-col gap-4 p-6 bg-white  dark:bg-darkMode-greyVivino rounded-xl shadow-md mx-4 my-2">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           {editOn ? (
@@ -96,7 +96,9 @@ export const Review = ({ review }: { review: IReview }) => {
             </Stack>
           ) : (
             <div className="flex">
-              <span className="text-xl font-bold text-gray-800">{rate}</span>
+              <span className="text-xl font-bold text-gray-800 dark:text-darkMode-white">
+                {rate}
+              </span>
               {[...Array(5)].map((_, i) => (
                 <StarIcon
                   key={i}
@@ -110,7 +112,7 @@ export const Review = ({ review }: { review: IReview }) => {
           <div>
             <button
               onClick={handleEditToggle}
-              className="text-black-500 hover:text-black transition-colors"
+              className="text-black-500  hover:text-black transition-colors"
             >
               <EditIcon />
             </button>
@@ -131,7 +133,7 @@ export const Review = ({ review }: { review: IReview }) => {
             name="comment"
             placeholder="Publica aquí tu reseña"
             onChange={handlerChange}
-            className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-wine"
+            className="p-2 border border-gray-300 dark:bg-darkMode-grey1  rounded-md focus:outline-none focus:ring-2 focus:ring-wine"
           />
           <button
             onClick={() => {
@@ -144,9 +146,13 @@ export const Review = ({ review }: { review: IReview }) => {
           </button>
         </>
       ) : (
-        <p className="text-gray-600 italic">{comment}</p>
+        <p className="text-gray-600 italic dark:text-darkMode-white">
+          {comment}
+        </p>
       )}
-      <h3 className="text-right text-sm font-medium text-gray-500">- {name}</h3>
+      <h3 className="text-right text-sm font-medium text-gray-500 dark:text-darkMode-white">
+        - {name}
+      </h3>
     </div>
   );
 };

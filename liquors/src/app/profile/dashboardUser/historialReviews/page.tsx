@@ -31,7 +31,7 @@ const HistorialReviews: React.FC = (): React.ReactNode => {
     <>
       {token && (
         <>
-          <div className="bg-greyVivino flex flex-row pt-1 mb-1 h-auto">
+          <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1 h-auto">
             <MenuDashboard />
             <div className=" w-auto">
               <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">

@@ -144,18 +144,18 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
   };
 
   return (
-    <div className="max-w-sm w-full bg-white rounded-xl shadow-2xl overflow-hidden my-4 bg-opacity-85">
+    <div className="max-w-sm w-full bg-white dark:bg-darkMode-grey1 rounded-xl shadow-2xl overflow-hidden my-4 bg-opacity-85">
       <div className="p-8">
         <div className="flex justify-between text-wine">
-          <h2 className="block mt-1 text-center text-2xl leading-tight font-plus-jakarta-sans text-gray-900">
+          <h2 className="block mt-1 text-center text-2xl leading-tight font-plus-jakarta-sans text-gray-900 ">
             {product.title}
           </h2>
           <WorkspacePremiumIcon className=" top-0 right-0" fontSize="large" />
         </div>
-        <p className="mt-2 text-gray-600 font-semibold">
+        <p className="mt-2 text-gray-600 font-semibold dark:text-darkMode-greyVivino">
           {product.description1}
         </p>
-        <ul className="mt-4 text-gray-600 list-disc list-inside">
+        <ul className="mt-4 text-gray-600 list-disc list-inside dark:text-darkMode-grey4">
           <li>{product.description2}</li>
           <li>{product.description3}</li>
           <li>{product.description4}</li>
@@ -168,7 +168,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
             <div className="flex flex-col">
               <div id="wallet_container">
                 <button
-                  className="mt-4 px-6 py-2 w-full bg-MP flex justify-center text-white font-semibold rounded-lg shadow-md  focus:outline-none focus:ring-2  focus:ring-opacity-75 transition duration-200"
+                  className="mt-4 px-6 py-2 w-full bg-MP dark:bg-darkMode-MP flex justify-center text-white font-semibold rounded-lg shadow-md  focus:outline-none focus:ring-2  focus:ring-opacity-75 transition duration-200"
                   onClick={handlePaymentMP}
                 >
                   <div>
@@ -180,7 +180,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
                 </button>
               </div>
               <button
-                className="mt-4 px-6 py-2 w-full bg-PP flex justify-center text-white font-semibold rounded-lg shadow-lg  focus:outline-none focus:ring-2  focus:ring-opacity-75 transition duration-200"
+                className="mt-4 px-6 py-2 w-full bg-PP dark:bg-darkMode-PP flex justify-center text-white font-semibold rounded-lg shadow-lg  focus:outline-none focus:ring-2  focus:ring-opacity-75 transition duration-200"
                 onClick={handlePaymentPP}
               >
                 <div>

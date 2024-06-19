@@ -31,7 +31,7 @@ const FavoriteProduct: React.FC = (): React.ReactNode => {
     <>
       {token && (
         <>
-          <div className="bg-greyVivino flex flex-row pt-1 mb-1 h-screen">
+          <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1 h-screen">
             <MenuDashboard />
             <div className=" w-full">
               <h1 className="font-plus-jakarta-sans pt-5 text-3xl text-center text-wine font-semibold">

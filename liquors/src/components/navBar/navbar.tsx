@@ -21,7 +21,7 @@ export const NavBar: React.FC = () => {
   //________________________________________________________________________
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
+    <div className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-darkMode-greyVivino shadow-md">
       <nav className="pt-2">
         <div className="flex justify-between items-center p-3 mx-large">
           <div>
@@ -34,22 +34,34 @@ export const NavBar: React.FC = () => {
           <div>
             <ul className="flex space-x-6">
               <li>
-                <Link className="buttonSecondary" href="/product">
+                <Link
+                  className="buttonSecondary  dark:text-grey1"
+                  href="/product"
+                >
                   Productos
                 </Link>
               </li>
               <li>
-                <Link className="buttonSecondary" href="/recommendation">
+                <Link
+                  className="buttonSecondary  dark:text-grey1"
+                  href="/recommendation"
+                >
                   Recomendado del Mes
                 </Link>
               </li>
               <li>
-                <Link className="buttonSecondary" href="/newsletter">
+                <Link
+                  className="buttonSecondary  dark:text-grey1"
+                  href="/newsletter"
+                >
                   Boletín
                 </Link>
               </li>
               <li>
-                <Link className="buttonSecondary" href="/aboutUs">
+                <Link
+                  className="buttonSecondary  dark:text-grey1"
+                  href="/aboutUs"
+                >
                   Información
                 </Link>
               </li>

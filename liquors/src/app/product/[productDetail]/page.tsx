@@ -31,13 +31,13 @@ const ProductF = ({ params }: { params: { productId: string } }) => {
   }, []);
 
   return (
-    <div className="bg-greyVivino">
+    <div className="bg-greyVivino dark:bg-darkMode-greyVivino">
       {" "}
       <div className="max-w-7xl mx-auto flex flex-col gap-10 p-6">
         <ProductDetail product={detailProduct as Product} promedio={pro} />
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex flex-col w-full lg:w-2/3">
-            <h1 className="text-black text-2xl font-bold mb-4">
+            <h1 className="text-black text-2xl font-bold mb-4 dark:text-darkMode-white">
               {`Conoce lo que nuestros usuarios piensan sobre ${detailProduct.name}`}
             </h1>
             <ReviewContainer />

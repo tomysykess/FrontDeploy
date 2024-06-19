@@ -87,20 +87,22 @@ const LoginComponent: React.FC = (): React.ReactNode => {
   };
 
   return (
-    <div className="flex justify-center items-center  text-center pt-32 pb-32 bg-greyVivino">
+    <div className="flex justify-center items-center  text-center pt-32 pb-32 bg-greyVivino dark:bg-darkMode-greyVivino ">
       <div className="justify-start justmt-0 mr-32">
-        <h1 className="pb-8 text-gray-600 text-6xl font-normal">Unite a </h1>
+        <h1 className="pb-8 text-gray-600 text-6xl font-normal dark:text-darkMode-white ">
+          Unite a{" "}
+        </h1>
         <p className="text-wine pb-8 font-Lato text-6xl">Liquors</p>
       </div>
 
-      <div className="rounded border bg-white border-wine">
+      <div className="rounded border bg-white border-wine  dark:bg-darkMode-grey1">
         <form
-          className="justify-end w-96  bg-white p-12"
+          className="justify-end w-96  bg-white p-12  dark:bg-darkMode-grey1"
           onSubmit={handleSubmit}
         >
-          <div className="pb-2">
+          <div className="pb-2  dark:bg-darkMode-grey1">
             <input
-              className="w-full p-3 rounded border border-gray-400 outline-none hover:border-wine hover:ring-1 hover:ring-wine focus:border-wine focus:ring-2 focus:ring-wine transition duration-200"
+              className="w-full p-3 rounded border  dark:bg-darkMode-grey1 border-gray-400 outline-none hover:border-wine hover:ring-1 hover:ring-wine focus:border-wine focus:ring-2 focus:ring-wine transition duration-200"
               type="text"
               value={formData.name}
               name="name"
@@ -110,7 +112,7 @@ const LoginComponent: React.FC = (): React.ReactNode => {
           </div>
           <div className="pb-2">
             <input
-              className="w-full p-3 rounded border border-gray-400 outline-none hover:border-wine hover:ring-1 hover:ring-wine focus:border-wine focus:ring-2 focus:ring-wine transition duration-200"
+              className="w-full p-3 rounded border  dark:bg-darkMode-grey1 border-gray-400 outline-none hover:border-wine hover:ring-1 hover:ring-wine focus:border-wine focus:ring-2 focus:ring-wine transition duration-200"
               type="text"
               value={formData.email}
               name="email"
@@ -121,7 +123,7 @@ const LoginComponent: React.FC = (): React.ReactNode => {
 
           <div className="pb-2">
             <input
-              className="w-full p-3 rounded border border-gray-400 outline-none hover:border-wine hover:ring-1 hover:ring-wine focus:border-wine focus:ring-2 focus:ring-wine transition duration-200"
+              className="w-full p-3 rounded border  dark:bg-darkMode-grey1 border-gray-400 outline-none hover:border-wine hover:ring-1 hover:ring-wine focus:border-wine focus:ring-2 focus:ring-wine transition duration-200"
               type="password"
               value={formData.password}
               name="password"
@@ -169,7 +171,7 @@ const LoginComponent: React.FC = (): React.ReactNode => {
           )}
         </form>
 
-        <div className="flex mt-0 bg-white mb-10 px-9 flex-row items-center">
+        <div className="flex mt-0 bg-white  dark:bg-darkMode-grey1 mb-10 px-9 flex-row items-center">
           <hr className="w-1/2 border-gray-400"></hr>
           <p className="mx-4">o</p>
           <hr className="w-1/2 border-gray-400"></hr>

@@ -42,9 +42,9 @@ const ProductsAdmin = ({ products }: any) => {
 
   return (
     <div className="flex h-auto font-plus-jakarta-sans p-6">
-      <table className="table-auto w-full border-collapse bg-white shadow-lg">
+      <table className="table-auto w-full border-collapse bg-white dark:bg-darkMode-grey1 shadow-lg">
         <thead>
-          <tr className="bg-wine text-white">
+          <tr className="bg-wine text-white ">
             <th className="border px-4 py-5">Imagen</th>
             <th className="border px-4 py-2">Nombre</th>
             <th className="border px-4 py-2">Descripción</th>
@@ -59,7 +59,10 @@ const ProductsAdmin = ({ products }: any) => {
         </thead>
         <tbody>
           {products.map((product: any) => (
-            <tr key={product.id} className="hover:bg-gray-50 border-b">
+            <tr
+              key={product.id}
+              className="hover:bg-gray-50 dark:hover:bg-darkMode-tequila border-b"
+            >
               <td className="border px-4 py-2">
                 <img
                   src={product.imgUrl}
