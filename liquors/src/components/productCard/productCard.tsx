@@ -59,9 +59,9 @@ const ProductCard: React.FC<{ product: Product }> = ({
 
   return (
     <div
-      className={`flex flex-col relative bg-white items-center h-96 border-t-8  rounded-t-xl border-solid border-t-wine shadow-md rounded-lg m-4 w-48`}
+      className={`flex flex-col relative bg-white dark:bg-darkMode-grey1 items-center h-96 border-t-8  rounded-t-xl border-solid border-t-wine shadow-md rounded-lg m-4 w-48`}
     >
-      <h2 className="text-center text-lg font-Lora mb-2 pt-4">
+      <h2 className="text-center text-lg font-Lora mb-2 pt-4 dark:text-darkMode-white">
         {product.name}
       </h2>
       <img
@@ -70,14 +70,14 @@ const ProductCard: React.FC<{ product: Product }> = ({
         alt="imagen bebida"
       />
       <br></br>
-      <div className="flex flex-row absolute bottom-10   pl-1 pr-1 left-0 right-0 items-center justify-between w-full mt-2">
+      <div className="flex flex-row absolute bottom-10    pl-1 pr-1 left-0 right-0 items-center justify-between w-full mt-2">
         {product.averageRate > 0 ? (
           <>
             <span className="text-gray-700">{product.averageRate}</span>
             <HalfRating props={product.averageRate} />
           </>
         ) : (
-          <p className="text-plus-jakarta-sans text-gray-500 text-center bg-greyVivino rounded-lg shadow-sm p-0 w-full h-10  ">
+          <p className="text-plus-jakarta-sans text-gray-500  dark:text-darkMode-grey text-center bg-greyVivino dark:bg-darkMode-tequila rounded-lg shadow-sm p-0 w-full h-12  ">
             ¡Haz la primera reseña!
           </p>
         )}

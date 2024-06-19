@@ -105,7 +105,7 @@ export const AccountInfoCard = () => {
   return (
     <>
       <div className="flex flex-col font-plus-jakarta-sans items-center justify-center mt-10 pt-20  pb-96 h-screen">
-        <div className="relative bg-white mt-20 p-6 rounded-lg shadow-lg w-96 border-r-8 border-wine">
+        <div className="relative bg-white dark:bg-darkMode-grey1 mt-20 p-6 rounded-lg shadow-lg w-96 border-r-8 border-wine">
           <div className="absolute -top-16 left-1/2 transform -translate-x-1/2">
             <img
               className="w-32 h-32 rounded-full border-4 border-wine shadow-md"
@@ -113,7 +113,7 @@ export const AccountInfoCard = () => {
               alt="User Avatar"
             />
             <div
-              className="absolute bottom-0 right-0 bg-gray-200 p-1 rounded-full cursor-pointer"
+              className="absolute bottom-0 right-0 bg-gray-200  p-1 rounded-full cursor-pointer"
               onClick={handleIconClick}
             >
               <AddPhotoAlternateIcon />
@@ -125,7 +125,7 @@ export const AccountInfoCard = () => {
               onChange={handleFileChange}
             />
           </div>
-          <div className="mt-16 text-center">
+          <div className="mt-16 text-center ">
             <h2 className="text-xl font-semibold">{dataUser.name}</h2>
           </div>
           {uploadProgress < 100 && file && (
@@ -142,15 +142,17 @@ export const AccountInfoCard = () => {
         </div>
 
         {/* TARJETA CON MAS INFO (EMAIL) */}
-        <div className="bg-white p-6 my-3 rounded-lg shadow-lg w-96 border-r-8 border-wine">
+        <div className="bg-white p-6 my-3 rounded-lg shadow-lg w-96 border-r-8 border-wine dark:bg-darkMode-grey1">
           <h2 className="text-lg font-bold">Email</h2>
-          <p className="mt-2 text-greyTextMl font-normal">{dataUser.email}</p>
+          <p className="mt-2 text-greyTextMl font-normal dark:text-gray-300">
+            {dataUser.email}
+          </p>
         </div>
 
         {/* TARJETA CON MAS INFO (ROL) */}
-        <div className="bg-white p-6 rounded-lg shadow-lg w-96 border-r-8 border-wine">
+        <div className="bg-white p-6 rounded-lg shadow-lg w-96 border-r-8 border-wine dark:bg-darkMode-grey1">
           <h2 className="text-lg font-bold">Tipo de cuenta</h2>
-          <p className="mt-2 text-greyTextMl font-normal">
+          <p className="mt-2 text-greyTextMl font-normal dark:text-gray-300">
             {getUserRole(dataUser.role)}
           </p>
         </div>

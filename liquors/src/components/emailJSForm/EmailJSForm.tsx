@@ -33,10 +33,12 @@ const NewsletterForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-greyVivino p-10">
+
+    <div className="flex justify-center items-center  bg-greyVivino p-10 dark:bg-darkMode-greyVivino">
+
       <form
         onSubmit={sendEmail}
-        className="bg-white p-6 rounded shadow-md w-full max-w-md"
+        className="bg-white dark:bg-darkMode-grey1 p-6 rounded shadow-md w-full max-w-md"
       >
         <h2 className="text-2xl text-center rounded font-plus-jakarta-sans mb-4">
           ¡Ingresa a nuestro Boletín Informativo!

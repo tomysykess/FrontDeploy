@@ -36,7 +36,7 @@ const Profile: React.FC = (): React.ReactNode => {
     <>
       {token && (
         <>
-          <div className="bg-greyVivino flex flex-row pt-1 mb-1 h-full">
+          <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1 h-full">
             <MenuDashboard />
             <div className="overflow-y-auto w-full">
               <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">

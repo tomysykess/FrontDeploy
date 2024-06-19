@@ -5,20 +5,17 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 //import "tailwindcss/tailwind.css";
 import { useSelector } from "react-redux";
-import LastPageIcon from '@mui/icons-material/LastPage';
+import LastPageIcon from "@mui/icons-material/LastPage";
 import { useRouter } from "next/navigation";
 
 const BannerProductsGin: React.FC = () => {
-
-
   const scrollContainer = useRef<HTMLDivElement>(null);
   const [currentSection, setCurrentSection] = useState(0);
   const cardsPerPage = 3;
   const dataGlobal = useSelector((state: any) => state.products.data);
 
-  const router = useRouter()
+  const router = useRouter();
 
-  
   // Calcula el número máximo de secciones basado en la cantidad de tarjetas y tarjetas por página.
   const maxSections = Math.ceil(dataGlobal.length / cardsPerPage) - 1;
 
@@ -44,7 +41,7 @@ const BannerProductsGin: React.FC = () => {
   }, [currentSection]);
 
   return (
-    <div className="relative flex justify-center flex-col pt-7 pb-4 bg-greyVivino w-11/12 max-w-screen-lg mx-auto">
+    <div className="relative flex justify-center flex-col pt-7 pb-4 bg-greyVivino  dark:bg-darkMode-greyVivino w-11/12 max-w-screen-lg mx-auto">
       <div className="flex justify-center items-center relative w-full">
         {/* FLECHA IZQUIERDA */}
         <button
@@ -53,9 +50,7 @@ const BannerProductsGin: React.FC = () => {
           disabled={currentSection === 0}
         >
           <div className="rounded-full bg-wine p-2 ">
-          
-          <ArrowBackIosIcon className="h-6 w-6 text-white" />
-          
+            <ArrowBackIosIcon className="h-6 w-6 text-white" />
           </div>
         </button>
         {/* Contenedor de tarjetas */}
@@ -72,20 +67,22 @@ const BannerProductsGin: React.FC = () => {
           disabled={currentSection === maxSections}
         >
           <div className="rounded-full bg-wine p-2 ">
-          <ArrowForwardIosIcon className="h-6 w-6 text-white" />
+            <ArrowForwardIosIcon className="h-6 w-6 text-white" />
           </div>
         </button>
       </div>
       {/* Botón "Ver más" */}
       {currentSection === maxSections && (
-          <div className="flex justify-end mt-4">
-            <button onClick={() => router.push("/product")} className="bg-wine text-white py-2 px-4 rounded-md">
+        <div className="flex justify-end mt-4">
+          <button
+            onClick={() => router.push("/product")}
+            className="bg-wine text-white py-2 px-4 rounded-md"
+          >
             Ver más
-              <LastPageIcon className="mr-1 ml-3" />
-              
-            </button>
-          </div>
-        )}
+            <LastPageIcon className="mr-1 ml-3" />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

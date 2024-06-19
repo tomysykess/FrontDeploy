@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -43,6 +44,36 @@ const config: Config = {
         blueGoogle: "#0086f9",
         greenVivino: "#006b4d",
         wineMasOscuroDos: "#68091e",
+        // Modo oscuro
+        darkMode: {
+          MP: "#005f8c",
+          PP: "#BBBBBB",
+          white: "#E0E0E0",
+          wine: "#7a1e1a",
+          wineMasOscuro: "#2b001a",
+          gin: "#336a75",
+          vodka: "#8c9bb7",
+          licor: "#6e6d1f",
+          ron: "#4b1506",
+          whisky: "#994a00",
+          tequila: "#4e4d48",
+          beige: "#8f8961",
+          grey1: "#686868",
+          grey2: "#5a5959",
+          grey3: "#4a4a4a",
+          grey4: "#2d2d2d",
+          grey5: "#1a1a1a",
+          greyMLfilter: "#8a8a8a",
+          greyTextMl: "#3d3f47",
+          greyVivino: "#3b3b3b",
+          blackup: "#121212",
+          darkred: "#1a0000",
+          darkblue: "#000014",
+          darkgreen: "#001400",
+          blueGoogle: "#00467e",
+          greenVivino: "#003827",
+          wineMasOscuroDos: "#26040b",
+        },
       },
       fontFamily: {
         Lato: ["Lato", "sans-serif"],

@@ -30,33 +30,30 @@ const Carousel = () => {
   };
 
   return (
-    <div className="carousel-container relative w-full h-96 overflow-hidden ">
+    <div className="carousel-container relative min-h-96 overflow-visible bg-greyVivino dark:bg-darkMode-greyVivino">
       {arrayCarousel.map((image, index) => (
         <div
           key={index}
-          className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${
+          className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 bg-greyVivino dark:bg-darkMode-greyVivino ${
             index === currentImageIndex ? "opacity-100" : "opacity-0"
           }`}
           style={{
             backgroundImage: `url(${image})`,
-            backgroundSize: "cover",
+
+            backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
           }}
         />
       ))}
-      <div
-        className={`absolute inset-0 flex items-center justify-center  text-5xl font-plus-jakarta-sans  bg-opacity-50`}
-      >
-        {/*    <p>{arrayTexts[currentImageIndex]}</p> */}
-      </div>
+
       <button
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-greyVivino p-2 rounded-full shadow-md"
         onClick={prevImage}
       >
         {"<"}
       </button>
       <button
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-greyVivino   p-2 rounded-full shadow-md"
         onClick={nextImage}
       >
         {">"}
