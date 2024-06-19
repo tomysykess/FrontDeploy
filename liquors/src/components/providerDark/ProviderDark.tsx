@@ -19,13 +19,13 @@ interface Props {
 }
 
 export const ThemeProvider = ({ children }: Props) => {
-  const [theme, setTheme] = useState("light");
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-    const initialTheme = root.classList.contains("dark") ? "dark" : "light";
-    setTheme(initialTheme);
-  }, []);
+  const [theme, setTheme] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const savedTheme = localStorage.getItem("theme");
+      return savedTheme ? savedTheme : "light";
+    }
+    return "light";
+  });
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -34,6 +34,8 @@ export const ThemeProvider = ({ children }: Props) => {
     } else {
       root.classList.remove("dark");
     }
+
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
