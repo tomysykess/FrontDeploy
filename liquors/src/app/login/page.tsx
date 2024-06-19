@@ -89,9 +89,9 @@ const LoginComponent: React.FC = (): React.ReactNode => {
   return (
     <div className="flex justify-center items-center  text-center pt-32 pb-32 bg-greyVivino dark:bg-darkMode-greyVivino ">
       <div className="justify-start justmt-0 mr-32">
-        <h1 className="pb-8 text-gray-600 text-6xl font-normal dark:text-darkMode-white ">
-          Unite a{" "}
-        </h1>
+
+        <h1 className="pb-8 text-gray-600 text-6xl font-normal">Únete a </h1>
+
         <p className="text-wine pb-8 font-Lato text-6xl">Liquors</p>
       </div>
 
@@ -142,7 +142,6 @@ const LoginComponent: React.FC = (): React.ReactNode => {
             </Link>
             <br />
           </div>
-
           <div className="text-center">
             <button
               className={`inline-block cursor-pointer w-full max-w-xs p-4 rounded-lg ${

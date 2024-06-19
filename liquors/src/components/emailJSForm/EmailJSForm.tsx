@@ -1,58 +1,57 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
-import emailjs from "@emailjs/browser";
-import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-const EmailJSForm = () => {
-  const [userData, setUserData] = useState({ name: "", email: "" });
-  const router = useRouter();
+const NewsletterForm = () => {
+  const [userData, setUserData] = useState(null);
+  const [rolData, setRolData] = useState(null);
 
   useEffect(() => {
-    const userDataLogin = localStorage.getItem("userDataLogin");
+    const userDataLogin: any = localStorage.getItem("userDataLogin");
     if (userDataLogin) {
-      setUserData(JSON.parse(userDataLogin));
+      const parsedData = JSON.parse(userDataLogin);
+      setUserData(parsedData.id);
+      setRolData(parsedData.role);
     }
   }, []);
 
-  const sendEmail = (e: React.FormEvent) => {
+  const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const templateParams = {
-      user_name: userData.name,
-      user_email: userData.email,
-    };
-
-    emailjs
-      .send("newsletter_demo", "Liquors_template_demo", templateParams, {
-        publicKey: "T0pHUl2Iw9_K8edIU",
-      })
-      .then(
-        (res) => {
-          console.log("SUCCESS!", res.text);
-          alert("Correo enviado con éxito");
-          setUserData({ name: "", email: "" });
-        },
-        (error) => {
-          console.log("FAILED...", error.text);
-          alert("Debes iniciar sesión para ingresar a nuestro boletín");
-          router.push("/login");
-        }
+    try {
+      console.log("Userdataee: ", userData);
+      const response = await axios.get<any>(
+        `https://liquors-project.onrender.com/users/newsletter/${userData}`
       );
+      console.log(response.data);
+
+      alert("Usuario suscrito con éxito");
+    } catch (error: any) {
+      console.log(error.message);
+
+      alert("Error al suscribirse");
+    }
   };
 
   return (
+
     <div className="flex justify-center items-center  bg-greyVivino p-10 dark:bg-darkMode-greyVivino">
+
       <form
         onSubmit={sendEmail}
         className="bg-white dark:bg-darkMode-grey1 p-6 rounded shadow-md w-full max-w-md"
       >
         <h2 className="text-2xl text-center rounded font-plus-jakarta-sans mb-4">
-          ¡Ingresa a nuestro Boletín!
+          ¡Ingresa a nuestro Boletín Informativo!
         </h2>
 
         <button
+          disabled={rolData !== 4 && rolData !== "4"} // Deshabilita el botón si rolData no es igual a 4 (tanto número como string)
           type="submit"
-          className="w-full bg-wine text-white py-2 px-4 rounded hover:bg-red-800 transition duration-200"
+          className={`w-full py-2 px-4 rounded transition duration-200 ${
+            rolData === 4 || rolData === "4"
+              ? "bg-wine text-white hover:bg-red-800"
+              : "bg-wine text-white opacity-60 pointer-events-none"
+          }`}
         >
           Obtener boletín
         </button>
@@ -61,4 +60,4 @@ const EmailJSForm = () => {
   );
 };
 
-export default EmailJSForm;
+export default NewsletterForm;
