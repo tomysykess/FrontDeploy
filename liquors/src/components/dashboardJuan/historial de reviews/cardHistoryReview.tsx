@@ -71,10 +71,10 @@ export const CardHistoryReview: React.FC<{ product: IReview }> = ({
 
   return (
     <>
-      <div className="flex flex-col gap-4 p-6 bg-white rounded-xl shadow-md mx-4 my-2">
+      <div className="flex flex-col gap-4 p-6 bg-white dark:bg-darkMode-grey3 rounded-xl shadow-md mx-4 my-2">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-xl font-bold text-gray-800">
+          <div className="flex items-center gap-2 dark:bg-darkMode-grey3">
+            <span className="text-xl font-bold text-gray-800  dark:text-darkMode-white">
               {product.rate}
             </span>
             <div className="flex">
@@ -95,8 +95,12 @@ export const CardHistoryReview: React.FC<{ product: IReview }> = ({
             <DeleteIcon />
           </button>
         </div>
-        <p className="text-gray-600 italic">&quot;{product.comment}&quot;</p>
-        <h3 className="text-right text-sm font-medium text-gray-500">{name}</h3>
+        <p className="text-gray-600 italic  dark:text-darkMode-white">
+          &quot;{product.comment}&quot;
+        </p>
+        <h3 className="text-right text-sm font-medium text-gray-500  dark:text-darkMode-white">
+          {name}
+        </h3>
       </div>
     </>
   );

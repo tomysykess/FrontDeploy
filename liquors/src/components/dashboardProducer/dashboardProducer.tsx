@@ -13,7 +13,7 @@ export const DashboardProducer = () => {
 
   return (
     <div className="flex flex-row justify-center gap-6 mt-6">
-      <div className="flex flex-col pt-5 bg-greyVivino gap-6 p-6 rounded">
+      <div className="flex flex-col pt-5  bg-white dark:bg-darkMode-greyVivino gap-6 p-6 rounded">
         <button
           className="buttonSecondary hover:cursor-pointer"
           value="infoUser"

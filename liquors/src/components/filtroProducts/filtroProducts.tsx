@@ -37,14 +37,14 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
   };
 
   return (
-    <div className="flex flex-col  bg-greyVivino border p-4 ml-0 mr-6 rounded-lg shadow-md w-3/4 h-">
+    <div className="flex flex-col  bg-greyVivino dark:bg-darkMode-greyVivino border p-4 ml-0 mr-6 rounded-lg shadow-md w-3/4 h-">
       {/*FILTRO POR TIPO BEBIDA */}
       <h1 className="text-lg font-normal  font-plus-jakarta-sans mb-4">
         Filtros
       </h1>
-      <div className="mb-4 flex p-1 flex-wrap justify-center">
+      <div className="mb-4 flex p-1 flex-wrap justify-center gap-2">
         <button
-          className={`px-4 py-2 font-plus-jakarta-sans bg-white rounded-3xl border border-solid border-wine ${
+          className={`px-4 py-2 font-plus-jakarta-sans bg-white dark:bg-darkMode-greyVivino rounded-3xl border border-solid border-wine ${
             categoryButton === "Ron"
               ? "bg-wine text-white"
               : "bg-gray-200 text-wine"
@@ -54,7 +54,7 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
           Ron
         </button>
         <button
-          className={`px-4 py-2 mx-2 font-plus-jakarta-sans bg-white rounded-3xl border border-solid border-wine ${
+          className={`px-4 py-2 mx-2 font-plus-jakarta-sans bg-white dark:bg-darkMode-greyVivino rounded-3xl border border-solid border-wine ${
             categoryButton === "Gin"
               ? "bg-wine text-white"
               : "bg-gray-200 text-wine"
@@ -64,7 +64,7 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
           Gin
         </button>
         <button
-          className={`px-4 py-2  font-plus-jakarta-sans bg-white rounded-3xl border border-solid border-wine ${
+          className={`px-4 py-2  font-plus-jakarta-sans bg-white dark:bg-darkMode-greyVivino rounded-3xl border border-solid border-wine ${
             categoryButton === "Whisky"
               ? "bg-wine text-white"
               : "bg-gray-200 text-wine"
@@ -74,7 +74,7 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
           Whisky
         </button>
         <button
-          className={`px-4 py-2  font-plus-jakarta-sans bg-white rounded-3xl border border-solid border-wine ${
+          className={`px-4 py-2  font-plus-jakarta-sans bg-white dark:bg-darkMode-greyVivino rounded-3xl border border-solid border-wine ${
             categoryButton === "Vodka"
               ? "bg-wine text-white"
               : "bg-gray-200 text-wine"
@@ -84,7 +84,7 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
           Vodka
         </button>
         <button
-          className={`px-4 py-2  font-plus-jakarta-sans bg-white rounded-3xl border border-solid border-wine ${
+          className={`px-4 py-2  font-plus-jakarta-sans bg-white dark:bg-darkMode-greyVivino rounded-3xl border border-solid border-wine ${
             categoryButton === "Vino"
               ? "bg-wine text-white"
               : "bg-gray-200 text-wine"
