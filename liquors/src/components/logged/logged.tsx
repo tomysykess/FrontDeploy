@@ -18,7 +18,9 @@ export const Logged: React.FC = (): React.ReactNode => {
   useEffect(() => {
     const name: any = localStorage.getItem("userDataLogin");
     const nameParsed: IUser = JSON.parse(name);
-    setUserName(nameParsed.name);
+    if (nameParsed) {
+      setUserName(nameParsed.name);
+    }
   }, []);
 
   
