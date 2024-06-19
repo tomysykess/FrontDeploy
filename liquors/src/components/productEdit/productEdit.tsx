@@ -135,6 +135,7 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
         const response = await getProductById(productId, dataUser.token);
         if (response) {
           setDataProduct(response);
+          console.log(dataProduct)
         } else {
           console.error("Product not found");
         }
@@ -179,7 +180,11 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
     event.preventDefault();
 
     const updatedDataProduct = {
-      ...dataProduct,
+      category: String(dataProduct.category),
+      country: String(dataProduct.country),
+      description: String(dataProduct.description),
+      imgUrl: String(dataProduct.imgUrl),
+      name: String(dataProduct.name),
       brand: String(dataUser.name),
       size: String(dataProduct.size + "ml"),
       abv: Number(dataProduct.abv),

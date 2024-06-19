@@ -10,7 +10,7 @@ export const putProduct = async (productId: string, dataProduct: IProductUpdated
         {headers: {authorization: `bearer ${token}`}
       })
       console.log(response);
-      if (window.location.href !== 'https://liquors-project.onrender.com/') {
+      if (response.status === 200 && window.location.href !== 'https://liquors-project.onrender.com/') {
         Swal.fire({
             position: "top-end",
             icon: "success",
