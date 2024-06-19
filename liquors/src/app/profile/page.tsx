@@ -32,13 +32,8 @@ const Profile: React.FC = (): React.ReactNode => {
   useEffect(() => {
     const loginToken = localStorage.getItem("loginToken");
     setToken(loginToken);
-  }, [token]);
+  }, []);
 
-  /*useEffect(() => {
-    if (!token) {
-        router.push("/");
-    }
-  },[]);*/
 
   useEffect(() => {
     const userDataFromStorage: any = localStorage.getItem("userDataLogin");

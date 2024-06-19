@@ -22,11 +22,9 @@ export const Logged: React.FC = (): React.ReactNode => {
   }, []);
 
   const logoutHandler: React.MouseEventHandler<HTMLButtonElement> = () => {
+    router.push("/");
     localStorage.removeItem("loginToken");
     localStorage.removeItem("userDataLogin");
-
-    router.push("/");
-    window.location.reload();
   };
 
   const favHandler = () => {

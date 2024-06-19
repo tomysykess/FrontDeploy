@@ -8,9 +8,15 @@ import { useDispatch } from "react-redux";
 const SubscriptionBox: React.FC = (): React.ReactNode => {
   const dispatch = useDispatch();
 
+  //caja mensual
   const [dataCajaMesParsed, setDataCajaMesParsed] = useState<any>(null);
-  const [selectedProductWine, setSelectedProductWine] = useState<any>(null);
 
+  //producto de caja mensual
+  const [selectedProductWine, setSelectedProductWine] = useState<any>(null);
+  console.log(selectedProductWine);
+  
+
+  //estado de suscripcion a caja
   const [boxActive, setBoxActive] = useState<boolean>(false);
 
   const [wineSubscribed, setWineSubscribed] = useState(false);
@@ -18,6 +24,7 @@ const SubscriptionBox: React.FC = (): React.ReactNode => {
   const [idProductWine, setProductIdWine] = useState<any>();
   const [imgUrlWine, setImgUrlWine] = useState<any>();
 
+  //obtengo userId
   useEffect(() => {
     const userData = localStorage.getItem("userDataLogin");
     if (userData) {
@@ -25,14 +32,20 @@ const SubscriptionBox: React.FC = (): React.ReactNode => {
       setUserId(idParsed.id || '');
     }
 
-    const cajaMesStorage = localStorage.getItem("cajaDelMes");
-    if (cajaMesStorage) {
-      const cajaMesParsed = JSON.parse(cajaMesStorage);
-      setDataCajaMesParsed(cajaMesParsed);
-      setSelectedProductWine(cajaMesParsed.length > 3 ? cajaMesParsed[3] : null);
-    }
+     //useEffect para obtener la caja mensual
+     const cajaMesStorage = localStorage.getItem("cajaDelMes");
+     if (cajaMesStorage) {
+       const cajaMesParsed = JSON.parse(cajaMesStorage);
+       setDataCajaMesParsed(cajaMesParsed);
+       const selectedProduct = cajaMesParsed.length > 3 ? cajaMesParsed[3] : null;
+       setSelectedProductWine(selectedProduct);
+       // Aquí actualizamos idProductWine cuando selectedProductWine cambie
+       setProductIdWine(selectedProduct ? selectedProduct.id : null);
+       setImgUrlWine(selectedProduct ? selectedProduct.imgUrl : null);
+     }
   }, []);
 
+  //useEffect para obtener el estado de la suscripcion
   useEffect(() => {
     getCajaStatus((status: boolean) => {
       setBoxActive(status);
@@ -40,6 +53,7 @@ const SubscriptionBox: React.FC = (): React.ReactNode => {
     });
   }, []);
 
+  //HANDLER POST CAJA
   const subscribeToWineBox = () => {
     if (!wineSubscribed) {
       postCajaMensual(idProductWine, userId).then(() => {

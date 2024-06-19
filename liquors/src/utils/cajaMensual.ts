@@ -9,7 +9,6 @@ export const postCajaMensual = async (idProduct: string, userIdpost: string) => 
     try {
         console.log("idProductPost:", idProduct);
         console.log("userIdPost", userIdpost);
-        
         const products = [idProduct]
         const response = await axios.post(`https://liquors-project.onrender.com/users/${userIdpost}/box`, {products})
         console.log("respuesta back a post caja", response);
