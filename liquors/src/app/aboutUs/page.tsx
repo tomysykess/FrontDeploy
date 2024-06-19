@@ -33,7 +33,7 @@ const AboutUs = () => {
         <h2 className="text-black dark:text-darkMode-white text-4xl text-center z-10">
           Nuestro equipo
         </h2>
-        <div className="flex overflow-x-scroll space-x-4 p-10">
+        <div className="flex gap-4  mt-32">
           {teamMembers.map((member: ITeamMember) => (
             <CardTeam
               key={member.id}
