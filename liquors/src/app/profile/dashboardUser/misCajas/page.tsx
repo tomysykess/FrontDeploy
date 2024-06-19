@@ -7,20 +7,50 @@ import MapProductCaja from "@/components/dashboardJuan/cajaDelMes/mapProductCaja
 
 const MisCajas: React.FC = (): React.ReactNode => {
 
-    const [token] = useState(localStorage.getItem("loginToken") || null)
+    const [token, setToken] = useState(null)
 
-    const [role] = useState<any>(localStorage.getItem("userDataLogin") || null);
+    /*const getToken = () => {
+        if (typeof window !== "undefined" && window.localStorage) {
+          return localStorage.getItem("loginToken") || null;
+        }
+        return null;
+      };
+    
+      const getRole = () => {
+        if (typeof window !== "undefined" && window.localStorage) {
+          return localStorage.getItem("userDataLogin") || null;
+        }
+        return null;
+      }
+    
+      const [token] = useState(getToken )
+      const [role] = useState<any>(getRole);*/
   
     const router = useRouter()
 
+    /*useEffect(() => {
+        if (!token) {
+            router.push("/");
+        }
+        if (token) {
+          const rol = JSON.parse(role)
+          if (rol.role =! 4 || rol.role != "4") {
+            router.push("/profile")
+          }
+        }
+    },[]);*/
+    
     useEffect(() => {
-      if (!token) {
-          router.push("/");
+      if (typeof window !== "undefined" && window.localStorage) {
+        const tokenUser: any = localStorage.getItem("loginToken")
+        setToken(tokenUser)
       }
-  },[]);
+      /*if (!token) {
+          router.push("/");
+      }*/
+    },[]);
 
   
-   
 
   return (
         <>
