@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { MenuDashboard } from "@/components/dashboardJuan/menuDashboard/menuDashboard";
 import { AccountInfoCard } from "@/components/dashboardJuan/dashboardUser/dashboardUser";
 import LabelImportantIcon from "@mui/icons-material/LabelImportant";
+/* import { getUserProfile } from "@/utils/putUserProfile"; */
 
 const Profile: React.FC = (): React.ReactNode => {
   
@@ -40,6 +41,7 @@ const Profile: React.FC = (): React.ReactNode => {
     const dataParsed = JSON.parse(userDataFromStorage);
     if (dataParsed) {
       setDataUser(dataParsed);
+      /*       getUserProfile(dataUser.id); */
     }
   }, []);
 

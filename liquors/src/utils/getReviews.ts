@@ -38,3 +38,23 @@ export const averageReviews = async ({ idProduct }: any) => {
     return null;
   }
 };
+
+export const fetchReviewsAdmin = async (
+  token: string,
+  dispatch: AppDispatch
+) => {
+  {
+    try {
+      const res = await axios.get<any>(
+        `https://liquors-project.onrender.com/reviews`,
+        {
+          headers: { authorization: `Bearer: ${token}` },
+        }
+      );
+
+      dispatch(readReviews(res.data));
+    } catch (err) {
+      console.error(err);
+    }
+  }
+};
