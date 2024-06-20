@@ -29,6 +29,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
     name,
     size,
     averageRate,
+    rate,
   } = product;
 
   const [favorite, setFavorite] = useState(false);
@@ -84,7 +85,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           <div className="flex flex-row items-center">
             <Rating
               name="product-rating"
-              value={averageRate ?? 0}
+              value={rate ?? 0}
               precision={0.5}
               readOnly
               icon={
