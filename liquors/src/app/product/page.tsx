@@ -101,7 +101,7 @@ const Product: React.FC = (): React.ReactNode => {
             <div className="flex w-full h-full">
               {hasRol === 1 || hasRol === undefined ? (
                 <div className="opacity-50 pointer-events-none     ">
-                  <p className="text-wine dark">
+                  <p className="text-wine dark dark:text-white">
                     Deber ser usuario Premium para acceder al filtrado!
                   </p>
                   <ProductFilterCard
