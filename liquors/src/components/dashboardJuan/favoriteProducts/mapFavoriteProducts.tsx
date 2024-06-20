@@ -36,7 +36,7 @@ export const MapUserFavoriteProducts: React.FC = (): React.ReactNode => {
       {favoriteData.map((product: FavoriteProduct) => (
         <div
           key={product.id}
-          className="flex  justify-start bg-white dark:bg-darkMode-greyVivino"
+          className="flex  justify-start bg-greyVivino dark:bg-darkMode-greyVivino"
         >
           <FavoriteProductsCard key={product.id} product={product} />
         </div>
