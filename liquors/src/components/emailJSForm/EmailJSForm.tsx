@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 const NewsletterForm = () => {
   const [userData, setUserData] = useState(null);
   const [rolData, setRolData] = useState(null);
@@ -24,7 +24,12 @@ const NewsletterForm = () => {
       );
       console.log(response.data);
 
-      alert("Usuario suscrito con éxito");
+      Swal.fire({
+        icon: "success",
+        title: "¡Éxito!",
+        text: "Usuario suscrito con éxito",
+        confirmButtonText: "OK",
+      });
     } catch (error: any) {
       console.log(error.message);
 
@@ -33,9 +38,7 @@ const NewsletterForm = () => {
   };
 
   return (
-
     <div className="flex justify-center items-center  bg-greyVivino p-10 dark:bg-darkMode-greyVivino">
-
       <form
         onSubmit={sendEmail}
         className="bg-white dark:bg-darkMode-grey1 p-6 rounded shadow-md w-full max-w-md"

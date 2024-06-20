@@ -6,7 +6,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
-
+import Swal from "sweetalert2";
 import { RootState } from "@/store/store";
 import { IReview } from "@/interfaces/interfaz";
 
@@ -53,7 +53,13 @@ export const Review = ({ review }: { review: IReview }) => {
     if (confirm("¿Estás seguro de que quieres eliminar esta reseña?")) {
       try {
         await deleteReview(id, dispatch);
-        alert("Review eliminada con éxito.");
+
+        Swal.fire({
+          icon: "success",
+          title: "¡Éxito!",
+          text: "Review eliminada con éxito.",
+          confirmButtonText: "OK",
+        });
       } catch (error) {
         console.error("Error eliminando la reseña:", error);
         alert("Hubo un error eliminando la reseña.");
@@ -68,7 +74,13 @@ export const Review = ({ review }: { review: IReview }) => {
   const sendEdit = async (id: string) => {
     try {
       await editReview(id, dispatch, { ...formData });
-      alert("Review editada con éxito.");
+
+      Swal.fire({
+        icon: "success",
+        title: "¡Éxito!",
+        text: "Review editada con éxito.",
+        confirmButtonText: "OK",
+      });
       setEditOn(false);
     } catch (error) {
       console.error("Error editando la reseña:", error);
