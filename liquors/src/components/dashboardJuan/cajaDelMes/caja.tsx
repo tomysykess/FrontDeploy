@@ -76,7 +76,7 @@ const SubscriptionBox: React.FC = (): React.ReactNode => {
     <div className="flex justify-center space-x-10">
       <div className="flex flex-col items-center">
         <h1 className="text-2xl font-plus-jakarta-sans font-normal">
-          <CardGiftcardIcon /> Caja de Vino
+          <CardGiftcardIcon /> Caja de {selectedProductWine.name}
         </h1>
         <ArrowDownwardIcon />
         <div className="relative bg-white shadow-md rounded-t-3xl overflow-hidden w-80 h-96">
