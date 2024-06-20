@@ -4,6 +4,7 @@ import { MenuDashboard } from "@/components/dashboardJuan/menuDashboard/menuDash
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import LabelImportantIcon from "@mui/icons-material/LabelImportant";
+import { MapUserHistorialReviewsAdmin } from "@/components/dashboardJuan/historial de reviews/mapHistoryAdmin";
 
 const HistorialReviewsAdmin: React.FC = (): React.ReactNode => {
   const [token, setToken] = useState<string | null>(null);
@@ -51,7 +52,7 @@ const HistorialReviewsAdmin: React.FC = (): React.ReactNode => {
                 </div>
                 <br />
                 <div className="w-full flex">
-                  <MapUserHistorialReviews />
+                  <MapUserHistorialReviewsAdmin />
                 </div>
               </div>
             </div>
