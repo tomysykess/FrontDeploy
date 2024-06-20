@@ -109,15 +109,15 @@ export const AccountInfoCard = () => {
           <div className="absolute -top-16 left-1/2 transform -translate-x-1/2">
             <img
               className="w-32 h-32 rounded-full border-4 border-wine shadow-md"
-              src={dataUser.imageUrl || ""}
+              src={dataUser.imageUrl || "/8742495.png"}
               alt="User Avatar"
             />
-            <div
+            {/*         <div
               className="absolute bottom-0 right-0 bg-gray-200  p-1 rounded-full cursor-pointer"
               onClick={handleIconClick}
             >
               <AddPhotoAlternateIcon />
-            </div>
+            </div> */}
             <input
               type="file"
               ref={fileInputRef}

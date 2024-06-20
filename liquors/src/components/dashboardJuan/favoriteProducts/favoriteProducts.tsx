@@ -42,34 +42,52 @@ export const FavoriteProductsCard = ({
       {/* Contenedor de texto a la derecha */}
       <div className="flex flex-col flex-grow ml-4">
         {/* Nombre */}
-        <h2 className="text-base text-gray-700 font-bold">Producto</h2>
-        <p className="text-sm text-gray-600">{product.name}</p>
+        <h2 className="text-base text-gray-700 font-bold dark:text-darkMode-white">
+          Producto
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-darkMode-white">
+          {product.name}
+        </p>
         {/* Descripción */}
         <hr className="w-full my-2"></hr>
-        <h2 className="text-base pt-2 text-gray-700 font-bold">Descripcion</h2>
-        <p className="text-sm text-gray-600">{product.description}</p>
+        <h2 className="text-base pt-2 text-gray-700 font-bold dark:text-darkMode-white">
+          Descripcion
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-darkMode-white">
+          {product.description}
+        </p>
         {/* Rate (Estrellas) */}
         <hr className="w-full my-2"></hr>
         <div className="flex items-center pt-2 mt-2">
-          <span className="text-base text-gray-700 font-bold">Rate</span>
+          <span className="text-base text-gray-700 font-bold dark:text-darkMode-white">
+            Rate
+          </span>
           <Rating
             name="read-only"
             value={product.rate}
             readOnly
-            className="ml-auto"
+            className="ml-auto dark:text-darkMode-white"
           />
         </div>
         {/* Categoria */}
         <hr className="w-full my-2"></hr>
-        <h2 className="text-base text-gray-700  pt-2 font-bold">Categoria</h2>
-        <p className="text-sm text-gray-600">{product.category}</p>
+        <h2 className="text-base text-gray-700  pt-2 font-bold dark:text-darkMode-white">
+          Categoria
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-darkMode-white">
+          {product.category}
+        </p>
         {/* Abv */}
         <hr className="w-full my-2"></hr>
-        <h2 className="text-base text-gray-700 pt-2 font-bold">Abv</h2>
-        <p className="text-sm text-gray-600">{product.abv}</p>
+        <h2 className="text-base text-gray-700 pt-2 font-bold dark:text-darkMode-white">
+          Abv
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-darkMode-white">
+          {product.abv}
+        </p>
         {/* Icono de eliminar */}
         <button onClick={() => deleteFav(product)}>
-          <DeleteOutlineIcon className="absolute bottom-2 right-2 cursor-pointer" />
+          <DeleteOutlineIcon className="absolute bottom-2 right-2 cursor-pointer dark:text-darkMode-white" />
         </button>
       </div>
     </div>
