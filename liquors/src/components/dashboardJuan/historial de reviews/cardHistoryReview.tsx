@@ -6,13 +6,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { deleteReviewConAlert } from "@/utils/deleteReviewsConAlert";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
-import { NearMe } from "@mui/icons-material";
 
 export const CardHistoryReview: React.FC<{ product: IReview }> = ({
   product,
 }): React.ReactNode => {
   const data = product.productId;
-
+  const name = data.name;
   const dispatch = useDispatch();
 
   const [errorDelete, setErrorDelete] = useState();
@@ -72,7 +71,7 @@ export const CardHistoryReview: React.FC<{ product: IReview }> = ({
 
   return (
     <>
-      <div className="flex flex-col gap-4 p-6 bg-white dark:bg-darkMode-grey3 w-1/6 rounded-xl shadow-md mx-4 my-2">
+      <div className="flex flex-col gap-4 p-6 bg-white dark:bg-darkMode-grey3 rounded-xl shadow-md mx-4 my-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 dark:bg-darkMode-grey3">
             <span className="text-xl font-bold text-gray-800  dark:text-darkMode-white">
@@ -99,10 +98,11 @@ export const CardHistoryReview: React.FC<{ product: IReview }> = ({
         <p className="text-gray-600 italic  dark:text-darkMode-white">
           &quot;{product.comment}&quot;
         </p>
-        {/*    <h3 className="text-right text-sm font-medium text-gray-500  dark:text-darkMode-white">
-          {name ? name : ""}
-        </h3> */}
+        <h3 className="text-right text-sm font-medium text-gray-500  dark:text-darkMode-white">
+          {name}
+        </h3>
       </div>
     </>
   );
 };
+
