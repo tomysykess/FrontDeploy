@@ -5,6 +5,7 @@ import { CardHistoryReview } from "./cardHistoryReview";
 import { useDispatch, useSelector } from "react-redux";
 import { IReview } from "@/interfaces/interfaz";
 import { fetchReviewsAdmin } from "@/utils/getReviews";
+import { CardHistoryReviewAdmin } from "./cardHistoryReviewAdmin";
 
 export const MapUserHistorialReviewsAdmin: React.FC = (): React.ReactNode => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ export const MapUserHistorialReviewsAdmin: React.FC = (): React.ReactNode => {
     <>
       {/*MAPEA UNA CARD DE REVIEW, POR CADA REVIEW DEL USUARIO. */}
       {reviewData.map((product: IReview) => (
-        <CardHistoryReview key={product.id} product={product} />
+        <CardHistoryReviewAdmin key={product.id} product={product} />
       ))}
     </>
   );

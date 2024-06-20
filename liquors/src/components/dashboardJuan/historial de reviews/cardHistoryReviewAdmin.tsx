@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { NearMe } from "@mui/icons-material";
 
-export const CardHistoryReview: React.FC<{ product: IReview }> = ({
+export const CardHistoryReviewAdmin: React.FC<{ product: IReview }> = ({
   product,
 }): React.ReactNode => {
   const data = product.productId;
@@ -89,12 +89,12 @@ export const CardHistoryReview: React.FC<{ product: IReview }> = ({
               ))}
             </div>
           </div>
-          <button
+          {/*         <button
             onClick={() => handleDelete(product.id)}
             className="text-red-600 cursor-pointer hover:text-red-800 transition-colors"
           >
             <DeleteIcon />
-          </button>
+          </button> */}
         </div>
         <p className="text-gray-600 italic  dark:text-darkMode-white">
           &quot;{product.comment}&quot;
