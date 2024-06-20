@@ -3,10 +3,10 @@ import { ISuscribe } from "@/interfaces/interfaz";
 export const arraySuscribe: ISuscribe[] = [
   {
     title: "Plan Premium",
-    description1: "Acceso ilimtado a nuestros artículos.",
-    description2: "Boletín informativo.",
-    description3: `Acceso a la caja 'Recomendada del Mes'.`,
-    description4: "Descuentos en eventos.",
+    description1: "Acceso ilimitado a nuestros artículos y reseñas destacadas.",
+    description2:"Boletín informativo para estar al día de productos recomendados.",
+    description3: "Acceso a la caja 'Recomendada del Mes' con productos a elegir.",
+    description4:"Descuentos en productos seleccionados de nuestros vendedores asociados.",
     price: 100,
     type: "premium",
     role: 4,
