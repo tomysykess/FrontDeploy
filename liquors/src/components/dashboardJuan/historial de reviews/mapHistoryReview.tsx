@@ -10,7 +10,7 @@ export const MapUserHistorialReviews: React.FC = (): React.ReactNode => {
     const dispatch = useDispatch();
     const reviewData = useSelector((state: any) => state.reviews.userProductReview);
 
-    //TOKEN & ID PARA LA SOLICITUD
+    //TOKEN & ID PARA LA SOLICITUD-
     const [userTokenAndId, setDataUser] = useState({
         token: "",
         id: "",
