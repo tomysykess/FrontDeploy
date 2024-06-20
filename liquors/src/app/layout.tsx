@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <ThemeProvider>
-      <html lang="en" className="bg-greyVivino dark:bg-darkMode-greyVivino">
+      <html lang="en" className=" dark:bg-darkMode-greyVivino">
         <body className="bg-greyVivino dark:bg-darkMode-greyVivino">
           <Providers>
             <AuthStore>

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <div className="dark:bg-darkMode-greyVivino">
+    <div className="bg-white pb-1 pt-1 dark:bg-darkMode-greyVivino">
       <div className="flex justify-around items-center p-3 mx-large my-9  dark:bg-darkMode-greyVivino ">
         <div className="dark:bg-darkMode-greyVivino">
           <Link href="/">

@@ -6,7 +6,7 @@ import { ISuscribe } from "@/interfaces/interfaz";
 
 const SuscribeCards = () => {
   return (
-    <div className="p-6 bg-greyVivino  dark:bg-darkMode-greyVivino  ">
+    <div className="p-6 bg-greyMLfilter  dark:bg-darkMode-greyVivino  ">
       {" "}
       <b>
         <h2 className="text-3xl font-plus-jakarta  text-center mb-6 dark:text-grey1">

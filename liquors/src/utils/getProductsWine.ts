@@ -6,7 +6,9 @@ import { Product } from "@/interfaces/interfaz";
 
 export const fetchProductsWine = async (dispatch: AppDispatch) => {
   try {
-      const res = await axios.get<Product[]>("https://liquors-project.onrender.com/products/?category=Wine&page=1&limit=10");
+      const res = await axios.get<Product[]>("https://liquors-project.onrender.com/products/?category=Vino&page=1&limit=10");
+      console.log("get de vinos", res);
+      
       //deberia hacer un estado global nuevo solo para products/gins.
       dispatch(clearWineProducts());
       dispatch(readWineProducts(res.data));

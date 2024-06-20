@@ -14,6 +14,7 @@ export const MapProductCardWine: React.FC = (): React.ReactNode => {
  //defino useDispatch para pasarlo como argumento a fetchProducts
  const dispatch = useDispatch()
  const wineProducts = useSelector((state: any) => state.products.wineProducts);
+ console.log("vinos de banner vinos", wineProducts);
  
 
   //GET PRODUCTS A LA API + CARGA DE DATOS EN LA STORE.
