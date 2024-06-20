@@ -1,7 +1,7 @@
 "use client";
 import Carousel from "@/components/carousel/Carousel";
 import BannerProducts from "@/components/bannerProductHome/banner";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BannerProductsGin from "@/components/bannerProductHome/bannerGin";
 import SuscribeCards from "@/components/suscribeCards/SuscribeCards";
@@ -9,6 +9,7 @@ import { BannerProductsWine } from "@/components/bannerProductHome/bannerWine";
 import "./globals.css";
 
 export default function Landing() {
+
   return (
     <div>
       <Carousel />
