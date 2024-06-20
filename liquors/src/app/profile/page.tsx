@@ -7,14 +7,13 @@ import LabelImportantIcon from "@mui/icons-material/LabelImportant";
 /* import { getUserProfile } from "@/utils/putUserProfile"; */
 
 const Profile: React.FC = (): React.ReactNode => {
-  
   /*const getToken = () => {
     if (typeof window !== "undefined" && window.localStorage) {
       return localStorage.getItem("loginToken") || null;
     }
     return null;
   };*/
-  
+
   //const [token] = useState(getToken)
 
   const [token, setToken] = useState<string | null>(null);
@@ -35,7 +34,6 @@ const Profile: React.FC = (): React.ReactNode => {
     setToken(loginToken);
   }, []);
 
-
   useEffect(() => {
     const userDataFromStorage: any = localStorage.getItem("userDataLogin");
     const dataParsed = JSON.parse(userDataFromStorage);
@@ -49,9 +47,7 @@ const Profile: React.FC = (): React.ReactNode => {
     <>
       {token && (
         <>
-
           <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1 h-screen">
-
             <MenuDashboard />
             <div className="w-full">
               <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">
@@ -69,6 +65,5 @@ const Profile: React.FC = (): React.ReactNode => {
     </>
   );
 };
-
 
 export default Profile;

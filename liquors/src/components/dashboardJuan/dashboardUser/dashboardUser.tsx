@@ -7,6 +7,7 @@ import { getStorage } from "firebase/storage";
 //icono material UI
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { Divider } from "@mui/material";
+import { putUserProfile } from "@/utils/putUserProfile";
 
 // Configuración de Firebase
 const firebaseConfig = {
@@ -76,6 +77,8 @@ export const AccountInfoCard = () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setDownloadURL(downloadURL);
           // Guardar la URL en el localStorage
+          /*  putUserProfile(downloadURL); */
+
           const updatedUserData = { ...dataUser, imageUrl: downloadURL };
           localStorage.setItem(
             "userDataLogin",
@@ -112,12 +115,12 @@ export const AccountInfoCard = () => {
               src={dataUser.imageUrl || "/8742495.png"}
               alt="User Avatar"
             />
-            {/*         <div
+            <div
               className="absolute bottom-0 right-0 bg-gray-200  p-1 rounded-full cursor-pointer"
               onClick={handleIconClick}
             >
               <AddPhotoAlternateIcon />
-            </div> */}
+            </div>
             <input
               type="file"
               ref={fileInputRef}
