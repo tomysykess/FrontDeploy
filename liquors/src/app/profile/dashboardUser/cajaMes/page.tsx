@@ -71,7 +71,10 @@ const CajaMes: React.FC = (): React.ReactNode => {
                     </span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <LocalShippingIcon fontSize="large" />
+                    <LocalShippingIcon
+                      fontSize="large"
+                      dark:text-darkMode-white
+                    />
                     <span className="dark:text-darkMode-white">
                       Envío Rápido
                     </span>
