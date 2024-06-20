@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
+
 declare global {
   interface Window {
     myLandbot?: any;
     Landbot?: any;
   }
 }
+
 const Landbot = () => {
   useEffect(() => {
     const initLandbot = () => {
@@ -15,7 +17,7 @@ const Landbot = () => {
         s.type = "text/javascript";
         s.async = true;
         s.addEventListener("load", () => {
-          window.myLandbot = new (window as any).Landbot.Livechat({
+          window.myLandbot = new window.Landbot.Livechat({
             configUrl:
               "https://storage.googleapis.com/landbot.online/v3/H-2522202-46DFHRJXU8XYH48G/index.json",
           });
