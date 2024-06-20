@@ -13,7 +13,6 @@ const Product: React.FC = (): React.ReactNode => {
 
   const [filters, setFilters] = useState<any>({});
   console.log("filters que envio a back", filters);
-  
 
   //TOKEN
   const [token, setToken] = useState<string | null>(null);
@@ -101,7 +100,10 @@ const Product: React.FC = (): React.ReactNode => {
           <div className="flex ">
             <div className="flex w-full h-full">
               {hasRol === 1 || hasRol === undefined ? (
-                <div className="opacity-50 " >
+                <div className="opacity-50 pointer-events-none     ">
+                  <p className="text-wine dark">
+                    Deber ser usuario Premium para acceder al filtrado!
+                  </p>
                   <ProductFilterCard
                     fetchFilterBack={fetchFilterBack}
                     onFilterChange={handleFilterChange}
