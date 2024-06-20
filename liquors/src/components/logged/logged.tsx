@@ -24,7 +24,11 @@ export const Logged: React.FC = (): React.ReactNode => {
   const logoutHandler: React.MouseEventHandler<HTMLButtonElement> = () => {
     localStorage.removeItem("loginToken");
     localStorage.removeItem("userDataLogin");
-    router.push("/");
+    if (window.location.href === 'https://front-deploy-sage.vercel.app/') {
+      window.location.reload();
+    } else {
+      router.push("/");
+    }
   };
 
   const favHandler = () => {
