@@ -51,7 +51,7 @@ export const ProductCardDashboard: React.FC<{ product: Product }> = ({
   return (
     <div
       key={product.id}
-      className="bg-white p-6 my-3 rounded-lg shadow-lg border-r-8 border-wine flex flex-row justify-between items-center h-32 px-16 rounded-t-xl m-4"
+      className="bg-white dark:bg-darkMode-grey1 p-6 my-3 rounded-lg shadow-lg border-r-8 border-wine flex flex-row justify-between items-center h-32 px-16 m-4"
     >
       <div className="flex flex-row items-center gap-6">
         <Switch
@@ -70,13 +70,18 @@ export const ProductCardDashboard: React.FC<{ product: Product }> = ({
           </p>
         )}
       </div>
-      <div className="flex flex-row items-center gap-8 w-full m-16 ">
+      <div className="flex flex-row items-center gap-8 w-full m-16">
         <div className="w-24 h-24">
           <img src={product.imgUrl} className="my-2 object-cover rounded-md" />
         </div>
-        <h2 className="text-center text-xl font-Lora mb-2">{product.name}</h2>
+        <h2 className="text-center text-xl font-Lora mb-2 text-gray-800 dark:text-darkMode-white">
+          {product.name}
+        </h2>
       </div>
-      <Link className="buttonSecondary flex flex-row gap-4" href={`/editProduct/${product.id}`}>
+      <Link
+        className="bg-gray-500 text-white p-2 rounded hover:bg-gray-600 transition duration-200 flex flex-row gap-4"
+        href={`/editProduct/${product.id}`}
+      >
         Editar <EditIcon />
       </Link>
     </div>

@@ -206,149 +206,173 @@ export const ProductEdit = ({ productId }: { productId: string }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col w-[119%] h-screen p-6 items-center justify-center bg-white dark:bg-darkMode-greyVivino">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col justify-center w-fit p-6 bg-greyVivino"
+        className="flex flex-col justify-center w-1/2 p-6 bg-greyVivino dark:bg-darkMode-grey1 rounded-lg shadow-xl"
       >
-        <h1 className="pb-6 text-gray-600 text-xl font-normal">
+        <h1 className="pb-6 text-gray-800 dark:text-darkMode-white text-xl font-normal">
           Edita los campos que desees:
         </h1>
         <div className="flex flex-col my-2">
-          <label className="pb-2 text-gray-600 text-l font-normal">
-            Nombre del producto:{" "}
+          <label className="pb-2 text-gray-800 dark:text-darkMode-white text-lg font-normal">
+            Nombre del producto:
           </label>
           <input
             type="text"
             name="name"
             value={dataProduct.name}
             onChange={handleChange}
-            className="placeholder input-text"
+            className="placeholder-gray-500 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-wine focus:border-transparent"
             placeholder="Gin Bombay"
             required
           />
-          {errorProduct.name && <p>{errorProduct.name}</p>}
+          {errorProduct.name && (
+            <p className="text-red-500 text-sm">{errorProduct.name}</p>
+          )}
         </div>
         <div className="flex flex-col my-2">
-          <label className="pb-2 text-gray-600 text-l font-normal">
-            Descripción:{" "}
+          <label className="pb-2 text-gray-800 dark:text-darkMode-white text-lg font-normal">
+            Descripción:
           </label>
           <input
             type="text"
             name="description"
             value={dataProduct.description}
             onChange={handleChange}
-            className="placeholder input-text"
+            className="placeholder-gray-500 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-wine focus:border-transparent"
             placeholder="El Gin Bombay es una variedad de ginebra reconocida por su sabor distintivo y suavidad. Producido por Bombay Sapphire, este gin se destaca por sus notas frescas y herbales,"
             required
           />
-          {errorProduct.description && <p>{errorProduct.description}</p>}
+          {errorProduct.description && (
+            <p className="text-red-500 text-sm">{errorProduct.description}</p>
+          )}
         </div>
-
         <div className="flex flex-col my-2">
-          <label className="pb-2 text-gray-600 text-l font-normal">
-            Subir Imagen:{" "}
+          <label className="pb-2 text-gray-800 dark:text-darkMode-white text-lg font-normal">
+            Subir Imagen:
           </label>
-          <input type="file" onChange={handleFileChange} />
+          <input type="file" onChange={handleFileChange} className="my-2" />
           <button
             type="button"
             onClick={handleUpload}
-            className="flex w-24 p-1 mt-3 rounded text-white font-plus-jakarta-sans hover:brightness-125 bg-blue-500"
+            className="flex items-center justify-center w-24 p-1 mt-3 rounded text-white font-plus-jakarta-sans hover:brightness-125 bg-blue-500"
           >
             Upload
             <CloudUploadIcon className="ml-2" />
           </button>
           {uploadProgress > 0 && (
-            <progress value={uploadProgress} max="100" className="mt-2" />
+            <progress
+              value={uploadProgress}
+              max="100"
+              className="mt-2 w-full"
+            />
           )}
-          {downloadURL && <p>Imagen subida correctamente. </p>}
+          {downloadURL && (
+            <p className="text-green-500 text-sm">
+              Imagen subida correctamente.
+            </p>
+          )}
         </div>
-        <div className="flex flex-row items-center gap-2my-2">
-          <label className="pb-2 text-gray-600 text-l font-normal">
+        <div className="flex flex-col my-2">
+          <label className="pb-2 text-gray-800 dark:text-darkMode-white text-lg font-normal">
             Categoría:
           </label>
-          <div className="m-2 flex flex-row gap-2">
+          <div className="m-2 flex flex-row flex-wrap gap-2">
             {categories.map((category) => (
-              <div key={category}>
-                <label className="flex flex-row gap-2 text-gray-600 text-l font-normal">
-                  <input
-                    type="radio"
-                    name="category"
-                    value={category}
-                    checked={dataProduct.category === category}
-                    onChange={handleCategoryChange}
-                  />
+              <div key={category} className="flex items-center">
+                <input
+                  type="radio"
+                  name="category"
+                  value={category}
+                  checked={dataProduct.category === category}
+                  onChange={handleCategoryChange}
+                  className="mr-2"
+                />
+                <label className="text-gray-800 dark:text-darkMode-white text-lg font-normal">
                   {category.charAt(0).toUpperCase() + category.slice(1)}
                 </label>
               </div>
             ))}
           </div>
-          {errorProduct.category && <p>{errorProduct.category}</p>}
+          {errorProduct.category && (
+            <p className="text-red-500 text-sm">{errorProduct.category}</p>
+          )}
         </div>
-        <div className="flex flex-row item-center gap-2 my-2">
-          <label className="pb-2 text-gray-600 text-l font-normal">ml: </label>
+        <div className="flex flex-col my-2">
+          <label className="pb-2 text-gray-800 dark:text-darkMode-white text-lg font-normal">
+            ml:
+          </label>
           <input
             type="number"
             name="size"
             value={dataProduct.size}
             onChange={handleChange}
-            className="placeholder input-text"
+            className="placeholder-gray-500 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-wine focus:border-transparent"
             placeholder="750"
             required
           />
-          {errorProduct.size && <p>{errorProduct.size}</p>}
+          {errorProduct.size && (
+            <p className="text-red-500 text-sm">{errorProduct.size}</p>
+          )}
         </div>
-        <div className="flex flex-row item-center gap-2 my-2">
-          <label className="pb-2 text-gray-600 text-l font-normal">
-            Graduacion alcoholica (en numeros):{" "}
+        <div className="flex flex-col my-2">
+          <label className="pb-2 text-gray-800 dark:text-darkMode-white text-lg font-normal">
+            Graduación alcohólica (en números):
           </label>
           <input
             type="number"
             name="abv"
             value={dataProduct.abv}
             onChange={handleChange}
-            className="placeholder input-text"
+            className="placeholder-gray-500 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-wine focus:border-transparent"
             placeholder="37.5"
             required
           />
-          {errorProduct.abv && <p>{errorProduct.abv}</p>}
+          {errorProduct.abv && (
+            <p className="text-red-500 text-sm">{errorProduct.abv}</p>
+          )}
         </div>
         <div>
           <label
             htmlFor="country"
-            className="pb-2 text-gray-600 text-l font-normal"
+            className="pb-2 text-gray-800 dark:text-darkMode-white text-lg font-normal"
           >
-            Country{" "}
+            País:
           </label>
           <select
-            className="rounded border border-gray-400 outline-none hover:border-wine hover:ring-1 hover:ring-wine focus:border-wine focus:ring-2 focus:ring-wine transition duration-200"
+            className="p-2 rounded border border-gray-400 outline-none hover:border-wine hover:ring-1 hover:ring-wine focus:border-wine focus:ring-2 focus:ring-wine transition duration-200"
             id="country"
             name="country"
             value={dataProduct.country}
             onChange={handleChange}
           >
-            <option value="">Selecciona un país</option>
+            <option value="" className="text-gray-800 dark:text-darkMode-white">
+              Selecciona un país
+            </option>
             {countries.map((country) => (
               <option key={country} value={country}>
                 {country}
               </option>
             ))}
           </select>
-          {errorProduct.country && <span>{errorProduct.country}</span>}
+          {errorProduct.country && (
+            <span className="text-red-500 text-sm">{errorProduct.country}</span>
+          )}
         </div>
         <div className="flex flex-row gap-6 my-6 items-center justify-center">
           <button
             type="button"
-            className="buttonSecondary hover:cursor-pointer"
+            className="bg-gray-500 text-white p-2 rounded hover:bg-gray-600 transition duration-200"
             onClick={handleCancel}
           >
             Cancelar
           </button>
           <button
             type="submit"
-            className="buttonPrimary hover:cursor-pointer w-fit"
+            className="bg-wine text-white p-2 rounded hover:bg-darkMode-wine transition duration-200"
           >
-            aplicar los cambios
+            Aplicar los cambios
           </button>
         </div>
       </form>
