@@ -40,15 +40,14 @@ const CajaMes: React.FC = (): React.ReactNode => {
 
   return (
     <>
-      <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex pb-9 flex-row pt-1 mb-1 h-screen">
+      <div className="bg-greyVivino dark:bg-darkMode-greyVivino  flex pb-1 flex-row pt-1 mb-0 h-auto ">
         <MenuDashboard />
-        <div className="overflow-y-auto flex flex-col justify-center items-center w-full">
-          <h1 className="font-plus-jakarta-sans pt-40 text-3xl text-center font-normal dark:text-darkMode-white">
+        <div className="flex  flex-col justify-center pt-1 items-center w-full">
+          <h1 className="font-plus-jakarta-sans pt-10 text-3xl text-center font-normal dark:text-darkMode-white">
             Suscribite a nuestra <span className="text-wine">caja del mes</span>
           </h1>
-          <hr></hr>
-          <br />
-          <div className="flex flex-col items-center justify-center min-h-screen py-10">
+          <hr className="w-full border-gray-300" />
+          <div className="flex flex-col items-center justify-center min-h-screen ">
             <div className="flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-10 items-center mb-10">
               {/* Elemento hermano */}
               <div className="flex flex-col items-center text-center">
