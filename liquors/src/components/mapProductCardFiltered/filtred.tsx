@@ -1,25 +1,24 @@
 
 'use client'
-//react
-import React, {useEffect, useState} from "react";
+// react
+import React, { useEffect, useState } from "react";
 import ProductCard from "../productCard/productCard";
 import { useSelector } from "react-redux";
 import Swal from 'sweetalert2';
 import { useRouter } from "next/navigation";
 
 const MapProductCardFiltered = () => {
-
-  const dataGlobal = useSelector((state: any) => state.products.data);
+  const dataGlobal = useSelector((state: any) => state.products.data || []);
   const [productFiltered, setProductFiltered] = useState('');
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
-      const data: any = localStorage.getItem("itemCategory");
+    const data = localStorage.getItem("itemCategory");
+    if (data) {
       const parse = JSON.parse(data);
       setProductFiltered(parse?.item || '');
+    }
   }, []);
-
-  console.log(productFiltered);
 
   const showNoResultsAlert = () => {
     Swal.fire({
@@ -28,9 +27,9 @@ const MapProductCardFiltered = () => {
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'Volver',
     }).then((result) => {
-        if (result.isConfirmed) {
-            router.push('/product');
-        }
+      if (result.isConfirmed) {
+        router.push('/product');
+      }
     });
   };
 
@@ -38,14 +37,18 @@ const MapProductCardFiltered = () => {
     product.name.toLowerCase().includes(productFiltered.toLowerCase())
   );
 
+  useEffect(() => {
+    if (filteredProducts.length === 0) {
+      showNoResultsAlert();
+    }
+  }, [filteredProducts]);
+
   return (
     <>
-      {filteredProducts.length > 0 ? (
+      {filteredProducts.length > 0 && (
         filteredProducts.map((product: any) => (
           <ProductCard key={product.id} product={product} />
         ))
-      ) : (
-        showNoResultsAlert()
       )}
     </>
   );
