@@ -90,9 +90,9 @@ const LoginComponent: React.FC = (): React.ReactNode => {
 
   return (
     <div className="flex justify-center items-center  text-center pt-32 pb-32 bg-greyVivino dark:bg-darkMode-greyVivino ">
-      <div className="justify-start justmt-0 mr-32">
+      <div className="justify-start mt-0 mr-32">
 
-        <h1 className="pb-8 text-gray-600 text-6xl font-normal">Únete a </h1>
+        <h1 className="pb-8 text-gray-600 text-6xl font-normal dark:text-darkMode-white">Únete a </h1>
 
         <p className="text-wine pb-8 font-Lato text-6xl">Liquors</p>
       </div>
@@ -134,7 +134,7 @@ const LoginComponent: React.FC = (): React.ReactNode => {
             />
           </div>
 
-          <div className="inline-block pb-8 pt-5">
+          <div className="inline-block pb-8 pt-5  dark:text-darkMode-white">
             ¿Aún no te registraste? <br />
             <br />
             <Link href="/register">
@@ -172,9 +172,9 @@ const LoginComponent: React.FC = (): React.ReactNode => {
           )}
         </form>
 
-        <div className="flex mt-0 bg-white  dark:bg-darkMode-grey1 mb-10 px-9 flex-row items-center">
+        <div className="flex mt-0 bg-white  dark:bg-darkMode-grey1 mb-10 px-12 flex-row items-center">
           <hr className="w-1/2 border-gray-400"></hr>
-          <p className="mx-4">o</p>
+          <p className="mx-4  dark:text-darkMode-white">o</p>
           <hr className="w-1/2 border-gray-400"></hr>
         </div>
 
@@ -188,7 +188,7 @@ const LoginComponent: React.FC = (): React.ReactNode => {
               src="https://accounts.scdn.co/sso/images/new-google-icon.72fd940a229bc94cf9484a3320b3dccb.svg"
             ></img>
             {!errorStateGoogle ? (
-              <p className="justify-center pl-5">
+              <p className="justify-center pl-5  dark:text-darkMode-white">
                 {isLoadingGoogle ? "Enviando..." : "Continuar con Google"}
               </p>
             ) : (

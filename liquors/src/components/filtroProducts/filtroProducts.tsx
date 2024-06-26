@@ -57,7 +57,7 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
   return (
     <div className="flex flex-col  bg-greyVivino dark:bg-darkMode-grey1 border p-4 ml-0 mr-6 rounded-lg shadow-md w-3/4 h-">
       {/*FILTRO POR TIPO BEBIDA */}
-      <h1 className="text-lg font-normal  font-plus-jakarta-sans mb-4">
+      <h1 className="text-lg font-normal  font-plus-jakarta-sans mb-4  dark:text-darkMode-white">
         Filtros
       </h1>
       <div className="mb-4 flex p-1 flex-wrap justify-center gap-2">
@@ -115,7 +115,7 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
       <hr></hr>
 
       {/*FILTRO POR RANGO PRECIO U OTRA VARIABLE. */}
-      <h1 className="text-lg font-normal pt-3  font-plus-jakarta-sans mb-4">
+      <h1 className="text-lg font-normal pt-3  font-plus-jakarta-sans mb-4  dark:text-darkMode-white">
         Rango de Abv
       </h1>
       <Slider
@@ -140,7 +140,7 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
       />
       <hr></hr>
       {/*FILTRO POR VALORACION DEL VINO. */}
-      <h1 className="text-lg font-normal pt-3  font-plus-jakarta-sans mb-4">
+      <h1 className="text-lg font-normal pt-3  font-plus-jakarta-sans mb-4  dark:text-darkMode-white">
         Puntuaciones
       </h1>
       <div className="flex flex-col space-y-2">
@@ -150,10 +150,11 @@ const ProductFilterCard: React.FC<ProductFilterCardProps> = ({
               checked={selectedRating === rating}
               onChange={() => handleRatingChange(rating)}
               color="primary"
+              className=" dark:text-darkMode-white"
             />
             <div className="flex">
               {Array.from({ length: rating }, (_, index) => (
-                <StarIcon key={index} className="text-wine" />
+                <StarIcon key={index} className="text-wine  " />
               ))}
             </div>
           </div>

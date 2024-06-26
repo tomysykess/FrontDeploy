@@ -4,7 +4,7 @@ import axios from "axios";
 import { headers } from "next/headers";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
+import Swal from 'sweetalert2';
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 initMercadoPago("APP_USR-9e5c6b96-b88e-4b42-ba57-944a9c10dcf9");
@@ -43,7 +43,8 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
     try {
       if (role === product.role) {
         console.log(role);
-        alert(`Ya eres un usuario ${product.type}`);
+        Swal.fire(`Ya eres un usuario ${product.type}`)
+
         return;
       }
       if (role === 4 && product.role === 3) {
@@ -65,7 +66,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
         return;
       }
       if (role === 3 && product.role === 4) {
-        alert("Ya eres un usuario seller");
+        Swal.fire("Ya eres un usuario seller")
         return;
       }
       if (userData) {
@@ -84,7 +85,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
         console.log(res);
         router.push(res.data.init_point);
       } else {
-        alert("Debes ingresar para poder suscribirte");
+        Swal.fire("Debes ingresar para poder suscribirte")
       }
     } catch (error) {
       console.error("Error handling payment:", error);
@@ -95,7 +96,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
     try {
       if (role === product.role) {
         console.log(role);
-        alert(`Ya eres un usuario ${product.type}`);
+        Swal.fire(`Ya eres un usuario ${product.type}`)
         return;
       }
       if (role === 4 && product.role === 3) {
@@ -117,7 +118,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
         return;
       }
       if (role === 3 && product.role === 4) {
-        alert("Ya eres un usuario seller");
+        Swal.fire("Ya eres un usuario seller")
         return;
       }
       if (userData) {
@@ -136,7 +137,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
         console.log(res.data.links);
         router.push(res.data.links[1].href);
       } else {
-        alert("Debes ingresar para poder suscribirte");
+        Swal.fire("Debes ingresar para poder suscribirte")
       }
     } catch (error) {
       console.error("Error handling payment:", error);
@@ -161,7 +162,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
           <li>{product.description4}</li>
         </ul>
         <div className="mt-6">
-          <span className="block text-3xl font-bold text-gray-900">
+          <span className="block text-3xl font-bold text-gray-900 dark:text-darkMode-white">
             ${product.price}/mes
           </span>
           <div className="align-center">

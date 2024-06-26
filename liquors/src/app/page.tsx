@@ -19,7 +19,7 @@ export default function Landing() {
         <h1 className="text-center text-2xl text-black dark:text-darkMode-white font-plus-jakarta-sans font-normal mb-4">
           Explora <b className="text-wine">todas</b> las categorías
         </h1>
-        <ExpandMoreIcon className="flex items-center" />
+        <ExpandMoreIcon className="flex items-center dark:text-darkMode-white" />
         <div className="flex space-x-4">
           <BannerProducts />
         </div>
@@ -30,7 +30,7 @@ export default function Landing() {
             Prueba <b className="text-gin">Ginebra</b>
           </h1>
         </div>
-        <ExpandMoreIcon className="flex items-center mt-6" />
+        <ExpandMoreIcon className="flex items-center mt-6 dark:text-darkMode-white" />
         <div className="flex space-x-4">
           {/*FILTRA DESDE EL BACK SOLO GIN */}
           <BannerProductsGin />
@@ -43,7 +43,7 @@ export default function Landing() {
           </h1>
         </div>
 
-        <ExpandMoreIcon className="flex items-center mt-6" />
+        <ExpandMoreIcon className="flex items-center mt-6 dark:text-darkMode-white" />
         <div className="flex space-x-4">
           {/*FILTRA DESDE EL BACK SOLO WINE */}
           <BannerProductsWine />

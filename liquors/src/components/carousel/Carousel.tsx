@@ -47,13 +47,13 @@ const Carousel = () => {
       ))}
 
       <button
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-greyVivino dark:bg-darkMode-greyVivino p-2 rounded-full shadow-md"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-greyVivino dark:bg-darkMode-white dark:text-darkMode-black p-2 rounded-full shadow-md"
         onClick={prevImage}
       >
         {"<"}
       </button>
       <button
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-greyVivino dark:bg-darkMode-greyVivino  p-2 rounded-full shadow-md"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-greyVivino dark:bg-darkMode-white dark:text-darkMode-black p-2 rounded-full shadow-md"
         onClick={nextImage}
       >
         {">"}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { RootState } from "@/store/store";
 import { getCajaMensual, deleteCajaMensual } from "@/utils/cajaMensual";
+import FmdBadOutlinedIcon from '@mui/icons-material/FmdBadOutlined';
 
 export const MapProductCaja: React.FC = () => {
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ export const MapProductCaja: React.FC = () => {
   };
 
   if (dataSuscribedBox.length === 0) {
-    return <div>No estás suscrito a ninguna caja.</div>;
+    return <div className="font-plus-jakarta-sans dark:text-darkMode-greyMLfilter"><FmdBadOutlinedIcon/>No estás suscrito a ninguna caja.</div>;
   }
 
   const subscribedBox = dataSuscribedBox[0];

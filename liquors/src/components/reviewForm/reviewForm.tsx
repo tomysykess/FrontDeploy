@@ -12,6 +12,7 @@ import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 export const ReviewForm = () => {
   const router = useRouter();
@@ -80,14 +81,14 @@ export const ReviewForm = () => {
     if (userData) {
       postReviews(formData);
     } else {
-      alert("Debes ingresar para realizar una reseña!");
+      Swal.fire("Debes ingresar para realizar una reseña!")
       router.push("/login");
     }
   };
 
   return (
     <div className="max-w-md mx-auto bg-white dark:bg-darkMode-grey1 p-8 rounded-xl shadow-md">
-      <h1 className="text-2xl font-bold text-gray-800 mb-4">
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-darkMode-white mb-4">
         ¡Queremos conocer tu opinión sobre este producto!
       </h1>
       <form className="flex flex-col gap-4" onSubmit={handlerSubmit}>
@@ -97,7 +98,7 @@ export const ReviewForm = () => {
           name="comment"
           placeholder="Publica aquí tu reseña"
           onChange={handlerChange}
-          className="p-2 border border-gray-300 dark:bg-darkMode-grey1 rounded-md focus:outline-none focus:ring-2 focus:ring-wine"
+          className="p-2 border border-gray-300 dark:bg-darkMode-grey1 dark:placeholder-darkMode-greyMLfilter dark:text-darkMode-white rounded-md focus:outline-none focus:ring-2 focus:ring-wine"
         />
         <Stack spacing={1}>
           <Rating

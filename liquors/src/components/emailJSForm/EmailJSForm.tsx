@@ -43,7 +43,7 @@ const NewsletterForm = () => {
         onSubmit={sendEmail}
         className="bg-white dark:bg-darkMode-grey1 p-6 rounded shadow-md w-full max-w-md"
       >
-        <h2 className="text-2xl text-center rounded font-plus-jakarta-sans mb-4">
+        <h2 className="text-2xl text-center rounded font-plus-jakarta-sans mb-4 dark:text-darkMode-white">
           ¡Ingresa a nuestro Boletín Informativo!
         </h2>
 

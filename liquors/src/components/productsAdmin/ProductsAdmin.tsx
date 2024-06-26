@@ -70,19 +70,19 @@ const ProductsAdmin = ({ products }: any) => {
                   className="h-16 w-16 object-cover rounded"
                 />
               </td>
-              <td className="border px-4 py-2">{product.name}</td>
-              <td className="border px-4 py-2">{product.description}</td>
-              <td className="border px-4 py-2">{product.category}</td>
-              <td className="border px-4 py-2">{product.abv}%</td>
-              <td className="border px-4 py-2">{product.brand}</td>
-              <td className="border px-4 py-2">{product.country}</td>
-              <td className="border px-4 py-2">{product.size}</td>
-              <td className="border px-4 py-2">{product.averageRate}</td>
-              <td className="border px-4 py-2 text-center">
+              <td className="border dark:text-darkMode-white px-4 py-2">{product.name}</td>
+              <td className="border dark:text-darkMode-white px-4 py-2">{product.description}</td>
+              <td className="border dark:text-darkMode-white px-4 py-2">{product.category}</td>
+              <td className="border dark:text-darkMode-white px-4 py-2">{product.abv}%</td>
+              <td className="border dark:text-darkMode-white px-4 py-2">{product.brand}</td>
+              <td className="border dark:text-darkMode-white px-4 py-2">{product.country}</td>
+              <td className="border dark:text-darkMode-white px-4 py-2">{product.size}</td>
+              <td className="border dark:text-darkMode-white px-4 py-2">{product.averageRate}</td>
+              <td className="border dark:text-darkMode-white px-4 py-2 text-center">
                 {product.active ? (
                   <button
                     onClick={() => handleDelete(product.id)}
-                    className="bg-red-200 text-red-950 px-3 py-1 rounded hover:bg-red-600 focus:outline-none"
+                    className="bg-red-200 text-red-950 px-3 py-1 rounded  hover:bg-red-600 focus:outline-none"
                   >
                     Dar de baja
                   </button>
