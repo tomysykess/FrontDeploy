@@ -102,7 +102,7 @@ const ProductCard: React.FC<{ product: Product }> = ({
       <div className="flex flex-row absolute bottom-10    pl-1 pr-1 left-0 right-0 items-center justify-between w-full mt-2">
         {product.rate > 0 ? (
           <>
-            <span className="text-gray-700">{product.rate}</span>
+            <span className="text-gray-700 dark:text-darkMode-white">{product.rate}</span>
             <HalfRating props={product.rate} />
           </>
         ) : (
@@ -113,7 +113,7 @@ const ProductCard: React.FC<{ product: Product }> = ({
 
         <button onClick={() => favHandler(product)}>
           {favoritColor ? (
-            <FavoriteIcon className="text-wineMasOscuro " />
+            <FavoriteIcon className="text-wineMasOscuro" />
           ) : (
             <FavoriteBorderIcon className="text-wineMasOscuro " />
           )}
