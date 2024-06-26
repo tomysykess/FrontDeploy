@@ -54,7 +54,7 @@ const HistorialReviews: React.FC = (): React.ReactNode => {
       <>
           
               <>
-                      <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1 h-screen overflow-x-hidden">
+                      <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-0 h-full min-h-screen overflow-x-hidden">
                         <MenuDashboard />
                         <div className="flex flex-col w-full overflow-x-hidden">
                           <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">
@@ -74,7 +74,7 @@ const HistorialReviews: React.FC = (): React.ReactNode => {
                               </h2>
                             </div>
                             <br />
-                            <div className="w-full px-4">
+                            <div className="w-full px-4 pb-7">
                               <MapUserHistorialReviews />
                             </div>
                           </div>

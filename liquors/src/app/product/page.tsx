@@ -76,18 +76,18 @@ const Product: React.FC = (): React.ReactNode => {
     }
   };
 
-  const toggleFilterVisibility = () => {
+  /*const toggleFilterVisibility = () => {
     if (hasRol === 1 || hasRol === undefined) {
       alert("Debe suscribirse a una cuenta premium para acceder al filtro.");
     }
-  };
+  };*/
 
   return (
     <div>
       <section className="flex justify-center pt-4 pb-3 bg-greyVivino dark:bg-darkMode-greyVivino ">
         <input
           placeholder="Buscar..."
-          className="p-2 mb-2 pb-2  rounded-[25px] border border-gray-300 dark:border-grey2 dark:placeholder-darkMode-white dark:bg-darkMode-grey1 mt-2 w-1/3"
+          className="p-2 mb-2 pb-2 font-plus-jakarta-sans rounded-[25px] border border-gray-300 dark:border-grey2 dark:placeholder-darkMode-greyMLfilter dark:text-darkMode-white dark:bg-darkMode-grey1 mt-2 w-1/3"
           type="text"
           value={search.item}
           name="item"
@@ -97,8 +97,8 @@ const Product: React.FC = (): React.ReactNode => {
       </section>
 
       <div className="flex   mb-0 pt-0 justify-center bg-greyVivino dark:bg-darkMode-greyVivino ">
-        <section className="flex pt-10 pb-10  w-10/12 bg-greyVivino dark:bg-darkMode-greyVivino  items-start absolute  justify-start-">
-          <div className="flex ">
+        <section className="flex pt-10 pb-10 w-10/12 bg-greyVivino dark:bg-darkMode-greyVivino  items-start absolute  justify-start-">
+          <div className="flex">
             <div className="flex w-full h-full">
               {hasRol === 1 || hasRol === undefined ? (
                 <div className="opacity-50 " >

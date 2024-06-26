@@ -53,7 +53,7 @@ const MisCajas: React.FC = (): React.ReactNode => {
     <>
       {token && (
         <>
-          <div className="bg-greyVivino dark:bg-darkMode-greyVivino  flex flex-row pt-1 mb-1 h-screen overflow-x-hidden">
+          <div className="bg-greyVivino dark:bg-darkMode-greyVivino  flex flex-row pt-1 mb-0 min-h-screen overflow-x-hidden">
             <MenuDashboard />
             <div className="w-full dark:bg-darkMode-greyVivino ">
               <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">

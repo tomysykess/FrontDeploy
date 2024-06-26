@@ -113,7 +113,7 @@ const ProductCard: React.FC<{ product: Product }> = ({
 
         <button onClick={() => favHandler(product)}>
           {favoritColor ? (
-            <FavoriteIcon className="text-wineMasOscuro" />
+            <FavoriteIcon className="text-wineMasOscuro " />
           ) : (
             <FavoriteBorderIcon className="text-wineMasOscuro " />
           )}

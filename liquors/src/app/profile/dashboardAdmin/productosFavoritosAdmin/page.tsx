@@ -16,7 +16,7 @@ const ProductosPublicadosAdmin = () => {
     }
   }, []);
   return (
-    <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1">
+    <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-0">
       <MenuDashboard />
       <ProductsAdmin products={products}></ProductsAdmin>
     </div>

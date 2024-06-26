@@ -40,7 +40,7 @@ const CajaMes: React.FC = (): React.ReactNode => {
 
   return (
     <>
-      <div className="bg-greyVivino dark:bg-darkMode-greyVivino  flex pb-1 flex-row pt-1 mb-1 h-auto ">
+      <div className="bg-greyVivino dark:bg-darkMode-greyVivino  flex pb-1 flex-row pt-1 mb-0 h-auto ">
         <MenuDashboard />
         <div className="flex  flex-col justify-center pt-1 items-center w-full">
           <h1 className="font-plus-jakarta-sans pt-10 text-3xl text-center font-normal dark:text-darkMode-white">
