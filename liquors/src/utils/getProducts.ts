@@ -24,14 +24,13 @@ export const fetchProductsPage = async (dispatch: AppDispatch, page: any) => {
   if (page) {
     queryParam = `page=${page}`;
   }
-
   try {
-    const res = await axios.get<Product[]>(
-      `https://liquors-project.onrender.com/products/?${queryParam}&limit=15`
-    );
-    dispatch(readProducts(res.data));
+      const res = await axios.get<Product[]>(
+        `https://liquors-project.onrender.com/products/?${queryParam}&limit=15`
+      );
+      dispatch(readProducts(res.data));
   } catch (err) {
-    console.error(err);
+      console.error(err);
   }
 };
 

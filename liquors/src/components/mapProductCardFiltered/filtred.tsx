@@ -34,7 +34,7 @@ const MapProductCardFiltered = () => {
   };
 
   const filteredProducts = dataGlobal.filter((product: any) =>
-    product.name.toLowerCase().includes(productFiltered.toLowerCase())
+    product.active && product.name.toLowerCase().includes(productFiltered.toLowerCase())
   );
 
   useEffect(() => {
@@ -42,6 +42,8 @@ const MapProductCardFiltered = () => {
       showNoResultsAlert();
     }
   }, [filteredProducts]);
+
+
 
   return (
     <>

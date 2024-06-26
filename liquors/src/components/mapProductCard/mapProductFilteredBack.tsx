@@ -19,11 +19,13 @@ export const MapProductCardFilterBack: React.FC = (): React.ReactNode => {
     localStorage.setItem("detailProduct", data)
    }  
 
+   const activeProductsFiltered = productsFiltered.filter((product: Product) => product.active);
+
   //RENDERIZO UNA CARD POR CADA ELEMENTO DE LA STORE.
   return (
       <>
           {/*Mapea el arreglo de productos y renderiza un Card para cada uno*/}
-            {productsFiltered.map((product:any) => (
+            {activeProductsFiltered.map((product:any) => (
              <p key={product.id}>
                   <ProductCard key={product.id} product={product} />
               </p>
