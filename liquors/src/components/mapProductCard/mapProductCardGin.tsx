@@ -27,12 +27,13 @@ export const MapProductCardGin: React.FC = (): React.ReactNode => {
   const data = JSON.stringify(product)
   localStorage.setItem("detailProduct", data)
  }
+ const activeProducts = ginProducts.filter((product: Product) => product.active);
 
   //RENDERIZO UNA CARD POR CADA ELEMENTO DE LA STORE.
   return (
       <>
           {/*Mapea el arreglo de productos y renderiza un Card para cada uno*/}
-            {ginProducts.map((product:any) => (
+            {activeProducts.map((product:any) => (
               <p key={product.id}>
                 <ProductCard key={product.id} product={product} />
               </p>

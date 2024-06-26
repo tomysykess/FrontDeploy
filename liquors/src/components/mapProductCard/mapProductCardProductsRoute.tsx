@@ -29,11 +29,14 @@ export const MapProductCardRouteProducts: React.FC = (): React.ReactNode => {
     localStorage.setItem("detailProduct", data);
   };
 
+
+  const activeProducts = dataGlobal.filter((product: Product) => product.active);
+
   //RENDERIZO UNA CARD POR CADA ELEMENTO DE LA STORE.
   return (
     <>
       {/*Mapea el arreglo de productos y renderiza un Card para cada uno*/}
-      {dataGlobal.map((product: Product) => (
+      {activeProducts.map((product: Product) => (
         <p key={product.id}>
           <ProductCard key={product.id} product={product} />
         </p>
