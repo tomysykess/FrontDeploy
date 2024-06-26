@@ -129,7 +129,7 @@ export const AccountInfoCard = () => {
             />
           </div>
           <div className="mt-16 text-center ">
-            <h2 className="text-xl font-semibold">{dataUser.name}</h2>
+            <h2 className="text-xl font-semibold dark:text-darkMode-white">{dataUser.name}</h2>
           </div>
           {uploadProgress < 100 && file && (
             <>
@@ -146,7 +146,7 @@ export const AccountInfoCard = () => {
 
         {/* TARJETA CON MAS INFO (EMAIL) */}
         <div className="bg-white p-6 my-3 rounded-lg shadow-lg w-96 border-r-8 border-wine dark:bg-darkMode-grey1">
-          <h2 className="text-lg font-bold">Email</h2>
+          <h2 className="text-lg font-bold dark:text-darkMode-white">Email</h2>
           <p className="mt-2 text-greyTextMl font-normal dark:text-gray-300">
             {dataUser.email}
           </p>
@@ -154,7 +154,7 @@ export const AccountInfoCard = () => {
 
         {/* TARJETA CON MAS INFO (ROL) */}
         <div className="bg-white p-6 rounded-lg shadow-lg w-96 border-r-8 border-wine dark:bg-darkMode-grey1">
-          <h2 className="text-lg font-bold">Tipo de cuenta</h2>
+          <h2 className="text-lg font-bold dark:text-darkMode-white">Tipo de cuenta</h2>
           <p className="mt-2 text-greyTextMl font-normal dark:text-gray-300">
             {getUserRole(dataUser.role)}
           </p>

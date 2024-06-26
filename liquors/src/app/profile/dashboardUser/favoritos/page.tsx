@@ -32,16 +32,16 @@ const FavoriteProduct: React.FC = (): React.ReactNode => {
 
             
                  <>
-                 <div className="bg-greyVivino  dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1 h-screen">
+                 <div className="bg-greyVivino  dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1 h-screen overflow-x-hidden">
                      <MenuDashboard />
-                     <div className="overflow-y-auto w-full">
+                     <div className=" w-full">
                          <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">Favoritos</h1><br></br>
-                         <div className="flex flex-col items-center w-full">
+                         <div className="flex flex-col pt-1 items-center w-full">
                              <hr className="w-full border-gray-300" />
                              <br />
                              <div className="flex ml-36  items-center w-full">
                                  <LabelImportantIcon style={{ color: '#c23a2e' }} className="flex-shrink-0" />
-                                 <h2 className="font-plus-jakarta-sans text-2xl text-start font-semibold ml-2">Mis favoritos</h2>
+                                 <h2 className="font-plus-jakarta-sans text-2xl text-start font-semibold ml-2 dark:text-darkMode-white">Mis favoritos</h2>
                              </div>
                              <br />
                              <MapUserFavoriteProducts />

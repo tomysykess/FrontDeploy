@@ -53,14 +53,14 @@ const MisCajas: React.FC = (): React.ReactNode => {
     <>
       {token && (
         <>
-          <div className="bg-greyVivino dark:bg-darkMode-greyVivino  flex flex-row pt-1 mb-1 h-screen">
+          <div className="bg-greyVivino dark:bg-darkMode-greyVivino  flex flex-row pt-1 mb-1 h-screen overflow-x-hidden">
             <MenuDashboard />
-            <div className="overflow-y-auto w-full dark:bg-darkMode-greyVivino ">
+            <div className="w-full dark:bg-darkMode-greyVivino ">
               <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">
                 Mis cajas
               </h1>
               <br></br>
-              <div className="flex flex-col items-center w-full">
+              <div className="flex pt-1 flex-col items-center w-full">
                 <hr className="w-full border-gray-300" />
                 <br />
                 <div className="flex ml-36  items-center w-full">
@@ -68,7 +68,7 @@ const MisCajas: React.FC = (): React.ReactNode => {
                     style={{ color: "#c23a2e" }}
                     className="flex-shrink-0"
                   />
-                  <h2 className="font-plus-jakarta-sans text-2xl text-start font-semibold ml-2">
+                  <h2 className="font-plus-jakarta-sans text-2xl text-start font-semibold ml-2 dark:text-darkMode-white">
                     Cajas activas
                   </h2>
                 </div>

@@ -4,6 +4,7 @@ import { getFavorites } from "@/utils/getFavorites";
 import { FavoriteProductsCard } from "./favoriteProducts";
 import { useDispatch, useSelector } from "react-redux";
 import { FavoriteProduct } from "@/interfaces/interfaz";
+import FmdBadOutlinedIcon from '@mui/icons-material/FmdBadOutlined';
 
 export const MapUserFavoriteProducts: React.FC = (): React.ReactNode => {
   const dispatch = useDispatch();
@@ -29,6 +30,10 @@ export const MapUserFavoriteProducts: React.FC = (): React.ReactNode => {
       getFavorites(userId.id, dispatch);
     }
   }, [userId, dispatch, favoriteData.length]);
+
+  if (favoriteData.length === 0) {
+    return <div className="font-plus-jakarta-sans dark:text-darkMode-greyMLfilter"><FmdBadOutlinedIcon/>Aun no tienes ningun favorito.</div>;
+  }
 
   return (
     <>

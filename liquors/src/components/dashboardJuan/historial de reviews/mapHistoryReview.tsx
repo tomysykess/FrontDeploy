@@ -4,6 +4,7 @@ import { getUserReview } from "@/utils/getUserReview";
 import { CardHistoryReview } from "./cardHistoryReview";
 import { useDispatch, useSelector } from "react-redux";
 import { IReview } from "@/interfaces/interfaz";
+import FmdBadOutlinedIcon from '@mui/icons-material/FmdBadOutlined';
 
 export const MapUserHistorialReviews: React.FC = (): React.ReactNode => {
 
@@ -31,6 +32,11 @@ export const MapUserHistorialReviews: React.FC = (): React.ReactNode => {
             getUserReview(userTokenAndId, dispatch);
         }
     }, [userTokenAndId, dispatch, reviewData.length]);
+
+    if (reviewData.length === 0) {
+        return <div className="font-plus-jakarta-sans flex justify-center dark:text-darkMode-greyMLfilter"><FmdBadOutlinedIcon/>Aun no has hecho reseñas.</div>;
+      }
+    
 
     return (
         <>  

@@ -10,6 +10,8 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
 import ColorLensIcon from "@mui/icons-material/ColorLens";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 export const MenuDashboard: React.FC = (): React.ReactNode => {
   const pathname = usePathname();
@@ -40,7 +42,7 @@ export const MenuDashboard: React.FC = (): React.ReactNode => {
 
   return (
     <>
-      <div className="flex h-screen font-plus-jakarta-sans">
+      <div className="flex h-auto pb-0 font-plus-jakarta-sans">
         {/* Barra lateral */}
         <aside className="bg-wine w-64 flex-shrink-0">
           <div className="h-full flex flex-col justify-between pt-4">
@@ -132,13 +134,13 @@ export const MenuDashboard: React.FC = (): React.ReactNode => {
                       href="/profile/dashboardProducer/formUser"
                       className="block py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300"
                     >
-                      Publicar un producto
+                     <AddCircleIcon/> Publicar un producto
                     </Link>
                     <Link
                       href="/profile/dashboardProducer/productosPublicados"
                       className="block py-2 px-6 text-white hover:text-wine hover:bg-greyMLfilter transition duration-300"
                     >
-                      Productos publicados
+                      <TaskAltIcon/>Productos publicados
                     </Link>
                   </>
                 )}

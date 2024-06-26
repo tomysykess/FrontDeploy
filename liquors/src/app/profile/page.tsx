@@ -53,11 +53,11 @@ const Profile: React.FC = (): React.ReactNode => {
               <h1 className="font-plus-jakarta-sans pt-4 text-3xl text-center text-wine font-semibold">
                 ¡Bienvenido, {dataUser.name}!
               </h1>
-              <br></br>
-              <div className="flex flex-col items-center w-auto">
-                <hr className="w-auto border-gray-300" />
+              <div className="pt-1">
+                <br></br>
+                <hr></hr>
+                <AccountInfoCard />
               </div>
-              <AccountInfoCard />
             </div>
           </div>
         </>

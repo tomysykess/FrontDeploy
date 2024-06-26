@@ -32,7 +32,7 @@ const HistorialReviewsAdmin: React.FC = (): React.ReactNode => {
     <>
       {token && (
         <>
-          <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1 h-screen">
+          <div className="bg-greyVivino dark:bg-darkMode-greyVivino flex flex-row pt-1 mb-1 h-screen overflow-x-hidden">
             <MenuDashboard />
             <div className=" w-full">
               <h1 className="font-plus-jakarta-sans pt-5 text-3xl text-center text-wine  font-semibold">
@@ -46,7 +46,7 @@ const HistorialReviewsAdmin: React.FC = (): React.ReactNode => {
                     style={{ color: "#c23a2e" }}
                     className="flex-shrink-0"
                   />
-                  <h2 className="font-plus-jakarta-sans  text-2xl text-start font-semibold ml-2">
+                  <h2 className="font-plus-jakarta-sans  text-2xl text-start font-semibold ml-2 dark:text-darkMode-white">
                     Reseñas:
                   </h2>
                 </div>
