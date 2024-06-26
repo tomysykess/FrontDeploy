@@ -9,6 +9,8 @@ import { deleteProductAdmin, fetchProducts } from "@/utils/getProducts";
 import { putDeleteProduct } from "@/utils/putDeleteProduct";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import StarIcon from "@mui/icons-material/Star";
+import Rating from "@mui/material/Rating";
 
 const ProductsAdmin = ({ products }: any) => {
   const dispatch = useDispatch();
@@ -70,14 +72,42 @@ const ProductsAdmin = ({ products }: any) => {
                   className="h-16 w-16 object-cover rounded"
                 />
               </td>
-              <td className="border dark:text-darkMode-white px-4 py-2">{product.name}</td>
-              <td className="border dark:text-darkMode-white px-4 py-2">{product.description}</td>
-              <td className="border dark:text-darkMode-white px-4 py-2">{product.category}</td>
-              <td className="border dark:text-darkMode-white px-4 py-2">{product.abv}%</td>
-              <td className="border dark:text-darkMode-white px-4 py-2">{product.brand}</td>
-              <td className="border dark:text-darkMode-white px-4 py-2">{product.country}</td>
-              <td className="border dark:text-darkMode-white px-4 py-2">{product.size}</td>
-              <td className="border dark:text-darkMode-white px-4 py-2">{product.averageRate}</td>
+              <td className="border dark:text-darkMode-white px-4 py-2">
+                {product.name}
+              </td>
+              <td className="border dark:text-darkMode-white px-4 py-2">
+                {product.description}
+              </td>
+              <td className="border dark:text-darkMode-white px-4 py-2">
+                {product.category}
+              </td>
+              <td className="border dark:text-darkMode-white px-4 py-2">
+                {product.abv}%
+              </td>
+              <td className="border dark:text-darkMode-white px-4 py-2">
+                {product.brand}
+              </td>
+              <td className="border dark:text-darkMode-white px-4 py-2">
+                {product.country}
+              </td>
+              <td className="border dark:text-darkMode-white px-4 py-2">
+                {product.size}
+              </td>
+              <td className="border dark:text-darkMode-white px-4 py-2">
+                <Rating
+                  name="product-rating"
+                  value={product.rate ?? 0}
+                  precision={0.5}
+                  readOnly
+                  icon={
+                    <StarIcon
+                      fontSize="inherit"
+                      className="animate-fadeInOpacity"
+                    />
+                  }
+                  emptyIcon={<StarIcon fontSize="inherit" />}
+                />
+              </td>
               <td className="border dark:text-darkMode-white px-4 py-2 text-center">
                 {product.active ? (
                   <button
