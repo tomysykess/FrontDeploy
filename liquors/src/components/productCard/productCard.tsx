@@ -83,7 +83,7 @@ const ProductCard: React.FC<{ product: Product }> = ({
     <div
       className={`flex flex-col relative bg-white dark:bg-darkMode-grey1 items-center h-96 border-t-8  rounded-t-xl border-solid border-t-wine shadow-md rounded-lg m-4 w-48`}
     >
-      <h2 className="text-center text-lg font-Lora mb-2 pt-4 dark:text-darkMode-white">
+      <h2 className="text-center text-lg font-plus-jakarta-sans mb-2 pt-4 dark:text-darkMode-white">
         {product.name}
       </h2>
       <img
