@@ -4,7 +4,7 @@ import { IProductUpdatedData } from "@/components/productForm/types";
 export const putProduct = async (productId: string, dataProduct: IProductUpdatedData, token: string) => {
   console.log("id", productId)
   try {
-      const response = await axios.put<IProductUpdatedData>(`https://liquors-project.onrender.com/products/${productId}`, 
+      const response = await axios.put<IProductUpdatedData>(`https://liquorsproject-y26n.onrender.com/products/${productId}`, 
         dataProduct,
         {headers: {authorization: `bearer ${token}`}
       })

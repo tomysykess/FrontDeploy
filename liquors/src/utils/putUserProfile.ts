@@ -7,7 +7,7 @@ export const putUserProfile = async (id: string, downloadURL: any) => {
     };
 
     await axios.put(
-      `https://liquors-project.onrender.com/users/${id}`,
+      `https://liquorsproject-y26n.onrender.com/users/${id}`,
       dataImg
     );
     console.log("Datos de usuario guardados exitosamente");
@@ -19,7 +19,7 @@ export const putUserProfile = async (id: string, downloadURL: any) => {
 export const getUserProfile = async (id: string) => {
   try {
     const res = await axios.get(
-      `https://liquors-project.onrender.com/users/${id}`
+      `https://liquorsproject-y26n.onrender.com/users/${id}`
     );
     const data = res.data.profileImage;
     localStorage.setItem("profile", data);

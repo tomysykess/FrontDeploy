@@ -9,7 +9,7 @@ export const getUserReview = async (userTokenAndId:IdAndToken,  dispatch: any,) 
         const headers = {
             Authorization: `Bearer: ${userTokenAndId.token}`
         };
-        const response = await axios.get(`https://liquors-project.onrender.com/reviews/user/${userTokenAndId.id}`, {headers})
+        const response = await axios.get(`https://liquorsproject-y26n.onrender.com/reviews/user/${userTokenAndId.id}`, {headers})
         console.log("respuesta del back a getUserReviews:", response);
         dispatch(userClearReviews());
         dispatch(userReadReviews(response.data))
