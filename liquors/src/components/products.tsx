@@ -26,7 +26,7 @@ export const Products = () => {
     const fetchProducts = async () => {
       try {
         const res = await axios.get<Product[]>(
-          "https://liquors-project.onrender.com/products"
+          "https://liquorsproject-y26n.onrender.com/products"
         );
         dispatch(readProducts(res.data));
       } catch (error) {

@@ -42,7 +42,7 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
         console.log("este es el token que tiene en el storages", token);
         try {
           const response = await axios.get(
-            `https://liquors-project.onrender.com/users/${userId}`
+            `https://liquorsproject-y26n.onrender.com/users/${userId}`
           );
           var newUserData: any = response.data;
 
@@ -53,7 +53,7 @@ const AuthStore: React.FC<AuthProps> = ({ children }) => {
                 firebaseUid: newUserData.firebaseUid,
               };
               const response = await axios.post(
-                "https://liquors-project.onrender.com/users/signin",
+                "https://liquorsproject-y26n.onrender.com/users/signin",
                 loginObjet
               );
               const newData = response.data;

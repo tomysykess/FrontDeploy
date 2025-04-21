@@ -22,7 +22,7 @@ export const deleteReview = async (reviewId: string, dispatch: AppDispatch) => {
     const idP = idProduct.id;
     const idU = idUser.id;
     const token = idUser.token;
-    const url = `https://liquors-project.onrender.com/reviews/delete/${reviewId}`;
+    const url = `https://liquorsproject-y26n.onrender.com/reviews/delete/${reviewId}`;
 
     try {
       const res = await axios.put(
@@ -70,7 +70,7 @@ export const editReview = async (
       const token = idUser.token;
       console.log("ESTE ES EL OBJETO QUE ESTOY MANDANDO POR EL PUT", data);
       const response = await axios.put(
-        `https://liquors-project.onrender.com/reviews/${id}`,
+        `https://liquorsproject-y26n.onrender.com/reviews/${id}`,
         data,
         {
           headers: {

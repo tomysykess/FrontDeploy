@@ -9,7 +9,7 @@ export const fetchProductsFiltered = async (dispatch: AppDispatch, filters: any,
       const category = filters.categoryButton ? `category=${filters.categoryButton}&` : '';
       const averageRate = filters.selectedRating? `averageRate=${filters.selectedRating}&` : '';
       console.log("valor que envio de category si no se selcciona nada", averageRate);
-      const res = await axios.get<Product[]>(`https://liquors-project.onrender.com/products?${category}abv=${abv}&${averageRate}limit=200`);
+      const res = await axios.get<Product[]>(`https://liquorsproject-y26n.onrender.com/products?${category}abv=${abv}&${averageRate}limit=200`);
       console.log("respuesta back", res);
       dispatch(clearProductsFiltered());
       dispatch(readProductsFiltered(res.data));

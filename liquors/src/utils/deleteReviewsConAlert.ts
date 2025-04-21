@@ -10,7 +10,7 @@ export const deleteReviewConAlert = async (reviewId: string, dispatch: AppDispat
     const idProduct = JSON.parse(detailProduct);
     const idUser = JSON.parse(userDataLogin);
     const token = idUser.token;
-    const url = `https://liquors-project.onrender.com/reviews/delete/${reviewId}`;
+    const url = `https://liquorsproject-y26n.onrender.com/reviews/delete/${reviewId}`;
 
     try {
     
