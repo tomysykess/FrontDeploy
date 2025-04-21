@@ -20,7 +20,7 @@ const NewsletterForm = () => {
     try {
       console.log("Userdataee: ", userData);
       const response = await axios.get<any>(
-        `https://liquors-project.onrender.com/users/newsletter/${userData}`
+        `https://liquorsproject-y26n.onrender.com/users/newsletter/${userData}`
       );
       console.log(response.data);
 

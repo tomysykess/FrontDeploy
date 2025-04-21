@@ -6,9 +6,9 @@ import Swal from 'sweetalert2'
 export const deleteFavorites = async (idUser: string | undefined, idProduct: string, dispatch: AppDispatch) => {
     try {
         const productIds = [idProduct]
-        const response = await axios.delete(`https://liquors-project.onrender.com/users/${idUser}/favorites`,{ data: {productIds} } )
+        const response = await axios.delete(`https://liquorsproject-y26n.onrender.com/users/${idUser}/favorites`,{ data: {productIds} } )
         dispatch(deleteFavoriteProduct(idProduct))
-        if (window.location.href == 'https://front-deploy-sage.vercel.app/profile/dashboardUser/favoritos') {
+        if (window.location.href == 'https://liquorsproject-y26n.onrender.com/profile/dashboardUser/favoritos') {
             Swal.fire({
                 position: "top-end",
                 icon: "success",

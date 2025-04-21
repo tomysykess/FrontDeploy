@@ -11,7 +11,7 @@ export const fetchReviews = async (dispatch: AppDispatch) => {
   if (detailProduct) {
     try {
       const res = await axios.get<any>(
-        `https://liquors-project.onrender.com/reviews/product/${idP}`
+        `https://liquorsproject-y26n.onrender.com/reviews/product/${idP}`
       );
       dispatch(clearReviews());
       dispatch(readReviews(res.data.reviews));
@@ -29,7 +29,7 @@ export const averageReviews = async ({ idProduct }: any) => {
 
   try {
     const res = await axios.get(
-      `https://liquors-project.onrender.com/reviews/product/${idProduct}`
+      `https://liquorsproject-y26n.onrender.com/reviews/product/${idProduct}`
     );
     const average = res.data.promRate;
     return average;
@@ -46,7 +46,7 @@ export const fetchReviewsAdmin = async (
   {
     try {
       const res = await axios.get<any>(
-        `https://liquors-project.onrender.com/reviews`,
+        `https://liquorsproject-y26n.onrender.com/reviews`,
         {
           headers: { authorization: `Bearer: ${token}` },
         }

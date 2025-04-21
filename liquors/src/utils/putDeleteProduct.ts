@@ -4,7 +4,7 @@ export const putDeleteProduct = async (productId: string, token: string) => {
   console.log("delete", productId, token);
   try {
     await axios.put(
-      `https://liquors-project.onrender.com/products/delete/${productId}`,
+      `https://liquorsproject-y26n.onrender.com/products/delete/${productId}`,
       {},
       {
         headers: { authorization: `Bearer ${token}` },

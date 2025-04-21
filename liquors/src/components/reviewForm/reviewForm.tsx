@@ -59,7 +59,7 @@ export const ReviewForm = () => {
 
       try {
         const res = await axios.post<any>(
-          `https://liquors-project.onrender.com/reviews/?userId=${idU}&productId=${idP}`,
+          `https://liquorsproject-y26n.onrender.com/reviews/?userId=${idU}&productId=${idP}`,
           formData,
           {
             headers: {

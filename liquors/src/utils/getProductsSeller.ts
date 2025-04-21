@@ -4,7 +4,7 @@ import axios from "axios";
 export const fetchProductsSeller = async (userId: string, token: string) => {
     try {
         const response = await axios.get<Product[]>(
-            `https://liquors-project.onrender.com/users/${userId}/products`,{
+            `https://liquorsproject-y26n.onrender.com/users/${userId}/products`,{
                 headers: {
                     Authorization: `bearer ${token}`
                 }

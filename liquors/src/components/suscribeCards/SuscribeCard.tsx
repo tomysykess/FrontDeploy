@@ -49,7 +49,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
       }
       if (role === 4 && product.role === 3) {
         const response = await axios.post(
-          `https://liquors-project.onrender.com/subscription/${userId}`,
+          `https://liquorsproject-y26n.onrender.com/subscription/${userId}`,
           {
             type: "seller",
             amount: 200,
@@ -71,7 +71,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
       }
       if (userData) {
         const res = await axios.post(
-          `https://liquors-project.onrender.com/subscription/${userId}`,
+          `https://liquorsproject-y26n.onrender.com/subscription/${userId}`,
           {
             type: product.type,
             amount: product.price,
@@ -101,7 +101,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
       }
       if (role === 4 && product.role === 3) {
         const response = await axios.post(
-          `https://liquors-project.onrender.com/paypal/create-order/?userId=${userId}`,
+          `https://liquorsproject-y26n.onrender.com/paypal/create-order/?userId=${userId}`,
           {
             type: "seller",
             amount: 200,
@@ -123,7 +123,7 @@ const SuscribeCard = ({ product }: { product: ISuscribe }) => {
       }
       if (userData) {
         const res = await axios.post(
-          `https://liquors-project.onrender.com/paypal/create-order/?userId=${userId}`,
+          `https://liquorsproject-y26n.onrender.com/paypal/create-order/?userId=${userId}`,
           {
             type: product.type,
             amount: product.price,

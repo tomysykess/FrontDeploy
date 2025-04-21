@@ -14,7 +14,7 @@ export const Reviews = () => {
     const fetchReviews = async () => {
       try {
         const res = await axios.get<IReview[]>(
-          "https://liquors-project.onrender.com/reviews/product/2f9c8e2f-6dab-4818-bc18-52fe0f958067"
+          "https://liquorsproject-y26n.onrender.com/reviews/product/2f9c8e2f-6dab-4818-bc18-52fe0f958067"
         );
         dispatch(readReviews(res.data));
       } catch (error) {

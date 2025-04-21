@@ -19,7 +19,7 @@ const loginUserFireBaseGoogle = async (auth: any, provider: any, router: any, se
             //provider: backend valida esta propiedad, si ya existe una cuenta que tenga esta propiedad y el valor de dicha propiedad sea "google.com", 
             //directamente evita el registro y me manda el token de login.
         }
-        const response = await axios.post("https://liquors-project.onrender.com/users/signup", registerObjetGoogle)
+        const response = await axios.post("https://liquorsproject-y26n.onrender.com/users/signup", registerObjetGoogle)
         //USER DATA LOGIN/REGISTER GOOGLE
         console.log("respuesta back login google", response);
         const userDataLogin: any = {

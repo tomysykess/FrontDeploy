@@ -10,7 +10,7 @@ import { Product } from "@/interfaces/interfaz";
 export const fetchProducts = async (dispatch: AppDispatch) => {
   try {
     const res = await axios.get<Product[]>(
-      `https://liquors-project.onrender.com/products/?page=1&limit=15`
+      `https://liquorsproject-y26n.onrender.com/products/?page=1&limit=15`
     );
     dispatch(clearProducts());
     dispatch(readProducts(res.data));
@@ -26,7 +26,7 @@ export const fetchProductsPage = async (dispatch: AppDispatch, page: any) => {
   }
   try {
       const res = await axios.get<Product[]>(
-        `https://liquors-project.onrender.com/products/?${queryParam}&limit=15`
+        `https://liquorsproject-y26n.onrender.com/products/?${queryParam}&limit=15`
       );
       dispatch(readProducts(res.data));
   } catch (err) {
@@ -42,7 +42,7 @@ export const deleteProductAdmin = async (
 ) => {
   try {
     const res = await axios.put(
-      `https://liquors-project.onrender.com/products/delete/${id}`,
+      `https://liquorsproject-y26n.onrender.com/products/delete/${id}`,
       {},
       {
         headers: { authorization: `Bearer: ${token} ` },

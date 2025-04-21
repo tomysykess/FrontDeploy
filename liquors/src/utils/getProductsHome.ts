@@ -9,7 +9,7 @@ export const fetchProductsHome = async (dispatch: AppDispatch, page: any) => {
   
  
     try {
-        const res = await axios.get<Product[]>(`https://liquors-project.onrender.com/products/?page=1&limit=10`);
+        const res = await axios.get<Product[]>(`https://liquorsproject-y26n.onrender.com/products/?page=1&limit=10`);
         console.log("objeto prod", res);
         
         dispatch(clearProducts());
